@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.WebApi", "Hotel.WebApi\Hotel.WebApi.csproj", "{C7E932D3-44F2-4F72-A7BE-A45E99731E60}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Api", "1.Api", "{A630E625-F2F6-41EC-B3A3-E72ACB4FAE5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.IoC", "2.IoC", "{59F318E7-59B4-402B-9DE4-D716F77B11B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Inicialidador", "Hotel.Inicialidador\Hotel.Inicialidador.csproj", "{C437A61C-8DF1-4B79-9A00-4196FCF41B4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7E932D3-44F2-4F72-A7BE-A45E99731E60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7E932D3-44F2-4F72-A7BE-A45E99731E60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7E932D3-44F2-4F72-A7BE-A45E99731E60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7E932D3-44F2-4F72-A7BE-A45E99731E60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C437A61C-8DF1-4B79-9A00-4196FCF41B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C437A61C-8DF1-4B79-9A00-4196FCF41B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C437A61C-8DF1-4B79-9A00-4196FCF41B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C437A61C-8DF1-4B79-9A00-4196FCF41B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C7E932D3-44F2-4F72-A7BE-A45E99731E60} = {A630E625-F2F6-41EC-B3A3-E72ACB4FAE5D}
+		{C437A61C-8DF1-4B79-9A00-4196FCF41B4E} = {59F318E7-59B4-402B-9DE4-D716F77B11B4}
+	EndGlobalSection
+EndGlobal
