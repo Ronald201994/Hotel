@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AngularProyect": {
+    "HotelAngular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/AngularProyect",
+            "outputPath": "dist/HotelAngular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AngularProyect:build"
+            "browserTarget": "HotelAngular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "AngularProyect:build:production"
+              "browserTarget": "HotelAngular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AngularProyect:build"
+            "browserTarget": "HotelAngular:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "AngularProyect-e2e": {
+    "HotelAngular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "AngularProyect:serve"
+            "devServerTarget": "HotelAngular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "AngularProyect:serve:production"
+              "devServerTarget": "HotelAngular:serve:production"
             }
           }
         },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "AngularProyect"
+  "defaultProject": "HotelAngular"
 }
