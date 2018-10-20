@@ -11,6 +11,7 @@ namespace Hotel.WebApi.Controllers
     public class ClienteController : ApiController
     {
         ClienteNegocios negociosCliente = new ClienteNegocios();
+
         [HttpPost]
         public string LoginCliente(string login, string contraseña)
         {

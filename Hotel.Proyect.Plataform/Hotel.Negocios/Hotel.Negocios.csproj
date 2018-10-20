@@ -41,12 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteNegocios.cs" />
+    <Compile Include="HabitacionNegocios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hotel.Datos\Hotel.Datos.csproj">
       <Project>{410059ba-3f7b-491e-8118-1b0f825d6d54}</Project>
       <Name>Hotel.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel.Modelos\Hotel.Modelos.csproj">
+      <Project>{9FBAC473-6865-43F9-A1CE-6E415C5C24C8}</Project>
+      <Name>Hotel.Modelos</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
