@@ -8,15 +8,15 @@ using System.Web.Http;
 
 namespace Hotel.WebApi.Controllers
 {
-    public class ClienteController : ApiController
+    public class UsuarioController : ApiController
     {
-        ClienteNegocios negociosCliente = new ClienteNegocios();
+        UsuarioNegocios negociosUsuario = new UsuarioNegocios();
 
         [HttpPost]
-        public string LoginCliente(string login, string contraseña)
+        public string LoginUsuario(string correo, string contraseña)
         {
             string mensaje = "";
-            mensaje = negociosCliente.LoginCliente(login, contraseña);
+            mensaje = negociosUsuario.LoginUsuario(correo, contraseña);
             return mensaje;
         }
     }

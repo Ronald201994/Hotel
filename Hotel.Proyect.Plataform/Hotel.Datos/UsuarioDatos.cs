@@ -11,24 +11,21 @@ using System.Data;
 namespace Hotel.Datos
 {
 
-    public class ClienteDatos
+    public class UsuarioDatos
     {
         SqlConnection conexion;
         //SqlDataAdapter comando;
         SqlDataReader dr;
         SqlCommand cmd;
-        String errores;
-        int int_numero_registros;
         Conexion cn = new Conexion();
 
-        
-        public int ValidarLoginCliente(string login, string contraseña)
+        public int ValidarLoginUsuario(string correo, string contraseña)
         {
             conexion = cn.Conectar();
 
-            cmd = new SqlCommand("SP_LoginCliente", conexion);
+            cmd = new SqlCommand("SP_LoginUsuario", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@Login", login);
+            cmd.Parameters.AddWithValue("@correo", correo);
             cmd.Parameters.AddWithValue("@Contraseña", contraseña);
 
             int cuenta = Convert.ToInt32(cmd.ExecuteScalar());
