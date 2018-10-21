@@ -186,6 +186,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\HabitacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -247,6 +248,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hotel.Modelos\Hotel.Modelos.csproj">
+      <Project>{9fbac473-6865-43f9-a1ce-6e415c5c24c8}</Project>
+      <Name>Hotel.Modelos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hotel.Negocios\Hotel.Negocios.csproj">
       <Project>{db86197c-6f39-40ef-98c9-5fb2a807a841}</Project>
       <Name>Hotel.Negocios</Name>

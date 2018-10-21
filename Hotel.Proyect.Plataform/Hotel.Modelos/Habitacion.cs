@@ -12,9 +12,21 @@ namespace Hotel.Modelos
 
         public string Nombre { get; set; }
 
+        public string Descripcion { get; set; }
+
         public int IdEstado { get; set; }
 
+        public string Estado { get; set; }
+
         public int IdTipo { get; set; }
+
+        public string Tipo { get; set; }
+
+        public int Cantidad { get; set; }
+
+        public double Precio { get; set; }
+
+
 
     }
 }
