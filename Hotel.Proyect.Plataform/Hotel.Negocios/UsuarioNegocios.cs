@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Hotel.Negocios
 {
-    public class ClienteNegocios
+    public class UsuarioNegocios
     {
-        ClienteDatos datosCliente = new ClienteDatos();
+        UsuarioDatos datosUsuario = new UsuarioDatos();
 
-        public string LoginCliente(string login, string contraseña)
+        public string LoginUsuario(string correo, string contraseña)
         {
             string mensaje = "";
-            int cuenta = datosCliente.ValidarLoginCliente(login, contraseña);
+            int cuenta = datosUsuario.ValidarLoginUsuario(correo, contraseña);
             if (cuenta==0)
             {
                 mensaje = "Login y/o contraseña incorrectos";
