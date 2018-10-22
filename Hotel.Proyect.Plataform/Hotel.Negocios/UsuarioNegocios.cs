@@ -1,4 +1,5 @@
 ﻿using Hotel.Datos;
+using Hotel.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,38 @@ namespace Hotel.Negocios
                 mensaje = "Ingreso exitoso";
             }
             return mensaje;
-        } 
+        }
+
+        public string AgregarUsuario(Usuario usuario)
+        {
+            string mensaje = "";
+            try
+            {
+                datosUsuario.AgregarUsuario(usuario);
+                mensaje = "Usuario registrado exitosamente !!";
+            }
+            catch (Exception ex)
+            {
+                mensaje = "No se creo el usuario :" + ex.Message;
+            }
+            return mensaje;
+        }
+
+
+        public string ReservarHabitacion(ReservaHabitacion reservaHabitacion)
+        {
+            string mensaje = "";
+            try
+            {
+                datosUsuario.ReservarHabitacion(reservaHabitacion);
+                mensaje = "La Reserva de Habitacion se realizo con exito  !!";
+            }
+            catch (Exception ex)
+            {
+                mensaje = "No se realizo la reserva de habitacion :" + ex.Message;
+            }
+            return mensaje;
+        }
     }
 
 }
