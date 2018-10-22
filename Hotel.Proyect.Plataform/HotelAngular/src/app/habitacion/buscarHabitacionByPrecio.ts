@@ -9,10 +9,4 @@ import {Habitacion } from './habitacion';
 export class BuscarHabitacionByPrecioComponent {
     habitacion : Habitacion[];
 
-    constructor(private _habitacionServicio: HabitacionServicio){
-        this._habitacionServicio.GetHabitacionByPrecio()
-        .subscribe(
-            habitacionRespones => this.habitacion = habitacionRespones
-        );
-    }
 }

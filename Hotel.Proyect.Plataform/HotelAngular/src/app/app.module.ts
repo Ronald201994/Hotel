@@ -4,11 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BuscarHabitacionByPrecioComponent } from './habitacion/buscarHabitacionByPrecio';
+import { HabitacionServicio } from './habitacion/servicio.habitacion';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.component';''
 import {RouterModule } from '@angular/router';
+
+//Http
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,7 @@ import {RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot([
@@ -25,7 +30,9 @@ import {RouterModule } from '@angular/router';
       {path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
-  providers: [],
+  providers: [
+    HabitacionServicio
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
