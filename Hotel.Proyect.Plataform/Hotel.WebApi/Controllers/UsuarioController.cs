@@ -1,4 +1,5 @@
-﻿using Hotel.Negocios;
+﻿using Hotel.Modelos;
+using Hotel.Negocios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,22 @@ namespace Hotel.WebApi.Controllers
         {
             string mensaje = "";
             mensaje = negociosUsuario.LoginUsuario(correo, contraseña);
+            return mensaje;
+        }
+
+        [HttpPost]
+        public string AgregarUsuario(Usuario usuario)
+        {
+            string mensaje = "";
+            mensaje = negociosUsuario.AgregarUsuario(usuario);
+            return mensaje;
+        }
+
+        [HttpPost]
+        public string ReservaHabitacion(ReservaHabitacion reservaHabitacion)
+        {
+            string mensaje = "";
+            mensaje = negociosUsuario.ReservarHabitacion(reservaHabitacion);
             return mensaje;
         }
     }

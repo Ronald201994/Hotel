@@ -21,5 +21,6 @@ namespace Hotel.Negocios
         {
             return datosHabitacion.BuscarHabitacionByPrecio(precio1, precio2); // por precios
         }
+        
     }
 }

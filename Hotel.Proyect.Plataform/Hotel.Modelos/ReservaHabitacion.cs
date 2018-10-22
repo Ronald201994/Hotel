@@ -16,7 +16,7 @@ namespace Hotel.Modelos
 
         public int IdHabitacion { get; set; }
 
-        public int IdDetalle { get; set; }
+        public int IdUsuario { get; set; }
 
     }
 }
