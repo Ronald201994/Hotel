@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BuscarHabitacionByPrecioComponent } from './habitacion/buscarHabitacionByPrecio';
 import { HabitacionServicio } from './habitacion/servicio.habitacion';
+import { ListarHabitacionesComponent } from './habitacion/listarHabitaciones';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -18,7 +19,8 @@ import { HttpModule } from '@angular/http';
   declarations: [
     AppComponent,
     HomeComponent,
-    BuscarHabitacionByPrecioComponent
+    BuscarHabitacionByPrecioComponent,
+    ListarHabitacionesComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { HttpModule } from '@angular/http';
     MaterialModule,
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
+      {path: 'listarHabitaciones', component: ListarHabitacionesComponent},
       {path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
