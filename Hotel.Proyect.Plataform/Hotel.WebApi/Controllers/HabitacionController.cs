@@ -14,6 +14,13 @@ namespace Hotel.WebApi.Controllers
         HabitacionNegocios negociosHabitacion = new HabitacionNegocios();
 
         [HttpGet]
+        public List<Habitacion> ListarHabitaciones()
+        {
+            var lista = negociosHabitacion.ListarHabitaciones();
+            return lista;
+        }
+
+        [HttpGet]
         public List<Habitacion> GetHabitacionById(int id)
         {
             var lista = negociosHabitacion.BuscarHabitacionByID(id);

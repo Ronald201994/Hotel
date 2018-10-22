@@ -12,6 +12,11 @@ namespace Hotel.Negocios
     {
         HabitacionDatos datosHabitacion = new HabitacionDatos();
 
+        public List<Habitacion> ListarHabitaciones()
+        {
+            return datosHabitacion.ListarHabitaciones();
+        }
+
         public List<Habitacion> BuscarHabitacionByID(int id)
         {
             return datosHabitacion.BuscarHabitacionByID(id); //por id

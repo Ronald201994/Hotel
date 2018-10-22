@@ -18,6 +18,45 @@ namespace Hotel.Datos
         String errores;
         Conexion cn = new Conexion();
 
+        public List<Habitacion> ListarHabitaciones()
+        {
+
+            List<Habitacion> lista = new List<Habitacion>();
+            try
+            {
+                conexion = cn.Conectar();
+                cmd = new SqlCommand("SP_ListarHabitaciones", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                dr = null;
+                conexion.Open();
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Habitacion habitacion = new Habitacion();
+                    habitacion.Nombre = Convert.ToString(dr["Nombre"]);
+                    habitacion.Tipo = Convert.ToString(dr["Tipo"]);
+                    habitacion.Estado = Convert.ToString(dr["Estado"]);
+                    lista.Add(habitacion);
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                errores = ex.Message;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+                conexion.Dispose();
+                cmd.Dispose();
+            }
+            return lista;
+        }
+
         public List<Habitacion> BuscarHabitacionByID(int id)
         {
             List<Habitacion> lista = new List<Habitacion>();
