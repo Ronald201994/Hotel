@@ -1,8 +1,8 @@
 <h1 style="text-align: center">NUESTRO HOTEL</h1>
 <div class="navBarPositionPadre">
   <div class="navBarPositionHijo">
-    <button mat-button class="colorButon">Home</button>
-    <button mat-button class="colorButon">Habitaciones</button>
+    <button mat-button class="colorButon"><a [routerLink]="['/home']">Home</a></button>
+    <button mat-button class="colorButon"><a [routerLink]="['/buscarHabitacion']">Habitaciones</a></button>
     <button mat-button class="colorButon">Reserva</button>
     <button mat-button class="colorButon" [matMenuTriggerFor]="menu">Servicios</button>
     <button mat-button class="colorButon">Foro</button>
@@ -11,7 +11,8 @@
   <button mat-button class="colorButon">Login</button>
 </div>
 </div> 
-<app-home></app-home>
+<router-outlet></router-outlet>
+<!-- <app-home></app-home> -->
 <mat-menu #menu="matMenu">
   <button mat-menu-item>Comida</button>
   <button mat-menu-item>Piscina</button>
