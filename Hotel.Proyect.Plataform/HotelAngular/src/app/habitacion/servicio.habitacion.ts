@@ -14,20 +14,29 @@ export class HabitacionServicio {
     
     habitacion : Habitacion[];
 
-    GetHabitaciones() : Observable<Habitacion[]>{
-        return this._http.get(this._getHabitacionesURL)
-        .pipe(map((response: Response) => response.json()),
-        catchError(error => {
-            return throwError("Server error");
-        }))       
-    }
-
     GetHabitacionByPrecio() : Observable<Habitacion[]> { 
         return this._http.get(this._getHabitacionesByPrecioURL)
         .pipe(map((response: Response) => <Habitacion[]> response.json()),
-        catchError(error => {
-            return throwError("Server error");
-        }))            
+            catchError(error => {
+                return throwError("Server error");
+            })
+        ) 
     }
+
+    GetHabitaciones() : Observable<Habitacion[]>{
+        return this._http.get(this._getHabitacionesURL)
+        //.pipe(map((response: Response) => response.json()),
+        .pipe(map((response: Response) => <Habitacion[]> response.json()),
+            catchError(error => {
+                return throwError("Server error");
+            })
+        )       
+    }
+
+    private controlarExecption(error : Response){
+        console.log("error", error);
+        return Observable.throw(error.json().error || "Server error");
+    }
+
 }
 
