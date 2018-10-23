@@ -7,12 +7,12 @@ import {Habitacion } from './habitacion';
     templateUrl: './ListarHabitaciones.html'
 })
 export class ListarHabitacionesComponent {
-    habitacion : Habitacion[];
+    habitaciones : Habitacion[];
 
     constructor(private _habitacionServicio: HabitacionServicio){
         this._habitacionServicio.GetHabitaciones()
         .subscribe(
-            habitacionRespones => this.habitacion = habitacionRespones
+            habitacionResponse => this.habitaciones = habitacionResponse
         );
     }
 }
