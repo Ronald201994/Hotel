@@ -1,4 +1,5 @@
 export class Habitacion{
+    ID: number;
     Nombre: string;
     Descripcion : string;
     Estado : string;

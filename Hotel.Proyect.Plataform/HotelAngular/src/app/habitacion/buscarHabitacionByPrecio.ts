@@ -8,11 +8,17 @@ import {Habitacion } from './habitacion';
 })
 export class BuscarHabitacionByPrecioComponent {
     habitacion : Habitacion[];
+    precio1 : number=0;
+    precio2 : number=0;
 
     constructor(private _habitacionServicio: HabitacionServicio){
         this._habitacionServicio.GetHabitacionByPrecio()
         .subscribe(
             habitacionRespones => this.habitacion = habitacionRespones
         );
+    }
+
+    buscarHabitacionesByPrecio(){
+
     }
 }
