@@ -34,5 +34,13 @@ namespace Hotel.WebApi.Controllers
             return lista;
         }
 
+        [HttpPost]
+        public string ReservaHabitacion(ReservaHabitacion reservaHabitacion)
+        {
+            string mensaje = "";
+            mensaje = negociosHabitacion.ReservarHabitacion(reservaHabitacion);
+            return mensaje;
+        }
+
     }
 }

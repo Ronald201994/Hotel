@@ -15,5 +15,7 @@ namespace Hotel.Modelos
         public string ApellidoMat { get; set; }
         public string Correo { get; set; }
         public string Contraseña { get; set; }
+        public int TipoUsuario { get; set; }
+        public int Habitacion { get; set; }
     }
 }

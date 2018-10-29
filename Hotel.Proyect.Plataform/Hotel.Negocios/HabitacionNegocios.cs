@@ -26,5 +26,20 @@ namespace Hotel.Negocios
         {
             return datosHabitacion.BuscarHabitacionByPrecio(precio1, precio2); // por precios
         }
+
+        public string ReservarHabitacion(ReservaHabitacion reservaHabitacion)
+        {
+            string mensaje = "";
+            try
+            {
+                datosHabitacion.ReservarHabitacion(reservaHabitacion);
+                mensaje = "La Reserva de Habitacion se realizo con exito  !!";
+            }
+            catch (Exception ex)
+            {
+                mensaje = "No se realizo la reserva de habitacion :" + ex.Message;
+            }
+            return mensaje;
+        }
     }
 }
