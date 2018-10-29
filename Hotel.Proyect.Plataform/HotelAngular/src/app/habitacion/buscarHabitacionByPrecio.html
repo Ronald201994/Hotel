@@ -1,13 +1,13 @@
-<div style="margin: 0 auto; width: 250px; margin-top: 15px">
+<div style="margin: 0 auto; width: 250px; margin-top: 20px">
 <form class="example-form">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Precio desde" value="precio 1">
+      <input matInput placeholder="Precio desde" [(ngModel)]="precio1">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="Precio hasta" value="precio 2">
+        <input matInput placeholder="Precio hasta" [(ngModel)]="precio2">
       </mat-form-field>
 
-      <button mat-button class="colorButon" style="margin-left: 60px">BUSCAR</button>
+      <button mat-button class="colorButon" style="margin-left: 60px; background-color: rgb(203, 220, 243)" (click)="buscarHabitacionesByPrecio()">BUSCAR</button>
 </form>
 </div>
