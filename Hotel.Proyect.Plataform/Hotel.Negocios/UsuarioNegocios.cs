@@ -42,21 +42,6 @@ namespace Hotel.Negocios
             return mensaje;
         }
 
-
-        public string ReservarHabitacion(ReservaHabitacion reservaHabitacion)
-        {
-            string mensaje = "";
-            try
-            {
-                datosUsuario.ReservarHabitacion(reservaHabitacion);
-                mensaje = "La Reserva de Habitacion se realizo con exito  !!";
-            }
-            catch (Exception ex)
-            {
-                mensaje = "No se realizo la reserva de habitacion :" + ex.Message;
-            }
-            return mensaje;
-        }
     }
 
 }

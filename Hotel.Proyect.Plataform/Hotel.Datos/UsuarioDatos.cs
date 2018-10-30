@@ -39,7 +39,7 @@ namespace Hotel.Datos
             conexion = cn.Conectar();
             conexion.Open();
 
-            string sqlStatement = "SP_REGISTRAR_USUARIO";
+            string sqlStatement = "SP_RegistrarUsuario";
             SqlCommand cmd = new SqlCommand(sqlStatement, conexion);
 
             cmd.CommandType = CommandType.StoredProcedure;
@@ -50,32 +50,15 @@ namespace Hotel.Datos
             cmd.Parameters.AddWithValue("@apellidoMaterno", usuario.ApellidoMat);
             cmd.Parameters.AddWithValue("@correo", usuario.Correo);
             cmd.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
-
+            cmd.Parameters.AddWithValue("@idTipoUsuario", usuario.TipoUsuario);
+            cmd.Parameters.AddWithValue("@idHabitacion", usuario.Habitacion);
             cmd.ExecuteNonQuery();
 
             conexion.Close();
 
         }
 
-        public void ReservarHabitacion(ReservaHabitacion reservaHabitacion)
-        {
-            conexion = cn.Conectar();
-            conexion.Open();
 
-            string sqlStatement = "SP_ReservaHabitacion";
-            SqlCommand cmd = new SqlCommand(sqlStatement, conexion);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@fechaIngreso", reservaHabitacion.FechaIngreso);
-            cmd.Parameters.AddWithValue("@fechaSalida", reservaHabitacion.FechaSalida);
-            cmd.Parameters.AddWithValue("@idHabitacion", reservaHabitacion.IdHabitacion);
-            cmd.Parameters.AddWithValue("@idUsuario", reservaHabitacion.IdUsuario);
-
-            cmd.ExecuteNonQuery();
-
-            conexion.Close();
-        }
 
     }
 }
