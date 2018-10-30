@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './reservaHabitacion.component.html' 
+    selector: 'app-reserva-habitacion',
+    templateUrl: './reservaHabitacion.component.html' ,
+    styleUrls: ['./reservaHabitacion.component.css']
 })
 export class ReservaHabitacionComponent {
 

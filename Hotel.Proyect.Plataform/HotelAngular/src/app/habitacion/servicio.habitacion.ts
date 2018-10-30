@@ -29,7 +29,7 @@ export class HabitacionServicio {
         .pipe(map((response: Response) => <Habitacion[]> response.json()),
             catchError(error => {
                 return throwError("Server error");
-            })
+            }) 
         ) 
     }
 
