@@ -1,6 +1,35 @@
 <div>
-    Detalle de la habitacion.
-</div>
+<div class="container" style="margin-top: 20px">
+    <div class="table-wrapper">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>NÚMERO</th>
+                    <th>DESCRIPCION</th>
+                    <th>TIPO</th>
+                    <th>ESTADO</th>
+                    <th>CANTIDAD</th>
+                    <th>PRECIO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let habitacion of habitaciones"
+                (click)="verDetalleHabitacion(habitacion.ID)">
+                    <td>{{habitacion.Nombre}}</td> 
+                    <td>{{habitacion.Descripcion}}</td>
+                    <td>{{habitacion.Tipo}}</td>
+                    <td>{{habitacion.Estado}}</td>
+                    <td>{{habitacion.Cantidad}}</td>
+                    <td>{{habitacion.Precio}}</td>
+                    <td>
+                        <button type="button" class="btn btn-info add-new" style="background-color: rgb(203, 220, 243); color: black"><i class="fa fa-plus"></i> RESERVAR</button>
+                    </td>
+                </tr>  
+            </tbody>
+        </table>
+    </div>
+</div>  
+</div> 
 <div>
-    <button mat-button class="colorButon" style="margin-left: 60px; background-color: rgb(203, 220, 243)" (click)="regresarListaHabitaciones()">REGRESAR</button>
+    <button mat-button class="colorButon" style="margin-left: 850px; background-color: rgb(203, 220, 243)" (click)="regresarListaHabitaciones()">REGRESAR</button>
 </div>
