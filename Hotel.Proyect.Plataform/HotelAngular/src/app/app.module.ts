@@ -7,6 +7,7 @@ import { BuscarHabitacionByPrecioComponent } from './habitacion/buscarHabitacion
 import { HabitacionServicio } from './habitacion/servicio.habitacion';
 import { ListarHabitacionesComponent } from './habitacion/listarHabitaciones';
 import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.component';
+import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
 import { FormsModule } from '@angular/forms';
 
@@ -25,7 +26,9 @@ import { HttpModule } from '@angular/http';
     BuscarHabitacionByPrecioComponent,
     ListarHabitacionesComponent,
     DetalleHabitacionComponent,
+    RegistrarUsuarioComponent,
     ReservaHabitacionComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,9 +42,9 @@ import { HttpModule } from '@angular/http';
       {path: 'listarHabitaciones', component: ListarHabitacionesComponent},
       {path: 'reservaHabitacion', component: ReservaHabitacionComponent},
       {path: 'detalleHabitacion/:id', component: DetalleHabitacionComponent},
+      {path: 'registrarUsuario', component: RegistrarUsuarioComponent},
       {path: 'buscarHabitacion/:precio1/:precio2', component: BuscarHabitacionByPrecioComponent}
       //{path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
-
     ])
   ],
   providers: [
