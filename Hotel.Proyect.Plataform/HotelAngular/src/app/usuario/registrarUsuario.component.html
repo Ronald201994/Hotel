@@ -1,0 +1,64 @@
+<div class="card" style="margin: 0 auto; width: 600px; margin-top: 100px">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong >Registrar Usuario</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form class="text-center">
+
+            <!-- DNI -->
+            <div class="form-row">
+                    <!-- First name -->
+                    <mat-form-field class="example-full-width">
+                        <input  matInput placeholder="Dni : " [(ngModel)]="Dni" [ngModelOptions]="{standalone: true}" >
+                      </mat-form-field>
+            </div>
+
+            <!-- Nombre-->
+            <div class="form-row">
+                    <!-- First name -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Nombre : " [(ngModel)]="Nombre" [ngModelOptions]="{standalone: true}">
+                      </mat-form-field>
+            </div>
+
+            <!-- Apellido Paterno-->
+            <div class="form-row">
+                    <!-- First name -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Apellido Paterno : " [(ngModel)]="ApellidoPaterno" [ngModelOptions]="{standalone: true}" >
+                      </mat-form-field>
+            </div>
+
+            <!-- Apellido Materno-->
+            <div class="form-row">
+                    <!-- First name -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Apellido Materno : " [(ngModel)]="ApellidoMaterno" [ngModelOptions]="{standalone: true}" >
+                      </mat-form-field>   
+            </div>
+
+            <!-- E-mail -->
+            <div class="md-form mt-0">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email: " [(ngModel)]="Email" [ngModelOptions]="{standalone: true}" > 
+                </mat-form-field>   
+            </div>
+
+            <!-- Password -->
+            <div class="md-form">
+                <mat-form-field class="example-full-width">
+                    <input type="password" matInput placeholder="Password : " [(ngModel)]="Password" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>  
+            </div>
+
+            <!-- Registrar button -->
+            <button class="btn btn-outline-info btn-rounded btn-block my-10 waves-effect z-depth-0" type="submit" >Registrarse </button>
+        </form>
+        <!-- Form -->
+    </div>
+</div>
