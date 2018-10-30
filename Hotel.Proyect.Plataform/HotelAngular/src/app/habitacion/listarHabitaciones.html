@@ -1,6 +1,20 @@
-<div>
+<!-- <div>
     <app-habitacionPrecio></app-habitacionPrecio>
-</div>
+</div> -->
+
+<div style="margin: 0 auto; width: 250px; margin-top: 20px">
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Precio desde" [(ngModel)]="precio1" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Precio hasta" [(ngModel)]="precio2" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+    
+          <button mat-button class="colorButon" style="margin-left: 60px; background-color: rgb(203, 220, 243)" (click)="irMetodoToGetListadoHabitacionByPrice(precio1, precio2)">BUSCAR</button>
+    </form>
+    </div>
 
 <div class="container" style="margin-top: 20px">
     <div class="table-wrapper">
@@ -11,7 +25,7 @@
                     <th>TIPO</th>
                     <th>ESTADO</th>
                     <th>ACCIÓN</th>
-                </tr>
+                </tr> 
             </thead>
             <tbody>
                 <tr *ngFor="let habitacion of habitaciones"

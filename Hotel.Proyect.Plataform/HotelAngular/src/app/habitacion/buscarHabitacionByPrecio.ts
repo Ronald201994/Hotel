@@ -1,24 +1,40 @@
 import { Component } from '@angular/core';
 import {HabitacionServicio } from './servicio.habitacion';
 import {Habitacion } from './habitacion';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-habitacionPrecio',
     templateUrl: './buscarHabitacionByPrecio.html'
 })
 export class BuscarHabitacionByPrecioComponent {
-    habitacion : Habitacion[];
-    precio1 : number=0;
-    precio2 : number=0;
+    habitaciones : Habitacion[];
+    precio1 : number;
+    precio2 : number;
+    
+    constructor(private _habitacionServicio: HabitacionServicio, private _router : Router, private route: ActivatedRoute ){
+        this.precio1 = this.route.snapshot.params.precio1;
+        this.precio2 = this.route.snapshot.params.precio2;
 
-    constructor(private _habitacionServicio: HabitacionServicio){
-        this._habitacionServicio.GetHabitacionByPrecio()
+        this._habitacionServicio.GetHabitacionByPrecio(this.precio1, this.precio2)
         .subscribe(
-            habitacionRespones => this.habitacion = habitacionRespones
+            habitacionRespones => this.habitaciones = habitacionRespones
         );
     }
-
-    buscarHabitacionesByPrecio(){
-
+    
+    verDetalleHabitacion(ID: number){
+        this._router.navigate(['detalleHabitacion/'+ID]);
     }
+
+    regresarListaHabitaciones() : void{
+        this._router.navigate(['/listarHabitaciones']);
+    } 
+
+    /*buscarHabitacionesByPrecio(){
+        this._habitacionServicio.GetHabitacionByPrecio(this.precio1, this.precio2)
+        .subscribe(
+            habitacionRespones => this.habitaciones = habitacionRespones
+        );
+        this._router.navigate(['/buscarHabitacion']);
+    }*/
 }
