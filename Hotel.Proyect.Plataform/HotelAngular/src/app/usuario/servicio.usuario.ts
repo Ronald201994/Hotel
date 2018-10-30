@@ -15,8 +15,8 @@ export class UsuarioServicios {
         console.log("service usuario");
     }
 
-    registrarUsuario(usuario: Usuario): Observable<Usuario> {
-
+   /* registrarUsuario(usuario: Usuario): Observable<Usuario> {
+        console.log("servicioUsuario-registro");
         var body = {
             DNI : usuario.DNI,
             Nombre : usuario.Nombre,
@@ -28,11 +28,11 @@ export class UsuarioServicios {
 
         var req = this._http.post(this._getRegistrarUsuarioURL,body);
         return req.pipe(map((response: Response) => response.json()),
-                catchError(error => {
+                  catchError(error => {
                  return throwError("Server error");
             })
         )
-    }
+    }*/
 
 
     private controlarExecption(error : Response){
