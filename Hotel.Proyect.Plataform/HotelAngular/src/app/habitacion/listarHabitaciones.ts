@@ -26,4 +26,8 @@ export class ListarHabitacionesComponent {
        this._router.navigate(['buscarHabitacion/'+precio1+'/'+precio2]);
     }
 
+    getHabitacion(ID: number){
+        this._router.navigate(['reservaHabitacion/'+ID]);
+    }
+
 }

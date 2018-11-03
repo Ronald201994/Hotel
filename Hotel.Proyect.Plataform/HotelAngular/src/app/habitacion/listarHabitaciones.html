@@ -34,7 +34,7 @@
                     <td>{{habitacion.Tipo}}</td>
                     <td>{{habitacion.Estado}}</td>
                     <td>
-                        <button type="button" class="btn btn-info add-new" style="background-color: rgb(203, 220, 243); color: black"><i class="fa fa-plus"></i> Ver Detalle</button>
+                        <button (click)="getHabitacion(habitacion.ID)" type="button" class="btn btn-info add-new" style="background-color: rgb(203, 220, 243); color: black"><i class="fa fa-plus"></i> Ver Detalle</button>
                     </td>
                 </tr>  
             </tbody>

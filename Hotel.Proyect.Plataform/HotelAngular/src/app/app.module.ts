@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BuscarHabitacionByPrecioComponent } from './habitacion/buscarHabitacionByPrecio';
 import { HabitacionServicio } from './habitacion/servicio.habitacion';
+import { ReservaHabitacionServicio } from './reserva/servicio.reservaHabitacion';
 import { ListarHabitacionesComponent } from './habitacion/listarHabitaciones';
 import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.component';
 import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
@@ -17,7 +18,7 @@ import { MaterialModule } from './material.component';''
 import {RouterModule } from '@angular/router';
 
 //Http
-import { HttpModule } from '@angular/http';
+import { HttpModule } from '@angular/http'; 
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { HttpModule } from '@angular/http';
       {path: 'home', component: HomeComponent},
       {path: 'listarHabitaciones', component: ListarHabitacionesComponent},
       {path: 'reservaHabitacion', component: ReservaHabitacionComponent},
+      {path: 'reservaHabitacion/:id', component: ReservaHabitacionComponent},
       {path: 'detalleHabitacion/:id', component: DetalleHabitacionComponent},
       {path: 'registrarUsuario', component: RegistrarUsuarioComponent},
       {path: 'buscarHabitacion/:precio1/:precio2', component: BuscarHabitacionByPrecioComponent}
@@ -48,7 +50,8 @@ import { HttpModule } from '@angular/http';
     ])
   ],
   providers: [
-    HabitacionServicio
+    HabitacionServicio,
+    ReservaHabitacionServicio
   ],
   bootstrap: [AppComponent]
 })
