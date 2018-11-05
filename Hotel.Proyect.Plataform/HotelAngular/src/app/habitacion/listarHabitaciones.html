@@ -28,13 +28,12 @@
                 </tr> 
             </thead>
             <tbody>
-                <tr *ngFor="let habitacion of habitaciones"
-                (click)="verDetalleHabitacion(habitacion.ID)">
+                <tr *ngFor="let habitacion of habitaciones">
                     <td>{{habitacion.Nombre}}</td> 
                     <td>{{habitacion.Tipo}}</td>
                     <td>{{habitacion.Estado}}</td>
                     <td>
-                        <button (click)="getHabitacion(habitacion.ID)" type="button" class="btn btn-info add-new" style="background-color: rgb(203, 220, 243); color: black"><i class="fa fa-plus"></i> Ver Detalle</button>
+                        <button (click)="verDetalleHabitacion(habitacion.ID)" type="button" class="btn btn-info add-new" style="background-color: rgb(203, 220, 243); color: black"><i class="fa fa-plus"></i> Ver Detalle</button>
                     </td>
                 </tr>  
             </tbody>
