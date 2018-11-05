@@ -23,4 +23,12 @@ export class DetalleHabitacionComponent {
     regresarListaHabitaciones() : void{
         this._router.navigate(['/listarHabitaciones']);
     } 
+
+    irReservar(){
+        if (this.habitaciones[0].Estado == 'Ocupado'){
+            alert('La habitación está reservado.');
+        }else{
+            this._router.navigate(['reservaHabitacion/'+this.id]);
+        }
+    }
 }

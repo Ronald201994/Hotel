@@ -14,8 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let habitacion of habitaciones"
-                (click)="verDetalleHabitacion(habitacion.ID)">
+                <tr *ngFor="let habitacion of habitaciones">
                     <td>{{habitacion.Nombre}}</td> 
                     <td>{{habitacion.Descripcion}}</td>
                     <td>{{habitacion.Tipo}}</td>
@@ -23,7 +22,7 @@
                     <td>{{habitacion.Cantidad}}</td>
                     <td>{{habitacion.Precio}}</td>
                     <td>
-                        <button type="button" class="btn btn-info add-new" style="background-color: rgb(203, 220, 243); color: black"><i class="fa fa-plus"></i> RESERVAR</button>
+                        <button (click)="irReservar()" type="button" class="btn btn-info add-new" style="background-color: rgb(203, 220, 243); color: black"><i class="fa fa-plus"></i> RESERVAR</button>
                     </td>
                 </tr>  
             </tbody>
