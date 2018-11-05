@@ -7,38 +7,30 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class UsuarioServicios {
 
-    private _getRegistrarUsuarioURL : string = 'http://localhost:55349/api/Usuario/ingresarUsuario'
-
-    usuario : Usuario = null;
+    private _registrarUsuarioURL : string = 'http://localhost:55349/api/Usuario/ingresarUsuario'
 
     constructor(private _http: Http) {
-        console.log("service usuario");
+            
     }
 
-   /* registrarUsuario(usuario: Usuario): Observable<Usuario> {
-        console.log("servicioUsuario-registro");
-        var body = {
-            DNI : usuario.DNI,
-            Nombre : usuario.Nombre,
-            ApellidoPaterno : usuario.ApellidoPaterno,
-            ApellidoMaterno : usuario.ApellidoMaterno,
-            Correo : usuario.Correo,
-            Password : usuario.Password
+    usuario: Usuario = null;
+
+    ingreseUsuario (usuario: Usuario): Observable<Usuario> {
+        var body ={
+          id : usuario.ID,
+          dni: usuario.DNI,
+          nombre: usuario.Nombre,
+          apellidoPaterno: usuario.ApellidoPaterno,
+          apellidoMaterno: usuario.ApellidoMaterno,
+          correo: usuario.Correo,
+          password: usuario.Password
         };
+        var request = this._http.post(this._registrarUsuarioURL, body);
 
-        var req = this._http.post(this._getRegistrarUsuarioURL,body);
-        return req.pipe(map((response: Response) => response.json()),
-                  catchError(error => {
-                 return throwError("Server error");
-            })
-        )
-    }*/
-
-
-    private controlarExecption(error : Response){
-        console.log("error", error);
-        return Observable.throw(error.json().error || "Server error");
+        return request.pipe(map((response: Response) => <Usuario> response.json()),
+        catchError(error => {
+            return throwError("Server Error");
+        })
+      )
     }
-
-
 }

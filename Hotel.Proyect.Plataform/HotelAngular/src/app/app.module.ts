@@ -11,6 +11,7 @@ import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.compo
 import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
 import { FormsModule } from '@angular/forms';
+import { UsuarioServicios } from './usuario/servicio.usuario';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
 //Animations
@@ -55,8 +56,9 @@ import { MatNativeDateModule } from '@angular/material';
   ],
   providers: [
     HabitacionServicio,
-    ReservaHabitacionServicio
+    ReservaHabitacionServicio,
+    UsuarioServicios
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] 
 })
 export class AppModule { }
