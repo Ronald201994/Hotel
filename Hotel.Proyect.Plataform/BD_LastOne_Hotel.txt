@@ -206,7 +206,7 @@ EXECUTE SP_BuscarHabitacionByID 1
 GO 
 
 --Buscar Habitaciones por precio
-CREATE PROCEDURE SP_BuscarHabitacionByPrecio
+CREATE PROCEDURE [dbo].[SP_BuscarHabitacionByPrecio]
 (
 	@Precio1 DECIMAL,
 	@precio2 DECIMAL
@@ -218,19 +218,19 @@ BEGIN
 		   EH.nombre Estado,
 		   TH.nombre Tipo,
 		   H.cantidad Cantidad,
-		   H.precio Precio
+		   H.precio Precio,
+		   H.idHabitacion ID
 	FROM Habitacion H INNER JOIN TipoHabitacion TH
 	ON H.idTipo = th.idTipo INNER JOIN EstadoHabitacion EH
 	ON H.idEstado = EH.idEstado
 	WHERE precio BETWEEN @Precio1 AND @precio2
 END
-GO
 
 EXECUTE SP_BuscarHabitacionByPrecio 40, 60
 GO
 
 --Reserva Habitacion
-CREATE PROC SP_ReservaHabitacion
+CREATE PROC [dbo].[SP_ReservaHabitacion]
 (
 @fechaIngreso date,
 @fechaSalida date,
@@ -239,12 +239,17 @@ CREATE PROC SP_ReservaHabitacion
 )
 AS
 BEGIN
-INSERT INTO ReservaHabitacion(fechaIngreso, fechaSalida, idHabitacion, idUsuario)
-VALUES(@fechaIngreso, @fechaSalida, @idHabitacion, @idUsuario)
-end
-go
+	INSERT INTO ReservaHabitacion(fechaIngreso, fechaSalida, idHabitacion, idUsuario)
+	VALUES(@fechaIngreso, @fechaSalida, @idHabitacion, @idUsuario)
 
-EXECUTE SP_ReservaHabitacion '12/12/2018', '12/12/2018', 1, 1
+	UPDATE Habitacion
+		SET idEstado = 1
+	WHERE idHabitacion = @idHabitacion
+end
+GO
+
+
+EXECUTE SP_ReservaHabitacion '12/12/2018', '12/12/2018', 2, 2
 GO
 
 SELECT * FROM ReservaHabitacion
