@@ -18,9 +18,11 @@ export class LoginComponent {
             password : ""
         };
     }
+    
 
     ingresar() : void {
        
+
 
         var usuarioRegistrado = this._userService.login(this.usuario);
         if(usuarioRegistrado == null){

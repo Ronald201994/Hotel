@@ -22,11 +22,13 @@ export class UsuarioService {
         }
 
         return this.usuario;
+        
     }
 
     getUsuario() : Usuario {
         return this.usuario;
     }
+
 
     logout() : void{
         this.usuario = null;

@@ -57,6 +57,7 @@ import { MatNativeDateModule } from '@angular/material';
       //{path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
+  
   providers: [
     HabitacionServicio,
     ReservaHabitacionServicio,

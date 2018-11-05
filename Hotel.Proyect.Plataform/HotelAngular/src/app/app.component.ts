@@ -23,6 +23,7 @@ export class AppComponent {
       esAdmin = this.usuario.esAdmin;
     }
 
+    
     return esAdmin;
   }
 
