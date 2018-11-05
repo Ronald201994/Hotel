@@ -11,6 +11,7 @@ import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.compo
 import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
 import { FormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -19,6 +20,7 @@ import {RouterModule } from '@angular/router';
 
 //Http
 import { HttpModule } from '@angular/http'; 
+import { MatNativeDateModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     HttpModule,
     FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot([
