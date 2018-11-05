@@ -11,6 +11,7 @@ import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.compo
 import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
 import { FormsModule } from '@angular/forms';
+import { UsuarioServicios } from './usuario/servicio.usuario';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -51,8 +52,9 @@ import { HttpModule } from '@angular/http';
   ],
   providers: [
     HabitacionServicio,
-    ReservaHabitacionServicio
+    ReservaHabitacionServicio,
+    UsuarioServicios
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] 
 })
 export class AppModule { }
