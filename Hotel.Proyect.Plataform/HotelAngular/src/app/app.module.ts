@@ -11,7 +11,9 @@ import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.compo
 import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { UsuarioService } from './login/usuario.service'
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -30,7 +32,8 @@ import { MatNativeDateModule } from '@angular/material';
     ListarHabitacionesComponent,
     DetalleHabitacionComponent,
     RegistrarUsuarioComponent,
-    ReservaHabitacionComponent
+    ReservaHabitacionComponent,
+    LoginComponent
 
   ],
   imports: [
@@ -49,13 +52,15 @@ import { MatNativeDateModule } from '@angular/material';
       {path: 'reservaHabitacion/:id', component: ReservaHabitacionComponent},
       {path: 'detalleHabitacion/:id', component: DetalleHabitacionComponent},
       {path: 'registrarUsuario', component: RegistrarUsuarioComponent},
-      {path: 'buscarHabitacion/:precio1/:precio2', component: BuscarHabitacionByPrecioComponent}
+      {path: 'buscarHabitacion/:precio1/:precio2', component: BuscarHabitacionByPrecioComponent},
+      {path: 'login', component: LoginComponent}
       //{path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
   providers: [
     HabitacionServicio,
-    ReservaHabitacionServicio
+    ReservaHabitacionServicio,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })

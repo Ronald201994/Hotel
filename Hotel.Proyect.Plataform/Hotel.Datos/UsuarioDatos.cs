@@ -17,6 +17,7 @@ namespace Hotel.Datos
         //SqlDataAdapter comando;
         SqlDataReader dr;
         SqlCommand cmd;
+        String errores;
         Conexion cn = new Conexion();
 
         /*
@@ -59,7 +60,7 @@ namespace Hotel.Datos
             conexion.Close();
 
         }
-
+        /*
         public Usuario Login(string correo, string contraseña)
         {
             Usuario usuario = null;
@@ -96,7 +97,56 @@ namespace Hotel.Datos
 
             return usuario;
         }
- 
+        */
+
+
+    
+         public List<Habitacion> loginUsuario(string correo, string contraseña)
+         {
+            List<Habitacion> lista = new List<Habitacion>();
+            try
+             {
+                 conexion = cn.Conectar();
+                 cmd = new SqlCommand("SP_LoginUsuario", conexion);
+                 cmd.CommandType = CommandType.StoredProcedure;
+                 cmd.Parameters.AddWithValue("@correo", correo);
+                 cmd.Parameters.AddWithValue("@contraseña", contraseña);
+
+                 dr = null;
+                 conexion.Open();
+                 dr = cmd.ExecuteReader();
+                 while (dr.Read())
+                 {
+                    Usuario usu = new Usuario();
+                    usu.ID = int.Parse(dr["ID"].ToString());
+                    usu.DNI = Convert.ToString(dr["DNI"]);
+                    usu.Nombre = Convert.ToString(dr["Nombre"]);
+                    usu.ApellidoPat = Convert.ToString(dr["ApellidoPat"]);
+                    usu.ApellidoMat = Convert.ToString(dr["ApellidoMat"]);
+                    usu.Correo = Convert.ToString(dr["Correo"]);
+                    usu.Contraseña = Convert.ToString(dr["Contraseña"]);
+                    usu.TipoUsuario = int.Parse(dr["TipoUsuario"].ToString());
+                    usu.Habitacion = int.Parse(dr["Habitacion"].ToString());
+                    lista.Add(usu);
+             
+                }
+                 dr.Close();
+             }
+             catch (Exception ex)
+             {
+                 errores = ex.Message;
+             }
+             finally
+             {
+                 if (conexion.State == ConnectionState.Open)
+                 {
+                     conexion.Close();
+                 }
+                 conexion.Dispose();
+                 cmd.Dispose();
+             }
+             return lista;
+         }
 
     }
 }
