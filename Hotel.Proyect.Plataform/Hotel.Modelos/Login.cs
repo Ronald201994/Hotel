@@ -8,9 +8,9 @@ namespace Hotel.Modelos
 {
     public class Login
     {
-        public string Usuario { get; set; }
+        public string correo { get; set; }
 
-        public string Contraseña { get; set; }
+        public string contraseña { get; set; }
 
     }
 }
