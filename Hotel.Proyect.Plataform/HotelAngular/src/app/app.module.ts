@@ -12,6 +12,7 @@ import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component'
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { UsuarioServicios } from './usuario/servicio.usuario';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { UsuarioService } from './login/usuario.service'
 
@@ -61,8 +62,9 @@ import { MatNativeDateModule } from '@angular/material';
   providers: [
     HabitacionServicio,
     ReservaHabitacionServicio,
-    UsuarioService
+    UsuarioService,
+    UsuarioServicios
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] 
 })
 export class AppModule { }

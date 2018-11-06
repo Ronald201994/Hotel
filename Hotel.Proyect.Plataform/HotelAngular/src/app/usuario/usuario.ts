@@ -1,6 +1,6 @@
 export class Usuario {
-    ID: number;
-    DNI: number;
+    ID: string;
+    DNI: string;
     Nombre: string;
     ApellidoPaterno: string;
     ApellidoMaterno: string;

@@ -39,3 +39,22 @@
 .example-full-width {
     width: 100%;
 }
+
+/*Sacado del Belmont Hotel*/
+.logoImagen{
+    width: 220px;
+    height: 90px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #f8f9fa; 
+}
+
+.bg-primary {
+    background-color: #f44336!important;
+}

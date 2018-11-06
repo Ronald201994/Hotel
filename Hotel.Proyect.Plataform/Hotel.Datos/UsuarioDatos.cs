@@ -54,7 +54,6 @@ namespace Hotel.Datos
             cmd.Parameters.AddWithValue("@correo", usuario.Correo);
             cmd.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
             cmd.Parameters.AddWithValue("@idTipoUsuario", usuario.TipoUsuario);
-            cmd.Parameters.AddWithValue("@idHabitacion", usuario.Habitacion);
             cmd.ExecuteNonQuery();
 
             conexion.Close();

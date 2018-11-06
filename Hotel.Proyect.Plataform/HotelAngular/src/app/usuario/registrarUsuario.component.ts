@@ -1,20 +1,32 @@
 import { Component } from '@angular/core';
-import { UsuarioServicios } from './servicio.usuario';
 import { Usuario } from './usuario';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UsuarioServicios } from './servicio.usuario';
+
 
 @Component({
-    selector: 'app-registrarUsuario',
-   
+    selector: 'app-registrar-usuario',
     templateUrl: './registrarUsuario.component.html'
 })
 
 export class RegistrarUsuarioComponent {
-   /* usuario : Usuario = null;
-    constructor(private _registrarUsuario : UsuarioServicios, private _router : Router){
-        this.usuario = <Usuario> {
-        
-        };
-    }*/
 
+    usuario: Usuario = null;
+
+    constructor(private _registrarUsuario: UsuarioServicios){
+        
+        this.usuario = <Usuario>{
+            DNI: "",
+            Nombre: "",
+            ApellidoPaterno: "",
+            ApellidoMaterno: "",
+            Correo: "",
+            Password: ""
+        };
+    }
+
+    ingreseUsuario(): void{
+        var registrarUsuario= this._registrarUsuario.ingreseUsuario(this.usuario)
+        .subscribe();
+    }
 }
