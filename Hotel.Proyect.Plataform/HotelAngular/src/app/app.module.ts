@@ -13,7 +13,7 @@ import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.componen
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { UsuarioServicios } from './usuario/servicio.usuario';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule} from '@angular/material/datepicker';
 import { UsuarioService } from './login/usuario.service'
 
 //Animations
@@ -51,6 +51,7 @@ import { MatNativeDateModule } from '@angular/material';
       {path: 'listarHabitaciones', component: ListarHabitacionesComponent},
       {path: 'reservaHabitacion', component: ReservaHabitacionComponent},
       {path: 'reservaHabitacion/:id', component: ReservaHabitacionComponent},
+      {path: 'reservaHabitacion/:id/:nombre', component: ReservaHabitacionComponent},
       {path: 'detalleHabitacion/:id', component: DetalleHabitacionComponent},
       {path: 'registrarUsuario', component: RegistrarUsuarioComponent},
       {path: 'buscarHabitacion/:precio1/:precio2', component: BuscarHabitacionByPrecioComponent},

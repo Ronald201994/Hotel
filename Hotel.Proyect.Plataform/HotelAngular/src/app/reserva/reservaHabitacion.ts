@@ -1,7 +1,7 @@
 export class ReservaHabitacion {
     ID: string;
     IdHabitacion: number;
-    IdUsuario: string;
+    IdUsuario: number;
     FechaIngreso: string;
     FechaSalida: string;
 }
