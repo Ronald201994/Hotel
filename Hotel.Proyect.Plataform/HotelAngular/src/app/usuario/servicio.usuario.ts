@@ -7,7 +7,7 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class UsuarioServicios {
 
-    private _registrarUsuarioURL : string = 'http://localhost:55349/api/Usuario/ingresarUsuario'
+    private _registrarUsuarioURL : string = 'http://localhost:55349/api/usuario/agregarUsuario'
 
     constructor(private _http: Http) {
             
@@ -17,13 +17,12 @@ export class UsuarioServicios {
 
     ingreseUsuario (usuario: Usuario): Observable<Usuario> {
         var body ={
-          id : usuario.ID,
           dni: usuario.DNI,
           nombre: usuario.Nombre,
-          apellidoPaterno: usuario.ApellidoPaterno,
-          apellidoMaterno: usuario.ApellidoMaterno,
+          ApellidoPat: usuario.ApellidoPaterno,
+          apellidoMat: usuario.ApellidoMaterno,
           correo: usuario.Correo,
-          password: usuario.Password
+          contraseña: usuario.Password
         };
         var request = this._http.post(this._registrarUsuarioURL, body);
 
