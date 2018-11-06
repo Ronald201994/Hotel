@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(private _usuarioService : UsuarioService , private _router : Router){
     
   }
-  esAdministrador(): boolean{
+  /*esAdministrador(): boolean{
     this.usuario = this._usuarioService.getUsuario();
     var esAdmin = false;
     if(this.usuario!=null){
@@ -25,7 +25,7 @@ export class AppComponent {
 
     
     return esAdmin;
-  }
+  }*/
 
   salir() : void{
     this._usuarioService.logout();

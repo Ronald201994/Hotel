@@ -1,4 +1,3 @@
-
 USE MASTER
 GO
 
@@ -25,8 +24,6 @@ GO
 --habitacion
 INSERT INTO EstadoHabitacion (nombre) VALUES('Ocupado')
 INSERT INTO EstadoHabitacion (nombre) VALUES('Libre')
-INSERT INTO EstadoHabitacion (nombre) VALUES('Reservada')
-INSERT INTO EstadoHabitacion (nombre) VALUES('Historica')
 
 SELECT * FROM EstadoHabitacion
 GO
@@ -41,57 +38,13 @@ CREATE TABLE TipoHabitacion
 GO
 
 --TipoHabitacion
-INSERT INTO TipoHabitacion(nombre) VALUES('Sencillas') --posee una cama simple o individual--precio 80.00
-INSERT INTO TipoHabitacion(nombre) VALUES('Dobles')		--posee dos camas individuales --precio 150.00
-INSERT INTO TipoHabitacion(nombre) VALUES('Triple')		--precio 200.00
-INSERT INTO TipoHabitacion(nombre) VALUES('Matrimonial')	--precio 180.00
-INSERT INTO TipoHabitacion(nombre) VALUES('Familiares')		--precio 300.00
-INSERT INTO TipoHabitacion(nombre) VALUES('Tipo Estudio')	--precio 120.00
-INSERT INTO TipoHabitacion(nombre) VALUES('Tipo Suite') --aqui lo podemos dividir por junior,doble,presidencial precio 800.00
+INSERT INTO TipoHabitacion(nombre) VALUES('Matrimonial')
+INSERT INTO TipoHabitacion(nombre) VALUES('Sencillas')
+INSERT INTO TipoHabitacion(nombre) VALUES('Dobles')
+INSERT INTO TipoHabitacion(nombre) VALUES('Familiares')
+INSERT INTO TipoHabitacion(nombre) VALUES('Suite')
 
---respecto al suite junior puede poseer un dormitorio con baño y salon de estar o recibo
---el suite presidencial puede poseer varios dormitorios con sus baños, salon recibo en algunos comedor o cocina, es un mobiliario lujoso
---la de estudio puede poseer las mismas que la de sencillas
 SELECT * FROM TipoHabitacion
-GO
-
-
---TIPO PAGO
-CREATE TABLE TipoPago
-(
-	idPago INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	tarjeta VARCHAR(30) NOT NULL
-)
-GO
-
---TipoPago
-INSERT INTO TipoPago(tarjeta) VALUES('Master Card')
-INSERT INTO TipoPago(tarjeta) VALUES('BCP')
-INSERT INTO TipoPago(tarjeta) VALUES('BBVA')
-INSERT INTO TipoPago(tarjeta) VALUES('Visa')
-INSERT INTO TipoPago(tarjeta) VALUES('Scotiabank')
-
-SELECT * FROM TipoPago
-GO
-
-
---PAGO
-CREATE TABLE Pago
-(
-	id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	importe MONEY NOT NULL,
-	idPago INT REFERENCES TipoPago
-)
-GO
-
---Pago
-INSERT INTO Pago(importe,idPago) VALUES ('130.00',1)
-INSERT INTO Pago(importe,idPago) VALUES ('140.00',2)
-INSERT INTO Pago(importe,idPago) VALUES ('250.00',3)
-INSERT INTO Pago(importe,idPago) VALUES ('60.00',4)
-INSERT INTO Pago(importe,idPago) VALUES ('50.00',5)
-
-SELECT * FROM Pago
 GO
 
 --HABITACION
@@ -108,35 +61,11 @@ CREATE TABLE Habitacion
 GO
 
 --Habitacion
---TipoHabitacion
--->Sencillas -->precio 80.00  -->Dobles -->precio 150.00 -->Triple -->200.00 -->Matrimonial -->precio 180.00 
--->Familiares -->precio 300.00 -->Tipo Estudio -->precio 120.00 -->Tipo Suite -->precio 800.00
-
---EstadoHabitacion -->Ocupado, Libre, Reservada, Historica
-
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('401','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,2,'160.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('402','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',2,2,1,'150.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('403','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',3,3,3,'600.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('404','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',4,4,2,'360.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('405','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',5,1,3,'900.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('405','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',6,2,2,'240.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('405','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',7,3,3,'2400.00')
---Agregamos 15 registros mas
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('406','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,1,'160.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('407','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',2,2,3,'450.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('408','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',3,3,4,'800.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('409','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',4,4,2,'360.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('410','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',5,1,6,'1800.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('411','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',6,2,3,'360.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('412','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',7,3,5,'40000.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('413','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,1,'80.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('414','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',2,2,4,'600.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('415','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',3,3,2,'400.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('416','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',4,4,3,'540.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('417','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',5,1,5,'1500.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('418','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',6,2,2,'360.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('419','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',7,3,3,'2400.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('420','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,2,'160.00')
+INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('401','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,2,'60.00')
+INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('402','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',2,2,1,'40.00')
+INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('403','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,3,'35.00')
+INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('404','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',2,2,2,'77.00')
+INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('405','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,3,'24.00')
 
 SELECT * FROM Habitacion
 GO
@@ -167,19 +96,20 @@ create table Usuario
  correo varchar(40)not null,
  contraseña char(20) not null,
  idtipoUsuario INT default 2 REFERENCES TipoUsuario,
- idHabitacion INT REFERENCES Habitacion
 )
 go
 
+
 --Usuario
-INSERT INTO Usuario VALUES(75896356,'Veronica','Narvaez','Tapia','vero@outlook.com','vero123',1,1)
-INSERT INTO Usuario VALUES(85962536,'Miriam','Salazar','Miranda','miriamSM@gmail.com','miri1234',1,2)
-INSERT INTO Usuario VALUES(85962536,'Daniel','Enrique','Manrique','dani@hotmail.com','dani12EM',1,2)
-INSERT INTO Usuario VALUES(85962536,'Liz','Casazola','Aguilar','lizca@gmail.com','li*ca*',2,1)
-INSERT INTO Usuario VALUES(85962536,'Rodrigo','Narvaez','Miranda','liz@outlook.com','2018*qw',2,1)
+INSERT INTO Usuario VALUES(75896356,'Veronica','Narvaez','Tapia','vero@outlook.com','vero123', 1)
+/*INSERT INTO Usuario VALUES(85962536,'Miriam','Salazar','Miranda','miriamSM@gmail.com','miri1234')
+INSERT INTO Usuario VALUES(85962536,'Daniel','Enrique','Manrique','dani@hotmail.com','dani12EM')
+INSERT INTO Usuario VALUES(85962536,'Liz','Casazola','Aguilar','lizca@gmail.com','li*ca*')
+INSERT INTO Usuario VALUES(85962536,'Rodrigo','Narvaez','Miranda','liz@outlook.com','2018*qw')*/
 
 SELECT * FROM Usuario
 GO
+
 --RESERVA DE HABITACION
 CREATE TABLE ReservaHabitacion
 (
@@ -226,7 +156,7 @@ CREATE PROCEDURE SP_BuscarHabitacionByID
 @ID INT
 AS
 BEGIN
-	SELECT H.nombre Nombre, H.descripcion, H.nombre Estado, TH.nombre Tipo, H.cantidad, H.precio
+	SELECT H.nombre Nombre, H.descripcion, EH.nombre Estado, TH.nombre Tipo, H.cantidad, H.precio
 	FROM Habitacion H INNER JOIN TipoHabitacion TH
 	ON H.idTipo = TH.idTipo INNER JOIN EstadoHabitacion EH
 	ON H.idEstado = EH.idEstado
@@ -238,7 +168,7 @@ EXECUTE SP_BuscarHabitacionByID 1
 GO 
 
 --Buscar Habitaciones por precio
-CREATE PROCEDURE SP_BuscarHabitacionByPrecio
+CREATE PROCEDURE [dbo].[SP_BuscarHabitacionByPrecio]
 (
 	@Precio1 DECIMAL,
 	@precio2 DECIMAL
@@ -250,19 +180,19 @@ BEGIN
 		   EH.nombre Estado,
 		   TH.nombre Tipo,
 		   H.cantidad Cantidad,
-		   H.precio Precio
+		   H.precio Precio,
+		   H.idHabitacion ID
 	FROM Habitacion H INNER JOIN TipoHabitacion TH
 	ON H.idTipo = th.idTipo INNER JOIN EstadoHabitacion EH
 	ON H.idEstado = EH.idEstado
 	WHERE precio BETWEEN @Precio1 AND @precio2
 END
-GO
 
 EXECUTE SP_BuscarHabitacionByPrecio 40, 60
 GO
 
 --Reserva Habitacion
-CREATE PROC SP_ReservaHabitacion
+CREATE PROC [dbo].[SP_ReservaHabitacion]
 (
 @fechaIngreso date,
 @fechaSalida date,
@@ -271,10 +201,15 @@ CREATE PROC SP_ReservaHabitacion
 )
 AS
 BEGIN
-INSERT INTO ReservaHabitacion(fechaIngreso, fechaSalida, idHabitacion, idUsuario)
-VALUES(@fechaIngreso, @fechaSalida, @idHabitacion, @idUsuario)
+	INSERT INTO ReservaHabitacion(fechaIngreso, fechaSalida, idHabitacion, idUsuario)
+	VALUES(@fechaIngreso, @fechaSalida, @idHabitacion, @idUsuario)
+
+	UPDATE Habitacion
+		SET idEstado = 1
+	WHERE idHabitacion = @idHabitacion
 end
-go
+GO
+
 
 EXECUTE SP_ReservaHabitacion '12/12/2018', '12/12/2018', 1, 1
 GO
@@ -290,18 +225,35 @@ CREATE PROCEDURE SP_RegistrarUsuario
 @apellidoPaterno VARCHAR(40),
 @apellidoMaterno VARCHAR(40),
 @correo VARCHAR(40),
-@contraseña VARCHAR(20),
-@idTipoUsuario INT,
-@idHabitacion INT
+@contraseña VARCHAR(20)
 )
 AS
 BEGIN
-	INSERT INTO Usuario (dni, nombre, apellidoPaterno, apellidoMaterno, correo, contraseña, idtipoUsuario, idHabitacion) 
-	VALUES (@dni, @nombre, @apellidoPaterno, @apellidoMaterno, @correo, @contraseña, @idTipoUsuario, @idHabitacion)
+	INSERT INTO Usuario (dni, nombre, apellidoPaterno, apellidoMaterno, correo, contraseña) 
+	VALUES (@dni, @nombre, @apellidoPaterno, @apellidoMaterno, @correo, @contraseña)
 END
 GO
 
-EXECUTE SP_RegistrarUsuario 12345678,'Eren','Jaegger','Ackerman','eren@gmail.com','eren123',1,1
+EXECUTE SP_RegistrarUsuario 12345678,'Eren','Jaegger','Ackerman','eren@gmail.com','eren123'
 GO
 
 SELECT * FROM Usuario
+GO
+
+
+--Buscar Habitaciones por precio
+CREATE PROCEDURE SP_LoginUsuario
+(
+	@correo VARCHAR(30),
+	@contraseña VARCHAR(30)
+)
+AS
+BEGIN
+	SELECT U.idUsuario ID, U.nombre Nombre, U.apellidoPaterno ApellidoPat, U.apellidoMaterno ApellidoMat 
+	FROM Usuario U
+	WHERE U.correo=@correo AND U.contraseña =@contraseña
+END
+
+EXECUTE SP_LoginUsuario 'eren@gmail.com', 'eren123'             
+GO
+
