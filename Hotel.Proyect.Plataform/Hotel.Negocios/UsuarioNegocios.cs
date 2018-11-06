@@ -43,9 +43,9 @@ namespace Hotel.Negocios
             return mensaje;
         }
 
-        public Usuario Login(string correo, string contraseña)
+        public List<Usuario> Login(string correo, string contraseña)
         {
-            return datosUsuario.Login(correo, contraseña);
+            return datosUsuario.loginUsuario(correo, contraseña);
         }
 
     }

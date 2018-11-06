@@ -100,9 +100,9 @@ namespace Hotel.Datos
 
 
     
-         public List<Habitacion> loginUsuario(string correo, string contraseña)
+         public List<Usuario> loginUsuario(string correo, string contraseña)
          {
-            List<Habitacion> lista = new List<Habitacion>();
+            List<Usuario> lista = new List<Usuario>();
             try
              {
                  conexion = cn.Conectar();
@@ -117,15 +117,10 @@ namespace Hotel.Datos
                  while (dr.Read())
                  {
                     Usuario usu = new Usuario();
-                    usu.ID = int.Parse(dr["ID"].ToString());
-                    usu.DNI = Convert.ToString(dr["DNI"]);
+                    usu.ID = Convert.ToInt32(dr["ID"]);
                     usu.Nombre = Convert.ToString(dr["Nombre"]);
                     usu.ApellidoPat = Convert.ToString(dr["ApellidoPat"]);
                     usu.ApellidoMat = Convert.ToString(dr["ApellidoMat"]);
-                    usu.Correo = Convert.ToString(dr["Correo"]);
-                    usu.Contraseña = Convert.ToString(dr["Contraseña"]);
-                    usu.TipoUsuario = int.Parse(dr["TipoUsuario"].ToString());
-                    usu.Habitacion = int.Parse(dr["Habitacion"].ToString());
                     lista.Add(usu);
              
                 }

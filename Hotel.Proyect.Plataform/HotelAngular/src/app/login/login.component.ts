@@ -20,7 +20,7 @@ export class LoginComponent {
     }
     
 
-    ingresar() : void {
+    /*ingresar() : void {
        
 
 
@@ -30,7 +30,7 @@ export class LoginComponent {
         }else{
             this._router.navigate(['home/'])
         }
-    } 
+    }*/ 
 
     borrar() : void {
         this.usuario.userName = "";

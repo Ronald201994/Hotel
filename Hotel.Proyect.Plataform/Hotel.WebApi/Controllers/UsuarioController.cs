@@ -30,12 +30,19 @@ namespace Hotel.WebApi.Controllers
             return mensaje;
         }
 
-        [HttpPost]
-        public Usuario Login(Login modelo)
+        /*[HttpPost]
+        public List<Usuario> Login(string correo, string contrasena)
         {
-            Usuario usuario = negociosUsuario.Login(modelo.correo, modelo.contraseña);
+            Usuario usuario = negociosUsuario.Login(correo, contrasena);
             return usuario;
+        }*/
+
+        [HttpGet]
+        public List<Usuario> Login(string correo, string contrasena)
+        {
+            var lista = negociosUsuario.Login(correo, contrasena);
+            return lista;
         }
-        
+
     }
 }
