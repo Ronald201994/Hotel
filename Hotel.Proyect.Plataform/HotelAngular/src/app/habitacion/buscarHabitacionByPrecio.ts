@@ -27,7 +27,7 @@ export class BuscarHabitacionByPrecioComponent {
     }
 
     regresarListaHabitaciones() : void{
-        this._router.navigate(['/listarHabitaciones']);
+        this._router.navigate(['/listarHabitaciones']); 
     } 
 
     /*buscarHabitacionesByPrecio(){
