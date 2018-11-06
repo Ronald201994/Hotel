@@ -7,4 +7,5 @@ import { NgModule } from '@angular/core';
   imports: [MatButtonModule, MatCheckboxModule, MatMenuModule, MatInputModule],
   exports: [MatButtonModule, MatCheckboxModule, MatMenuModule, MatInputModule],
 })
+
 export class MaterialModule { }
