@@ -36,9 +36,6 @@
             <button  style="color: white"mat-button class="colorButon" [routerLink]="['/reservaHabitacion']">Reserva</button>
         </li>
         <li class="nav-item">
-            <button style="color: white" mat-button class="colorButon" [routerLink]="['/registrarUsuario']">Registrarse</button>
-        </li>
-        <li class="nav-item">
             <button style="color: white" mat-button class="colorButon" [matMenuTriggerFor]="menu">Servicios</button>
         </li>
         <li class="nav-item">
@@ -47,6 +44,9 @@
       </ul>
 
       <ul class="navbar-nav mr-auto" style="margin-right: -15px !important;">
+        <li class="nav-item">
+          <button style="color: white" mat-button class="colorButon" [routerLink]="['/registrarUsuario']">Registrarse</button>
+        </li>
         <li class="nav-item">
             <button style="color: white" mat-button class="colorButon" [routerLink]="['/login']">Login</button>
             <button style="color: white" mat-button class="colorButon" (click)="salir()"

@@ -14,7 +14,7 @@
 										<input matInput placeholder="Ingrese cliente" [(ngModel)]="reservaHabitacion.IdUsuario" [ngModelOptions]="{standalone: true}">
 								</mat-form-field>							
 							</div>
-							<div class="col-sm-6 form-group">
+							<div class="col-sm-6 form-group" *ngIf="hidden">
 								<label>Número habitación</label>
 								<mat-form-field class="example-full-width">
 										<input matInput placeholder="Ingrese habitacion" [(ngModel)]="reservaHabitacion.IdHabitacion" [ngModelOptions]="{standalone: true}">

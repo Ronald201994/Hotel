@@ -21,6 +21,8 @@ export class BuscarHabitacionByPrecioComponent {
             habitacionRespones => this.habitaciones = habitacionRespones
         );
     }
+
+    
     
     verDetalleHabitacion(ID: number){
         this._router.navigate(['detalleHabitacion/'+ID]);

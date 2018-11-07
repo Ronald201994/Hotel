@@ -15,6 +15,7 @@ export class ReservaHabitacionComponent {
     IdUsuario: number;
     fechaIngreso: string;
     fechaSalida: string;
+    hidden: boolean = false;
 
     startDate = new Date(1990, 0, 1);
 
@@ -35,6 +36,7 @@ export class ReservaHabitacionComponent {
     registrarReservaHabitacion(): void{
         var registroReservaHabitacion = this._reservaHabitacionServicio.registrarReservaHabitacion(this.reservaHabitacion)
         .subscribe();
+        
     }
 
     irToListarHabitaciones(){
