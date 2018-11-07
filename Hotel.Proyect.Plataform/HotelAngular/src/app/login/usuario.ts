@@ -1,5 +1,5 @@
 export class Usuario {
-    IdHabitacion: string;
+    ID: string;
     Nombre: string;
     ApellidoPaterno: string;
     ApellidoMaterno: string;

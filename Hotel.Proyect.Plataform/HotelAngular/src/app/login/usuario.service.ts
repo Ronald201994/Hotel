@@ -16,6 +16,8 @@ export class UsuarioService {
 
     usuario : Usuario[];
 
+    
+
 
     ingreseUsuario(correo : string, contrasena : string) : Observable<Usuario[]> { 
         return this._http.get(this._gertLoginUsuarioURL+'correo='+correo+'&contrasena='+contrasena)
@@ -23,9 +25,12 @@ export class UsuarioService {
             catchError(error => {
                 return throwError("Server error");
             })
+            
         ) 
+        
     }
 
+    
     /*usuario : Usuario = null;
     login(usuario : Usuario) : Usuario{
         

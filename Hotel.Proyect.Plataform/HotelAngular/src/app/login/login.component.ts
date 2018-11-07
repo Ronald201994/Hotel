@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { UsuarioService } from "./usuario.service";
 import { Usuario } from "./usuario";
 import { Router } from "@angular/router";
+import { stringify } from "@angular/compiler/src/util";
 
 @Component({
     selector : 'login',
@@ -10,26 +11,69 @@ import { Router } from "@angular/router";
 })
 
 export class LoginComponent {
-    usuario : Usuario[];
+    usuario: Usuario[];
+    error: string;
+
     constructor(private _userService : UsuarioService,
                 private _router : Router){
         /*this.usuario = <Usuario> {
             userName : "",
             password : ""
         };*/
+
     }
     
     ingresar(correo: string, contrasena: string){
-        this._userService.ingreseUsuario(correo, contrasena)
+        if(this.validarLoginVacio(correo, contrasena)==false){
+            alert(this.error);
+        }
+        var usu = this._userService.ingreseUsuario(correo, contrasena)
         .subscribe(
-            habitacionRespones => this.usuario = habitacionRespones
+            data => { this.usuario = data;}
         );
-
-        this._router.navigate(['reservaHabitacion/'+this.usuario[0].IdHabitacion+'/'+this.usuario[0].Nombre]);
-
-
-        //this._router.navigate(['buscarHabitacion/'+precio1+'/'+precio2]);
+        localStorage.setItem('Token', this.usuario[0].ID);
      }
+    
+    private validarLoginVacio(correo: string, contrasena: string): boolean{
+        let validacionSucces = false;
+        if(correo == undefined || correo.trim()==""){
+            this.error = "Escriba su correo";
+        }
+        else if(contrasena == undefined || contrasena.trim()==""){
+            this.error = "Escriba su contraseña";        
+        }
+        else if(correo == undefined || correo.trim()=="" && contrasena == undefined || contrasena.trim()=="")
+            this.error = "Escriba su correo y contraseña"
+        else{
+            validacionSucces = true;
+        }
+
+        return validacionSucces;
+    } 
+
+    /*putLocalStorage(nombre: string, usuario: Usuario[]): void{
+        localStorage.setItem(nombre, JSON.stringify(usuario));
+    } /* 
+
+    /* onLogin(form: NgForm) {
+        if (form.valid) {
+          return this.authService
+            .loginuser(this.user.email, this.user.password)
+            .subscribe(
+            data => {
+              this.authService.setUser(data.user);
+              const token = data.id;
+              this.authService.setToken(token);
+              this.router.navigate(['/user/profile']);
+              location.reload();
+              this.isError = false;
+            },
+            error => this.onIsError()
+            );
+        } else {
+          this.onIsError();
+        }
+    }*/
 
     /*ingresar() : void {
        

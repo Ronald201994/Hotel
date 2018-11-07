@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DetalleHabitacionComponent {
     habitaciones : Habitacion[];
     id : number;
+    hidenButon: boolean;
 
     constructor(private _habitacionServicio: HabitacionServicio, private _router : Router, private route: ActivatedRoute){
         this.id = this.route.snapshot.params.id;
