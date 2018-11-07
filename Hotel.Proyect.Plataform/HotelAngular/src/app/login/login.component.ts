@@ -10,15 +10,26 @@ import { Router } from "@angular/router";
 })
 
 export class LoginComponent {
-    usuario : Usuario = null;
+    usuario : Usuario[];
     constructor(private _userService : UsuarioService,
                 private _router : Router){
-        this.usuario = <Usuario> {
+        /*this.usuario = <Usuario> {
             userName : "",
             password : ""
-        };
+        };*/
     }
     
+    ingresar(correo: string, contrasena: string){
+        this._userService.ingreseUsuario(correo, contrasena)
+        .subscribe(
+            habitacionRespones => this.usuario = habitacionRespones
+        );
+
+        this._router.navigate(['reservaHabitacion/'+this.usuario[0].IdHabitacion+'/'+this.usuario[0].Nombre]);
+
+
+        //this._router.navigate(['buscarHabitacion/'+precio1+'/'+precio2]);
+     }
 
     /*ingresar() : void {
        
@@ -32,9 +43,9 @@ export class LoginComponent {
         }
     }*/ 
 
-    borrar() : void {
+    /*borrar() : void {
         this.usuario.userName = "";
         this.usuario.password = "";
-    }
+    }*/
 
 }

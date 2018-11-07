@@ -12,6 +12,7 @@ import { ReservaHabitacionServicio } from './servicio.reservaHabitacion';
 })
 export class ReservaHabitacionComponent {
     id : number;
+    IdUsuario: number;
     fechaIngreso: string;
     fechaSalida: string;
 
@@ -21,9 +22,11 @@ export class ReservaHabitacionComponent {
 
     constructor(private route: ActivatedRoute, private _reservaHabitacionServicio: ReservaHabitacionServicio, private _router: Router){
         this.id = this.route.snapshot.params.id;
+        this.IdUsuario = this.route.snapshot.params.idUsuario;
+
         this.reservaHabitacion = <ReservaHabitacion>{
             IdHabitacion: this.id,
-            IdUsuario: "",
+            IdUsuario: this.IdUsuario,
             FechaIngreso: "",
             FechaSalida: ""               
         };
