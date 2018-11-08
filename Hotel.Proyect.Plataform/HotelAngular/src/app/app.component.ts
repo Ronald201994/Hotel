@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'HotelAngular';
 
   usuario : Usuario;
+  salirButton: boolean = true;
 
   constructor(private _usuarioService : UsuarioService , private _router : Router){
     
@@ -26,9 +27,15 @@ export class AppComponent {
     
     return esAdmin;
   }*/
-
-  salir() : void{
-    this._usuarioService.logout();
+  salir() : void{ 
+    localStorage.removeItem("idUser");
+    localStorage.removeItem("nameUser");
+    localStorage.removeItem("apePat");
+    localStorage.removeItem("apeMat");
+    localStorage.removeItem("idHabitacion");
+    localStorage.removeItem("numHabitacion");
+    
+    this.salirButton = false;
     this._router.navigate(['home/'])
   }
 
