@@ -17,7 +17,9 @@ export class DetalleHabitacionComponent {
 
         this._habitacionServicio.GetHabitacionByID(this.id)
         .subscribe(
-            habitacionRespones => this.habitaciones = habitacionRespones
+            habitacionRespones => {this.habitaciones = habitacionRespones; 
+                                   localStorage.setItem("idHabitacion", this.id.toString());
+                                   localStorage.setItem("numHabitacion", this.habitaciones[0].Nombre)}
         );
     }
 
