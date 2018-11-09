@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'HotelAngular';
+  nameUser: string = '';
 
   usuario : Usuario;
   salirButton: boolean = true;
 
   constructor(private _usuarioService : UsuarioService , private _router : Router){
-    
+    this.nameUser = localStorage.getItem("nameUser");
   }
   /*esAdministrador(): boolean{
     this.usuario = this._usuarioService.getUsuario();

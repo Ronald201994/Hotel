@@ -6,7 +6,9 @@ import { UsuarioServicios } from './servicio.usuario';
 
 @Component({
     selector: 'app-registrar-usuario',
-    templateUrl: './registrarUsuario.component.html'
+    templateUrl: './registrarUsuario.component.html',
+    styleUrls: ['./registrarUsuario.component.css']
+
 })
 
 export class RegistrarUsuarioComponent {
@@ -29,4 +31,6 @@ export class RegistrarUsuarioComponent {
         var registrarUsuario= this._registrarUsuario.ingreseUsuario(this.usuario)
         .subscribe();
     }
+  
 }
+

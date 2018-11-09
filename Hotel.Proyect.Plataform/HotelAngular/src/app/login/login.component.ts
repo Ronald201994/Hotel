@@ -4,7 +4,7 @@ import { Usuario } from "./usuario";
 import { Router } from "@angular/router";
 
 @Component({
-    selector : 'login',
+    selector: 'app-login',
     templateUrl: './login.component.html'
 
 })
@@ -14,52 +14,66 @@ export class LoginComponent {
     error: string;
     navButton: boolean = true;
 
-    constructor(private _userService : UsuarioService,
-                private _router : Router){
+    constructor(private _userService: UsuarioService,
+        private _router: Router) {
         /*this.usuario = <Usuario> {
             userName : "",
             password : ""
         };*/
         //localStorage.removeItem("idUser");
     }
-    
-    ingresar(correo: string, contrasena: string){
-        if(this.validarLoginVacio(correo, contrasena)==false){
+
+    ingresar(correo: string, contrasena: string) {
+        if (this.validarLoginVacio(correo, contrasena) == false) {
             alert(this.error);
         }
-        var usu = this._userService.ingreseUsuario(correo, contrasena)
-        .subscribe(
-            data => { this.usuario = data; 
-                      this.putLocalStorage("idUser", JSON.stringify(this.usuario[0].ID));
-                      this.putLocalStorage("nameUser", JSON.stringify(this.usuario[0].Nombre));
-                      this.putLocalStorage("apePat", JSON.stringify(this.usuario[0].ApellidoPat));
-                      this.putLocalStorage("apeMat", JSON.stringify(this.usuario[0].ApellidoMat));
-                      console.log(this.usuario);}
-        );
-        this._router.navigate(['/reservaHabitacion']);          
-        
-     }
-    
-    private validarLoginVacio(correo: string, contrasena: string): boolean{
+        else {
+            this._userService.ingreseUsuario(correo, contrasena)
+                .subscribe(
+                    data => {
+                    this.usuario = data;
+                        this.putLocalStorage("idUser", this.usuario[0].ID)
+                        this.putLocalStorage("nameUser", this.usuario[0].Nombre);
+                        this.putLocalStorage("apePat", this.usuario[0].ApellidoPat);
+                        this.putLocalStorage("apeMat", this.usuario[0].ApellidoMat);
+                        console.log(this.usuario);
+                    }, error => {
+                        console.error(error);
+                    },
+                    () => this.irHome()
+                );
+          }
+
+    }
+
+    irHome(){
+        this._router.navigate(['/home']);
+    }
+
+    continuarReserva(){
+        this._router.navigate(['/reservaHabitacion']);
+    }
+
+    private validarLoginVacio(correo: string, contrasena: string): boolean {
         let validacionSucces = false;
-        if(correo == undefined || correo.trim()==""){
+        if (correo == undefined || correo.trim() == "") {
             this.error = "Escriba su correo";
         }
-        else if(contrasena == undefined || contrasena.trim()==""){
-            this.error = "Escriba su contraseña";        
+        else if (contrasena == undefined || contrasena.trim() == "") {
+            this.error = "Escriba su contraseña";
         }
-        else if(correo == undefined || correo.trim()=="" && contrasena == undefined || contrasena.trim()=="")
+        else if (correo == undefined || correo.trim() == "" && contrasena == undefined || contrasena.trim() == "")
             this.error = "Escriba su correo y contraseña"
-        else{
+        else {
             validacionSucces = true;
         }
 
         return validacionSucces;
-    } 
+    }
 
-    putLocalStorage(nombre: string, value: string): void{
+    putLocalStorage(nombre: string, value: string): void {
         localStorage.setItem(nombre, value);
-    } 
+    }
 
     /* onLogin(form: NgForm) {
         if (form.valid) {
@@ -91,7 +105,7 @@ export class LoginComponent {
         }else{
             this._router.navigate(['home/'])
         }
-    }*/ 
+    }*/
 
     /*borrar() : void {
         this.usuario.userName = "";
