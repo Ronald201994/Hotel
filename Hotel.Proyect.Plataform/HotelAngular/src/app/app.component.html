@@ -1,8 +1,12 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
+<div class="container" style="float: right; width: 50px; margin-top: 50px; margin-right: 300px">
+    {{nameUser}}
+</div>
 <div class="container">
   <img src="/src/assets/imagenes/logo.jpg" class="logoImagen">
 </div>
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
   <div class="container">
@@ -37,9 +41,11 @@
         </li>
         <li class="nav-item">
           <button style="color: white" mat-button class="colorButon" [routerLink]="['/login']">Login</button>
-          <button *ngIf="salirButton" (click)="salir()" style="color: white" mat-button class="colorButon" [routerLink]="['/login']">Salir</button>
-          <button style="color: white" mat-button class="colorButon" (click)="salir()" *ngIf="existeUsuario()"
-            [routerLink]="">Salir</button>
+          <!--<button style="color: white" mat-button class="colorButon" (click)="salir()" *ngIf="existeUsuario()"
+            [routerLink]="">Salir</button>-->
+        </li>
+        <li class="nav-item">
+            <button *ngIf="salirButton" (click)="salir()" style="color: white" mat-button class="colorButon" [routerLink]="['/login']">Salir</button>
         </li>
       </ul>
     </div>

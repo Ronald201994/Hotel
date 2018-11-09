@@ -7,6 +7,7 @@ import { map, catchError } from 'rxjs/operators'
 @Injectable()
 export class UsuarioService {
     private _gertLoginUsuarioURL : string = 'http://localhost:55349/api/usuario/Login?'
+    idUs: string;
 
     constructor(private _http: Http) {
             
@@ -15,19 +16,14 @@ export class UsuarioService {
     //usuario: Usuario = null;
 
     usuario : Usuario[];
-
     
-
-
     ingreseUsuario(correo : string, contrasena : string) : Observable<Usuario[]> { 
         return this._http.get(this._gertLoginUsuarioURL+'correo='+correo+'&contrasena='+contrasena)
-        .pipe(map((response: Response) => <Usuario[]> response.json()),
+        .pipe(map((response: Response) => <Usuario[]> response.json()), 
             catchError(error => {
-                return throwError("Server error");
-            })
-            
-        ) 
-        
+                return throwError("Server error"); 
+            })   
+        )       
     }
 
     

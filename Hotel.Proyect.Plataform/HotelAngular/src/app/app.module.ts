@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { UsuarioServicios } from './usuario/servicio.usuario';
 import { MatDatepickerModule} from '@angular/material/datepicker';
-import { UsuarioService } from './login/usuario.service'
+import { UsuarioService } from './login/usuario.service';
+import {MatTabsModule} from '@angular/material/tabs';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -43,10 +44,12 @@ import { MatNativeDateModule } from '@angular/material';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTabsModule,
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
+      {path: 'appComponent', component: AppComponent},
       {path: 'home', component: HomeComponent},
       {path: 'listarHabitaciones', component: ListarHabitacionesComponent},
       {path: 'reservaHabitacion', component: ReservaHabitacionComponent},

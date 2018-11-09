@@ -27,7 +27,7 @@ export class ReservaHabitacionComponent {
     apePat: string;
     apeMat: string;
     idHabitacionStorage: string;
-    numHabitacionStorage: string;
+    numHabitacion: string;
 
     /*console.log(users);
     console.log(name);*/
@@ -45,7 +45,7 @@ export class ReservaHabitacionComponent {
         this.apePat = localStorage.getItem("apePat");
         this.apeMat = localStorage.getItem("apeMat");
         this.idHabitacionStorage = localStorage.getItem("idHabitacion");
-        this.numHabitacionStorage = localStorage.getItem("numHabitacion")
+        this.numHabitacion = localStorage.getItem("numHabitacion");
 
         this.reservaHabitacion = <ReservaHabitacion>{
             IdHabitacion: this.idHabitacionStorage,
@@ -53,7 +53,7 @@ export class ReservaHabitacionComponent {
             NombreUsurario: this.nameUser,
             ApePatUsurario: this.apePat,
             ApeMatUsurario: this.apeMat,
-            NumerHabitacion: this.numHabitacionStorage,
+            NumerHabitacion: this.numHabitacion,
             FechaIngreso: "",
             FechaSalida: ""               
         };
