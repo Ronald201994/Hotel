@@ -10,13 +10,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DetalleHabitacionComponent {
     habitaciones : Habitacion[];
     id : number;
+    hidenButon: boolean;
 
     constructor(private _habitacionServicio: HabitacionServicio, private _router : Router, private route: ActivatedRoute){
         this.id = this.route.snapshot.params.id;
 
         this._habitacionServicio.GetHabitacionByID(this.id)
         .subscribe(
-            habitacionRespones => this.habitaciones = habitacionRespones
+            habitacionRespones => {this.habitaciones = habitacionRespones; 
+                                   localStorage.setItem("idHabitacion", this.id.toString());
+                                   localStorage.setItem("numHabitacion", this.habitaciones[0].Nombre)}
         );
     }
 

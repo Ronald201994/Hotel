@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TarjetaDatos.cs" />
+    <Compile Include="ForoDatos.cs" />
     <Compile Include="UsuarioDatos.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="HabitacionDatos.cs" />

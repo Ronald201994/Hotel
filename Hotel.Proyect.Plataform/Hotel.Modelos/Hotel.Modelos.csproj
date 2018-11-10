@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EstadoHabitacion.cs" />
+    <Compile Include="Foro.cs" />
     <Compile Include="Habitacion.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

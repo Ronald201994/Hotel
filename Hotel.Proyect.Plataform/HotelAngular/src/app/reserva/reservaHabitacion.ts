@@ -1,7 +1,11 @@
 export class ReservaHabitacion {
     ID: string;
-    IdHabitacion: number;
-    IdUsuario: number;
+    IdHabitacion: string;
+    IdUsuario: string;
+    NumerHabitacion: string;
+    NombreUsurario: string;
+    ApePatUsurario: string;
+    ApeMatUsurario: string;
     FechaIngreso: string;
     FechaSalida: string;
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -14,12 +14,15 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { UsuarioServicios } from './usuario/servicio.usuario';
 import { MatDatepickerModule} from '@angular/material/datepicker';
-import { UsuarioService } from './login/usuario.service'
+import { LoginService } from './login/login.service';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ComidaComponent } from './comida/comida.component';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.component';''
 import {RouterModule } from '@angular/router';
+import { MDBBootstrapModule } from 'angular-bootstrap-md'
 
 //Http
 import { HttpModule } from '@angular/http'; 
@@ -34,8 +37,8 @@ import { MatNativeDateModule } from '@angular/material';
     DetalleHabitacionComponent,
     RegistrarUsuarioComponent,
     ReservaHabitacionComponent,
-    LoginComponent
-
+    LoginComponent,
+    ComidaComponent
   ],
   imports: [
     BrowserModule,
@@ -43,11 +46,15 @@ import { MatNativeDateModule } from '@angular/material';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MDBBootstrapModule.forRoot(),
+    MatTabsModule,
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
+      {path: 'appComponent', component: AppComponent},
       {path: 'home', component: HomeComponent},
+      {path: 'comida', component: ComidaComponent},
       {path: 'listarHabitaciones', component: ListarHabitacionesComponent},
       {path: 'reservaHabitacion', component: ReservaHabitacionComponent},
       {path: 'reservaHabitacion/:id', component: ReservaHabitacionComponent},
@@ -59,11 +66,12 @@ import { MatNativeDateModule } from '@angular/material';
       //{path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   
   providers: [
     HabitacionServicio,
     ReservaHabitacionServicio,
-    UsuarioService,
+    LoginService,
     UsuarioServicios
   ],
   bootstrap: [AppComponent] 

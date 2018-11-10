@@ -5,7 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-habitacionPrecio',
-    templateUrl: './buscarHabitacionByPrecio.html'
+    templateUrl: './buscarHabitacionByPrecio.html',
+    styleUrls: ['./habitaciones.css']
 })
 export class BuscarHabitacionByPrecioComponent {
     habitaciones : Habitacion[];
@@ -21,6 +22,8 @@ export class BuscarHabitacionByPrecioComponent {
             habitacionRespones => this.habitaciones = habitacionRespones
         );
     }
+
+    
     
     verDetalleHabitacion(ID: number){
         this._router.navigate(['detalleHabitacion/'+ID]);

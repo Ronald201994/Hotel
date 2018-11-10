@@ -1,8 +1,8 @@
 export class Usuario {
-    IdHabitacion: string;
+    ID: string;
     Nombre: string;
-    ApellidoPaterno: string;
-    ApellidoMaterno: string;
+    ApellidoPat: string;
+    ApellidoMat: string;
     userName : string;
     password : string;
     esAdmin : boolean;
