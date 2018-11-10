@@ -131,6 +131,72 @@ INSERT INTO ReservaHabitacion VALUES('12/01/2019','22/01/2019',2,2)*/
 SELECT * FROM ReservaHabitacion
 GO
 
+/* INICIO-----  METODO DE PAGO -----INICIO*/
+create table tp_TipoTarjeta(
+ idTipoTarjeta int identity(1,1) primary key,
+ nombreTipoTarjeta varchar(20)
+)
+go
+
+insert into tp_TipoTarjeta values('Visa')
+insert into tp_TipoTarjeta values('MasterCard')
+insert into tp_TipoTarjeta values('Discover')
+
+select * from tp_TipoTarjeta
+
+create table tb_Tarjeta(
+ idTarjeta int identity (1,1) primary key,
+ idtipoTarjeta int foreign key references tp_TipoTarjeta,
+ numeroTarjeta varchar(16),
+ nombreTarjeta varchar(50),
+ securityCodeTarjeta char(3),
+ mesExpiracionTarjeta char(2),
+ añoExpiracionTarjeta char(4),
+ tarjetaHabilitada bit,
+ lineaCredito decimal(10,2),
+ creditoDisponible decimal(10,2)	
+)
+go
+
+select * from tb_Tarjeta
+
+--Tarjeta Valida
+insert into tb_Tarjeta values(1,'1234567812345678','Eren Jaegger','111','01','2021', 1, 100, 50)
+
+--Tarjeta no habilitada
+insert into tb_Tarjeta values(1,'1111222233334444','Armin Arlet','222','02','2022', 0, 100, 50)
+
+--Tarjeta saldo insuficiente
+insert into tb_Tarjeta values(1,'9999888877776666','Mickasa Ackerman','333','03','2023',1 ,100 , 99)
+
+
+
+/*procedimiento de metodo de pago*/
+create proc sp_GetTarjetaByInfo(
+ @idTipoTarjeta int,
+ @numeroTarjeta varchar(16),
+ @nombreTarjeta varchar(50),
+ @securityCodeTarjeta char(3),
+ @mesExpiracionTarjeta char(2),
+ @añoExpiracionTarjeta char(4)
+)
+as
+begin
+    select tar.numeroTarjeta, tar.nombreTarjeta, tar.tarjetaHabilitada, tar.creditoDisponible
+	from tb_Tarjeta tar
+	where tar.idTipoTarjeta = @idTipoTarjeta
+		  and tar.numeroTarjeta = @numeroTarjeta
+		  and tar.nombreTarjeta = @nombreTarjeta
+		  and tar.securityCodeTarjeta = @securityCodeTarjeta
+		  and tar.mesExpiracionTarjeta = @mesExpiracionTarjeta
+		  and tar.añoExpiracionTarjeta = @añoExpiracionTarjeta
+end
+
+exec sp_GetTarjetaByInfo 1,'1234567812345678', 'Eren Jaegger' , '111', '01', '2021'
+
+
+/* FIN-----  METODO DE PAGO -----FIN*/
+
 ---
 USE MASTER
 GO
