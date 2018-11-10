@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'listar-habitaciones',
-    templateUrl: './ListarHabitaciones.html'
+    templateUrl: './ListarHabitaciones.html',
+    styleUrls: ['./habitaciones.css']
 })
 export class ListarHabitacionesComponent {
     habitaciones : Habitacion[];

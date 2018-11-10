@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { LoginService } from './login/login.service';
+import { Usuario } from './login/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,45 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'HotelAngular';
+  nameUser: string = '';
+
+  
+
+  
+
+  usuario : Usuario;
+  salirButton: boolean = true;
+
+  constructor(private _loginService : LoginService , private _router : Router){
+    this.nameUser = localStorage.getItem("nameUser");
+  }
+  /*esAdministrador(): boolean{
+    this.usuario = this._usuarioService.getUsuario();
+    var esAdmin = false;
+    if(this.usuario!=null){
+      esAdmin = this.usuario.esAdmin;
+    }
+
+    
+    return esAdmin;
+  }*/
+
+  currentUser: string = 'Bienvenido '+ this.nameUser;
+  
+  salir() : void{ 
+    localStorage.removeItem("idUser");
+    localStorage.removeItem("nameUser");
+    localStorage.removeItem("apePat");
+    localStorage.removeItem("apeMat");
+    localStorage.removeItem("idHabitacion");
+    localStorage.removeItem("numHabitacion");
+    
+    this.salirButton = false;
+    this._router.navigate(['home/'])
+  }
+
+  existeUsuario() : boolean {
+    return this.usuario !=null;
+  }
+
 }

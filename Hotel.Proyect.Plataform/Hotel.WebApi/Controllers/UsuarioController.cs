@@ -12,7 +12,7 @@ namespace Hotel.WebApi.Controllers
     public class UsuarioController : ApiController
     {
         UsuarioNegocios negociosUsuario = new UsuarioNegocios();
-
+        /*
         [HttpPost]
         public string LoginUsuario(string correo, string contraseña)
         {
@@ -20,6 +20,7 @@ namespace Hotel.WebApi.Controllers
             mensaje = negociosUsuario.LoginUsuario(correo, contraseña);
             return mensaje;
         }
+        */
 
         [HttpPost]
         public string AgregarUsuario(Usuario usuario)
@@ -27,6 +28,20 @@ namespace Hotel.WebApi.Controllers
             string mensaje = "";
             mensaje = negociosUsuario.AgregarUsuario(usuario);
             return mensaje;
+        }
+
+        /*[HttpPost]
+        public List<Usuario> Login(string correo, string contrasena)
+        {
+            Usuario usuario = negociosUsuario.Login(correo, contrasena);
+            return usuario;
+        }*/
+
+        [HttpGet]
+        public List<Usuario> Login(string correo, string contrasena)
+        {
+            var lista = negociosUsuario.Login(correo, contrasena);
+            return lista;
         }
 
     }

@@ -1,64 +1,186 @@
-<div class="card" style="margin: 0 auto; width: 600px; margin-top: 100px">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<div class="container" style="margin-top: 30px">
+
+    <form class="form-horizontal">
+        <!-- action=" " method="post" id="contact_form"-->
+
+
+        <!-- Form Name -->
+        <legend style="text-align: center">Registrate</legend>
+
+        <div class="form-group">
+            <label class="col-md-5 control-label" for="emailaddress">Nombre</label>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input name="last_name" placeholder="Nombre" class="form-control" type="text" [(ngModel)]="usuario.Nombre"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="form-group">
+            <label class="col-md-5 control-label">Department / Office</label>
+            <div class="col-md-5 selectContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                    <select name="department" class="form-control selectpicker">
+                        <option value="">Select your Department/Office</option>
+                        <option>Department of Engineering</option>
+                        <option>Department of Agriculture</option>
+                        <option>Accounting Office</option>
+                        <option>Tresurer's Office</option>
+                        <option>MPDC</option>
+                        <option>MCTC</option>
+                        <option>MCR</option>
+                        <option>Mayor's Office</option>
+                        <option>Tourism Office</option>
+                    </select>
+                </div>
+            </div>
+        </div>-->
+
+
+        <div class="form-group">
+            <label class="col-md-5 control-label">Apellido Paterno</label>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input name="user_name" placeholder="Apellido Paterno" class="form-control" type="text" [(ngModel)]="usuario.ApellidoPaterno"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-5 control-label">Apellido Materno</label>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input name="user_name" placeholder="Apellido Materno" class="form-control" type="text" [(ngModel)]="usuario.ApellidoMaterno"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-5 control-label">Dni</label>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input name="first_name" placeholder="Dni" class="form-control input-md" required="" [(ngModel)]="usuario.DNI"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-5 control-label">Correo</label>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <input name="email" placeholder="Correo" class="form-control" type="text" [(ngModel)]="usuario.Correo"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-5 control-label">Contraseña</label>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input name="user_password" placeholder="Contraseña" class="form-control" type="password" [(ngModel)]="usuario.Password"
+                    [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+        </div>
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-5 control-label"></label>
+            <div class="col-md-5"><br>
+                <button (click)="ingreseUsuario()" type="submit" class="btn btn-primary">REGISTRAR
+                    <span class="glyphicon glyphicon-send"></span></button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+
+<!-- /.container -->
+
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="card" style="margin: 0 auto; width: 600px; margin-top: 30px">
 
     <h5 class="card-header info-color white-text text-center py-4">
-        <strong >Registrar Usuario</strong>
+        <strong>Registrar Usuario</strong>
     </h5>
 
-    <!--Card content-->
+
     <div class="card-body px-lg-5 pt-0">
 
-        <!-- Form -->
         <form class="text-center">
 
-            <!-- DNI -->
             <div class="form-row">
-                    <!-- First name -->
-                    <mat-form-field class="example-full-width">
-                        <input  matInput placeholder="Dni : " class="form-control" [(ngModel)]="usuario.DNI" [ngModelOptions]="{standalone: true}" >
-                      </mat-form-field>
+           
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Dni : " class="form-control" [(ngModel)]="usuario.DNI"
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
             </div>
 
-            <!-- Nombre-->
             <div class="form-row">
-                    <!-- First name -->
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Nombre : " class="form-control" [(ngModel)]="usuario.Nombre" [ngModelOptions]="{standalone: true}">
-                      </mat-form-field>
+     
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nombre : " class="form-control" [(ngModel)]="usuario.Nombre"
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
             </div>
 
-            <!-- Apellido Paterno-->
             <div class="form-row">
-                    <!-- First name -->
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Apellido Paterno : " class="form-control" [(ngModel)]="usuario.ApellidoPaterno" [ngModelOptions]="{standalone: true}" >
-                      </mat-form-field>
+    
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Apellido Paterno : " class="form-control" [(ngModel)]="usuario.ApellidoPaterno"
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
             </div>
 
-            <!-- Apellido Materno-->
+        
             <div class="form-row">
-                    <!-- First name -->
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Apellido Materno : " class="form-control" [(ngModel)]="usuario.ApellidoMaterno" [ngModelOptions]="{standalone: true}" >
-                      </mat-form-field>   
+   
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Apellido Materno : " class="form-control" [(ngModel)]="usuario.ApellidoMaterno"
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
             </div>
 
-            <!-- E-mail -->
             <div class="md-form mt-0">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Email: " class="form-control" [(ngModel)]="usuario.Correo" [ngModelOptions]="{standalone: true}" > 
-                </mat-form-field>   
+                    <input matInput placeholder="Email: " class="form-control" [(ngModel)]="usuario.Correo"
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
             </div>
 
-            <!-- Password -->
+       
             <div class="md-form">
                 <mat-form-field class="example-full-width">
-                    <input type="password" matInput placeholder="Password : "class="form-control" [(ngModel)]="usuario.Password" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>  
+                    <input type="password" matInput placeholder="Password : " class="form-control" [(ngModel)]="usuario.Password"
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
             </div>
 
-            <!-- Registrar button -->
-            <button (click)="ingreseUsuario()" class="btn btn-outline-info btn-rounded btn-block my-10 waves-effect z-depth-0" type="submit" >Registrarse </button>
+            <button (click)="ingreseUsuario()" class="btn btn-outline-info btn-rounded btn-block my-10 waves-effect z-depth-0"
+                type="submit">Registrarse </button>
         </form>
-        <!-- Form -->
+  
     </div>
-</div>
+</div>-->

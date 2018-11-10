@@ -1,7 +1,173 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'>
 
-<!------ Include the above in your HEAD tag ---------->
-<div style="margin: 0 auto; width: 600px; margin-top: 100px">
-<div class="container">
+<div class="container" style="margin-top: 30px">
+	<form class="form-horizontal">
+		<legend style="text-align: center">Reserva tu habitación</legend>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label">Nombre cliente</label>
+			<div class="col-md-5 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input id="name" name="name" type="text" placeholder="" disabled="disabled" class="form-control input-md" required=""
+					 [(ngModel)]="reservaHabitacion.NombreUsurario" [ngModelOptions]="{standalone: true}">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label" for="emailaddress">Apellido Paterno</label>
+			<div class="col-md-5 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input id="emailaddress" name="emailaddress" type="text" placeholder="" disabled="disabled" class="form-control input-md"
+					 required="" [(ngModel)]="reservaHabitacion.ApePatUsurario" [ngModelOptions]="{standalone: true}">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label" for="phone">Apellido Materno</label>
+			<div class="col-md-5 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input id="phone" name="phone" type="text" placeholder="" disabled="disabled" class="form-control input-md"
+					 required="" [(ngModel)]="reservaHabitacion.ApeMatUsurario" [ngModelOptions]="{standalone: true}">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label" for="name">N° Habitación</label>
+			<div class="col-md-5 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fas fa-home"></i></span>
+					<input id="name" name="name" type="text" placeholder="" disabled="disabled" class="form-control input-md" required=""
+					 [(ngModel)]="reservaHabitacion.NumerHabitacion" [ngModelOptions]="{standalone: true}">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label" for="name">Fecha ingreso</label>
+			<div class="col-md-5">
+				<mat-form-field>
+					<input [(ngModel)]="reservaHabitacion.FechaIngreso" [ngModelOptions]="{standalone: true}" required="" matInput
+					 [matDatepicker]="picker" placeholder="Escoge una fecha">
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label" for="name">Fecha salida</label>
+			<div class="col-md-5">
+				<mat-form-field>
+					<input [(ngModel)]="reservaHabitacion.FechaSalida" [ngModelOptions]="{standalone: true}" required="Fecha salida es requerido"
+					 matInput [matDatepicker]="picker1" placeholder="Escoge una fecha">
+					<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+					<mat-datepicker #picker1></mat-datepicker>
+				</mat-form-field>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label"></label>
+			<div class="col-md-4">
+				<button (click)="registrarReservaHabitacion()" mat-button class="colorButon" style="margin-left: 60px; background-color: rgb(203, 220, 243)">RESERVAR</button>
+			</div>
+		</div>
+		<div class="form-group" style="margin-right: -100px">
+			<label class="col-md-4 control-label"></label>
+			<div class="col-md-4">
+				<button (click)="irToListarHabitaciones()" mat-button class="colorButon" style="background-color: rgb(203, 220, 243); width: 168px">VER
+					HABITACIONES</button>
+			</div>
+		</div>
+		<div class="form-group" *ngIf="hidden">
+			<label class="col-md-5 control-label" for="name">Cod Habitacion</label>
+			<div class="col-md-5">
+				<input id="name" name="name" type="text" placeholder="" class="form-control input-md" required [(ngModel)]="reservaHabitacion.IdHabitacion"
+				 [ngModelOptions]="{standalone: true}">
+			</div>
+		</div>
+
+		<div class="form-group" *ngIf="hidden">
+			<label class="col-md-5 control-label" for="name">Cod Usuario</label>
+			<div class="col-md-5">
+				<input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="Es required"
+				 [(ngModel)]="reservaHabitacion.idUsuario" [ngModelOptions]="{standalone: true}">
+			</div>
+		</div>
+
+		<!--<div class="form-group">
+			<label class="col-md-4 control-label" for="tourselection">Tour</label>
+			<div class="col-md-4" style="max-width: 100%;">
+				<select id="tourselection" name="tourselection" class="form-control">
+					<option value="1">Charter Fishing Trip</option>
+					<option value="2">Booze Cruise</option>
+					<option value="3">Kayak per person</option>
+					<option value="4">Airboat</option>
+				</select>
+			</div>
+		</div>-->
+		<!--<div class="form-group">
+			<label class="col-md-5 control-label" for="airboatsize">Airboat Size</label>
+			<div class="col-md-5" style="max-width: 100%;">
+				<div class="radio">
+					<label for="airboatsize-0">
+						<input type="radio" name="airboatsize" id="airboatsize-0" value="1" checked="checked">
+						Small
+					</label>
+				</div>
+				<div class="radio">
+					<label for="airboatsize-1">
+						<input type="radio" name="airboatsize" id="airboatsize-1" value="2">
+						Large
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label" for="quantity">Number of People</label>
+			<div class="col-md-5" style="max-width: 100%;">
+				<input id="quantity" name="quantity" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label" for="dateselection">Date</label>
+			<div class="col-md-5" style="max-width: 100%;">
+				<input id="dateselection" name="dateselection" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label" for="timeselect">Time</label>
+			<div class="col-md-5" style="max-width: 100%;">
+				<select id="timeselect" name="timeselect" class="form-control">
+					<option value="1">9:45a</option>
+					<option value="2">12p</option>
+					<option value="3">2p</option>
+					<option value="4">4p</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label" for="hotel">Hotel Name</label>
+			<div class="col-md-5" style="max-width: 100%;">
+				<input id="hotel" name="hotel" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label" for="pickup">Hotel Pickup</label>
+			<div class="col-md-5" style="max-width: 100%;">
+				<label class="checkbox-inline" for="pickup-0">
+					<input type="checkbox" name="pickup" id="pickup-0" value="1">
+					Yes
+				</label>
+			</div>
+		</div>-->
+	</form>
+</div>
+
+<!--<div class="container">
     <h1 class="well">Reservar Habitacion</h1>
 	<div class="col-lg-12 well">
 	<div class="row">
@@ -10,28 +176,45 @@
 						<div class="row">
 							<div class="col-sm-6 form-group"> 
 								<label>Cliente</label>
-								<input type="text" placeholder="Cliente" class="form-control" [(ngModel)]="reservaHabitacion.IdUsuario" [ngModelOptions]="{standalone: true}">
+								<mat-form-field class="example-full-width">
+										<input matInput placeholder="Ingrese cliente" [(ngModel)]="reservaHabitacion.IdUsuario" [ngModelOptions]="{standalone: true}">
+								</mat-form-field>							
 							</div>
-							<div class="col-sm-6 form-group">
+							<div class="col-sm-6 form-group" *ngIf="hidden">
 								<label>Número habitación</label>
-								<input type="text" placeholder="Habitación" class="form-control" value="{{id}}">
+								<mat-form-field class="example-full-width">
+										<input matInput placeholder="Ingrese habitacion" [(ngModel)]="reservaHabitacion.IdHabitacion" [ngModelOptions]="{standalone: true}">
+								</mat-form-field>							
 							</div>
 						</div>					
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								<label>Fecha ingreso</label>
-								<input type="text" placeholder="Fecha ingreso" class="form-control" [(ngModel)]="reservaHabitacion.FechaIngreso" [ngModelOptions]="{standalone: true}">
+								 <mat-form-field>
+										<input  [(ngModel)]="reservaHabitacion.FechaIngreso" [ngModelOptions]="{standalone: true}" matInput [matDatepicker]="picker" placeholder="Escoge una fecha">
+										<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+										<mat-datepicker #picker></mat-datepicker>
+								</mat-form-field>									  
 							</div>
 							<div class="col-sm-6 form-group">
 								<label>Fecha salida</label>
-								<input type="text" placeholder="Fecha salida" class="form-control" [(ngModel)]="reservaHabitacion.FechaSalida" [ngModelOptions]="{standalone: true}">
-                            </div>
-                        </div>
-					<button (click)="registrarReservaHabitacion()" type="button" class="btn btn-lg btn-info">RESERVAR</button>			 		
+								<mat-form-field>
+										<input  [(ngModel)]="reservaHabitacion.FechaSalida" [ngModelOptions]="{standalone: true}" matInput [matDatepicker]="picker1" placeholder="Escoge una fecha">
+										<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+										<mat-datepicker #picker1></mat-datepicker>
+								 </mat-form-field>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<button (click)="registrarReservaHabitacion()" mat-button class="colorButon" style="margin-left: 60px; background-color: rgb(203, 220, 243)">RESERVAR</button>
+							</div>
+							<div class="col-sm-6 form-group">
+								<button (click)="irToListarHabitaciones()" mat-button class="colorButon" style="background-color: rgb(203, 220, 243); width: 168px">VER HABITACIONES</button>
+							</div>
+						</div>
 					</div>
 				</form> 			
 	</div>
     </div>
-</div>
-</div>
-    
+</div>-->

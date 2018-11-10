@@ -12,6 +12,7 @@ namespace Hotel.Negocios
     {
         UsuarioDatos datosUsuario = new UsuarioDatos();
 
+        /*
         public string LoginUsuario(string correo, string contraseña)
         {
             string mensaje = "";
@@ -26,7 +27,7 @@ namespace Hotel.Negocios
             }
             return mensaje;
         }
-
+        */
         public string AgregarUsuario(Usuario usuario)
         {
             string mensaje = "";
@@ -40,6 +41,11 @@ namespace Hotel.Negocios
                 mensaje = "No se creo el usuario :" + ex.Message;
             }
             return mensaje;
+        }
+
+        public List<Usuario> Login(string correo, string contraseña)
+        {
+            return datosUsuario.loginUsuario(correo, contraseña);
         }
 
     }

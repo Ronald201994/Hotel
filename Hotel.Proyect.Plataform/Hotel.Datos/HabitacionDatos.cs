@@ -124,6 +124,7 @@ namespace Hotel.Datos
                     habitacion.Tipo = Convert.ToString(dr["Tipo"]);
                     habitacion.Cantidad = Convert.ToInt32(dr["Cantidad"]);
                     habitacion.Precio = Convert.ToDouble(dr["Precio"]);
+                    habitacion.ID = Convert.ToInt32(dr["ID"]);
                     lista.Add(habitacion);
                 }
                 dr.Close();

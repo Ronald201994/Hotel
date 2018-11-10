@@ -1,4 +1,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 
 .navBarPositionPadre{
     background-color: rgb(203, 220, 243);
@@ -38,4 +39,23 @@
   
 .example-full-width {
     width: 100%;
+}
+
+/*Sacado del Belmont Hotel*/
+.logoImagen{
+    width: 220px;
+    height: 90px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #f8f9fa; 
+}
+
+.bg-primary {
+    background-color: #f44336!important;
 }
