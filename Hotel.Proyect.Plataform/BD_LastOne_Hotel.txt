@@ -159,6 +159,14 @@ CREATE TABLE ReservaHabitacion
 )
 GO
 
+CREATE TABLE Foro 
+(
+idComentario INT PRIMARY KEY not null,
+descripcion VARCHAR(200) not null,
+idUsuario INT REFERENCES Usuario
+)
+go
+
 --ReservaHabitacion
 /*INSERT INTO ReservaHabitacion VALUES('12/12/2018','15/12/2018',2,1)
 INSERT INTO ReservaHabitacion VALUES('20/10/2018','29/10/2018',2,2)
