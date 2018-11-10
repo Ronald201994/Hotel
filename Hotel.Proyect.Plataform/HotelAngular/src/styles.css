@@ -59,3 +59,56 @@
 .bg-primary {
     background-color: #f44336!important;
 }
+
+/* Footer */
+.imgcontainer {
+    background: #E6E6E6;
+    box-shadow: 0 4px 2px 1px #000;
+  }
+  #footer {
+    height: 350px;
+    background: #003663;
+    min-width: 992px;
+  }
+  #footerItems {
+    min-width: 992px;
+    width: 100%;
+    padding: 0px 6%;
+    min-width: 992px;
+  }
+  #footerItems div {
+    display: inline-block;
+    color: #FFF;
+    padding-top: 2%;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .accountPos {
+    padding-left: 3%;
+  }
+  #footerItems div ul {
+    padding-left: 0;
+  }
+  #footerItems div ul li {
+    list-style-type: none;
+    font-weight: 400;
+    font-size: 13px;
+    font-style: italic;
+  }
+  #videoptions {
+    height: 74px;
+    width: 23px;
+    background-color: #4c5053;
+  }
+  #footerItems div video {
+    min-width: 35px;
+    min-height: 30px;
+  }
+  .socialinks {
+    min-width: 450px;
+    width: 39%;
+    float: left;
+  }
+  .slinks {
+    padding-left: 14%;
+  }

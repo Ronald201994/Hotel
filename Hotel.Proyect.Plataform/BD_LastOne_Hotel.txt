@@ -149,8 +149,10 @@ go
 insert into tp_TipoTarjeta values('Visa')
 insert into tp_TipoTarjeta values('MasterCard')
 insert into tp_TipoTarjeta values('Discover')
+GO
 
 select * from tp_TipoTarjeta
+GO
 
 create table tb_Tarjeta(
  idTarjeta int identity (1,1) primary key,
@@ -167,6 +169,7 @@ create table tb_Tarjeta(
 go
 
 select * from tb_Tarjeta
+GO
 
 --Tarjeta Valida
 insert into tb_Tarjeta values(1,'1234567812345678','Eren Jaegger','111','01','2021', 1, 100, 50)
@@ -176,6 +179,7 @@ insert into tb_Tarjeta values(1,'1111222233334444','Armin Arlet','222','02','202
 
 --Tarjeta saldo insuficiente
 insert into tb_Tarjeta values(1,'9999888877776666','Mickasa Ackerman','333','03','2023',1 ,100 , 99)
+GO
 
 
 
@@ -199,18 +203,17 @@ begin
 		  and tar.mesExpiracionTarjeta = @mesExpiracionTarjeta
 		  and tar.añoExpiracionTarjeta = @añoExpiracionTarjeta
 end
+GO
 
 exec sp_GetTarjetaByInfo 1,'1234567812345678', 'Eren Jaegger' , '111', '01', '2021'
+GO
+
+SELECT * FROM 
 
 
 /* FIN-----  METODO DE PAGO -----FIN*/
 
 ---
-USE MASTER
-GO
-
-USE Hotel_BD
-GO
 
 --Listar Habitaciones
 CREATE PROCEDURE SP_ListarHabitaciones
@@ -261,6 +264,7 @@ BEGIN
 	ON H.idEstado = EH.idEstado
 	WHERE precio BETWEEN @Precio1 AND @precio2
 END
+GO
 
 EXECUTE SP_BuscarHabitacionByPrecio 40, 60
 GO

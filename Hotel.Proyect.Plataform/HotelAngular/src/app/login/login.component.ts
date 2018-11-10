@@ -1,15 +1,60 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { LoginService } from "./login.service";
 import { Usuario } from "./usuario";
 import { Router } from "@angular/router";
+import * as $ from 'jquery'
 
 @Component({
     selector: 'app-login',
-    templateUrl: './login.component.html'
-
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+    ngOnInit(): void {
+        $(document).ready(function () {
+            var navListItems = $('div.setup-panel div a'),
+                    allWells = $('.setup-content'),
+                    allNextBtn = $('.nextBtn');
+          
+            allWells.hide();
+          
+            navListItems.click(function (e) {
+                e.preventDefault();
+                var $target = $($(this).attr('href')),
+                        $item = $(this);
+          
+                if (!$item.hasClass('disabled')) {
+                    navListItems.removeClass('btn-primary').addClass('btn-default');
+                    $item.addClass('btn-primary');
+                    allWells.hide();
+                    $target.show();
+                    $target.find('input:eq(0)').focus();
+                }
+            });
+          
+            allNextBtn.click(function(){
+                var curStep = $(this).closest(".setup-content"),
+                    curStepBtn = curStep.attr("id"),
+                    nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                    curInputs = curStep.find("input[type='text'],input[type='url']"),
+                    isValid = true;
+          
+                $(".form-group").removeClass("has-error");
+                for(var i=0; i<curInputs.length; i++){
+                    if (!curInputs[i].validity.valid){
+                        isValid = false;
+                        $(curInputs[i]).closest(".form-group").addClass("has-error");
+                    }
+                }
+          
+                if (isValid)
+                    nextStepWizard.removeAttr('disabled').trigger('click');
+            });
+          
+            $('div.setup-panel div a.btn-primary').trigger('click');
+          });
+    }
     usuario: Usuario[];
     error: string;
     navButton: boolean = true;
@@ -23,6 +68,8 @@ export class LoginComponent {
         //localStorage.removeItem("idUser");
     }
 
+
+    
     ingresar(correo: string, contrasena: string) {
         if (this.validarLoginVacio(correo, contrasena) == false) {
             alert(this.error);
@@ -57,6 +104,8 @@ export class LoginComponent {
         this._router.navigate(['/reservaHabitacion']);
     }
 
+    
+
     private validarLoginVacio(correo: string, contrasena: string): boolean {
         let validacionSucces = false;
         if (correo == undefined || correo.trim() == "") {
@@ -74,9 +123,11 @@ export class LoginComponent {
         return validacionSucces;
     }
 
-    putLocalStorage(nombre: string, value: string): void {
+    putLocalStorage(nombre: string, value: string): void  {
         localStorage.setItem(nombre, value);
     }
+
+
 
     /* onLogin(form: NgForm) {
         if (form.valid) {
