@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -15,7 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { UsuarioServicios } from './usuario/servicio.usuario';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { LoginService } from './login/login.service';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ComidaComponent } from './comida/comida.component';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -36,8 +37,8 @@ import { MatNativeDateModule } from '@angular/material';
     DetalleHabitacionComponent,
     RegistrarUsuarioComponent,
     ReservaHabitacionComponent,
-    LoginComponent
-
+    LoginComponent,
+    ComidaComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +46,7 @@ import { MatNativeDateModule } from '@angular/material';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MDBBootstrapModule,
+    MDBBootstrapModule.forRoot(),
     MatTabsModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -53,6 +54,7 @@ import { MatNativeDateModule } from '@angular/material';
       {path: '', component: HomeComponent},
       {path: 'appComponent', component: AppComponent},
       {path: 'home', component: HomeComponent},
+      {path: 'comida', component: ComidaComponent},
       {path: 'listarHabitaciones', component: ListarHabitacionesComponent},
       {path: 'reservaHabitacion', component: ReservaHabitacionComponent},
       {path: 'reservaHabitacion/:id', component: ReservaHabitacionComponent},
@@ -64,6 +66,7 @@ import { MatNativeDateModule } from '@angular/material';
       //{path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   
   providers: [
     HabitacionServicio,
