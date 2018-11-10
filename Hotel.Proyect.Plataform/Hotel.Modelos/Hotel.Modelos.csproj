@@ -46,6 +46,7 @@
     <Compile Include="Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReservaHabitacion.cs" />
+    <Compile Include="TarjetaInfo.cs" />
     <Compile Include="TipoHabitacion.cs" />
     <Compile Include="TipoPago.cs" />
     <Compile Include="TipoUsuario.cs" />
