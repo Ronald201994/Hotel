@@ -53,7 +53,6 @@ namespace Hotel.Datos
             cmd.Parameters.AddWithValue("@apellidoMaterno", usuario.ApellidoMat);
             cmd.Parameters.AddWithValue("@correo", usuario.Correo);
             cmd.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
-            cmd.Parameters.AddWithValue("@idTipoUsuario", usuario.TipoUsuario);
             cmd.ExecuteNonQuery();
 
             conexion.Close();

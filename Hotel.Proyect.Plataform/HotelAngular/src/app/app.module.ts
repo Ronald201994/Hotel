@@ -14,13 +14,14 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { UsuarioServicios } from './usuario/servicio.usuario';
 import { MatDatepickerModule} from '@angular/material/datepicker';
-import { UsuarioService } from './login/usuario.service';
+import { LoginService } from './login/login.service';
 import {MatTabsModule} from '@angular/material/tabs';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.component';''
 import {RouterModule } from '@angular/router';
+import { MDBBootstrapModule } from 'angular-bootstrap-md'
 
 //Http
 import { HttpModule } from '@angular/http'; 
@@ -44,6 +45,7 @@ import { MatNativeDateModule } from '@angular/material';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MDBBootstrapModule,
     MatTabsModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -66,7 +68,7 @@ import { MatNativeDateModule } from '@angular/material';
   providers: [
     HabitacionServicio,
     ReservaHabitacionServicio,
-    UsuarioService,
+    LoginService,
     UsuarioServicios
   ],
   bootstrap: [AppComponent] 

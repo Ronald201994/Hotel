@@ -5,17 +5,20 @@ import { Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators'
 
 @Injectable()
-export class UsuarioService {
+export class LoginService {
+    private isUserLoggedIn;
+    public usserLogged: Usuario;
+    usuario : Usuario[];
+
     private _gertLoginUsuarioURL : string = 'http://localhost:55349/api/usuario/Login?'
     idUs: string;
 
     constructor(private _http: Http) {
-            
+        this.isUserLoggedIn = false;
     }
 
     //usuario: Usuario = null;
 
-    usuario : Usuario[];
     
     ingreseUsuario(correo : string, contrasena : string) : Observable<Usuario[]> { 
         return this._http.get(this._gertLoginUsuarioURL+'correo='+correo+'&contrasena='+contrasena)
@@ -24,6 +27,17 @@ export class UsuarioService {
                 return throwError("Server error"); 
             })   
         )       
+    }
+
+    setUserLoggedIn(user: Usuario) {
+        this.isUserLoggedIn = true;
+        this.usserLogged = user;
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      
+    }
+
+    getUserLoggedIn() {
+        return JSON.parse(localStorage.getItem('currentUser'));
     }
 
     
