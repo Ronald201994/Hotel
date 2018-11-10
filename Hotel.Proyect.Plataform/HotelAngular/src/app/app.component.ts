@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UsuarioService } from './login/usuario.service';
+import { LoginService } from './login/login.service';
 import { Usuario } from './login/usuario';
 import { Router } from '@angular/router';
 
@@ -11,10 +11,14 @@ import { Router } from '@angular/router';
 export class AppComponent {
   nameUser: string = '';
 
+  
+
+  
+
   usuario : Usuario;
   salirButton: boolean = true;
 
-  constructor(private _usuarioService : UsuarioService , private _router : Router){
+  constructor(private _loginService : LoginService , private _router : Router){
     this.nameUser = localStorage.getItem("nameUser");
   }
   /*esAdministrador(): boolean{
@@ -27,6 +31,9 @@ export class AppComponent {
     
     return esAdmin;
   }*/
+
+  currentUser: string = 'Bienvenido '+ this.nameUser;
+  
   salir() : void{ 
     localStorage.removeItem("idUser");
     localStorage.removeItem("nameUser");

@@ -12,31 +12,18 @@
         <!-- Form Name -->
         <legend style="text-align: center">Registrate</legend>
 
-        <!-- Text input-->
-
         <div class="form-group">
-            <label class="col-md-5 control-label">First Name</label>
+            <label class="col-md-5 control-label" for="emailaddress">Nombre</label>
             <div class="col-md-5 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="first_name" placeholder="First Name" class="form-control input-md" required="">
+                    <input name="last_name" placeholder="Nombre" class="form-control" type="text" [(ngModel)]="usuario.Nombre"
+                        [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
         </div>
 
-        <!-- Text input-->
-
-        <div class="form-group">
-            <label class="col-md-5 control-label"  for="emailaddress">Last Name</label>
-            <div class="col-md-5 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="last_name" placeholder="Last Name" class="form-control" type="text">
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label class="col-md-5 control-label">Department / Office</label>
             <div class="col-md-5 selectContainer">
                 <div class="input-group">
@@ -55,81 +42,68 @@
                     </select>
                 </div>
             </div>
-        </div>
+        </div>-->
 
-        <!-- Text input-->
 
         <div class="form-group">
-            <label class="col-md-5 control-label">Username</label>
+            <label class="col-md-5 control-label">Apellido Paterno</label>
             <div class="col-md-5 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="user_name" placeholder="Username" class="form-control" type="text">
+                    <input name="user_name" placeholder="Apellido Paterno" class="form-control" type="text" [(ngModel)]="usuario.ApellidoPaterno"
+                        [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
         </div>
 
-        <!-- Text input-->
-
         <div class="form-group">
-            <label class="col-md-5 control-label">Password</label>
+            <label class="col-md-5 control-label">Apellido Materno</label>
             <div class="col-md-5 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="user_password" placeholder="Password" class="form-control" type="password">
+                    <input name="user_name" placeholder="Apellido Materno" class="form-control" type="text" [(ngModel)]="usuario.ApellidoMaterno"
+                        [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
         </div>
 
-        <!-- Text input-->
-
         <div class="form-group">
-            <label class="col-md-5 control-label">Confirm Password</label>
+            <label class="col-md-5 control-label">Dni</label>
             <div class="col-md-5 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="confirm_password" placeholder="Confirm Password" class="form-control" type="password">
+                    <input name="first_name" placeholder="Dni" class="form-control input-md" required="" [(ngModel)]="usuario.DNI"
+                        [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
         </div>
 
-        <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-5 control-label">E-Mail</label>
+            <label class="col-md-5 control-label">Correo</label>
             <div class="col-md-5 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <input name="email" placeholder="E-Mail Address" class="form-control" type="text">
+                    <input name="email" placeholder="Correo" class="form-control" type="text" [(ngModel)]="usuario.Correo"
+                        [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
         </div>
-
-
-        <!-- Text input-->
 
         <div class="form-group">
-            <label class="col-md-5 control-label">Contact No.</label>
+            <label class="col-md-5 control-label">Contraseña</label>
             <div class="col-md-5 inputGroupContainer">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input name="contact_no" placeholder="(639)" class="form-control" type="text">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input name="user_password" placeholder="Contraseña" class="form-control" type="password" [(ngModel)]="usuario.Password"
+                    [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
         </div>
-
-        <!-- Select Basic -->
-
-        <!-- Success message -->
-        <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i>
-            Success!.</div>
-
-            
-
         <!-- Button -->
         <div class="form-group">
             <label class="col-md-5 control-label"></label>
             <div class="col-md-5"><br>
-            <button type="submit" class="btn btn-warning">SUBMIT
+                <button (click)="ingreseUsuario()" type="submit" class="btn btn-primary">REGISTRAR
                     <span class="glyphicon glyphicon-send"></span></button>
             </div>
         </div>

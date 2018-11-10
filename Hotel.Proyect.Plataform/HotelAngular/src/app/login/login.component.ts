@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { UsuarioService } from "./usuario.service";
+import { LoginService } from "./login.service";
 import { Usuario } from "./usuario";
 import { Router } from "@angular/router";
 
@@ -14,7 +14,7 @@ export class LoginComponent {
     error: string;
     navButton: boolean = true;
 
-    constructor(private _userService: UsuarioService,
+    constructor(private _loginService: LoginService,
         private _router: Router) {
         /*this.usuario = <Usuario> {
             userName : "",
@@ -28,15 +28,18 @@ export class LoginComponent {
             alert(this.error);
         }
         else {
-            this._userService.ingreseUsuario(correo, contrasena)
+            this._loginService.ingreseUsuario(correo, contrasena)
                 .subscribe(
                     data => {
                     this.usuario = data;
+                        //this._loginService.setUserLoggedIn(this.usuario[0]);
                         this.putLocalStorage("idUser", this.usuario[0].ID)
                         this.putLocalStorage("nameUser", this.usuario[0].Nombre);
                         this.putLocalStorage("apePat", this.usuario[0].ApellidoPat);
                         this.putLocalStorage("apeMat", this.usuario[0].ApellidoMat);
+
                         console.log(this.usuario);
+                        
                     }, error => {
                         console.error(error);
                     },
@@ -47,7 +50,7 @@ export class LoginComponent {
     }
 
     irHome(){
-        this._router.navigate(['/home']);
+        this._router.navigate(['/reservaHabitacion']);
     }
 
     continuarReserva(){
