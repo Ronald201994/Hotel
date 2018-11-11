@@ -17,6 +17,7 @@ import { MatDatepickerModule} from '@angular/material/datepicker';
 import { LoginService } from './login/login.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ComidaComponent } from './comida/comida.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -44,6 +45,7 @@ import { MatNativeDateModule } from '@angular/material';
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MDBBootstrapModule.forRoot(),

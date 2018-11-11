@@ -1,27 +1,40 @@
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 
 
 <div class="container" style="margin-top: 30px">
 
-    <form class="form-horizontal">
+    <form class="form-horizontal" [formGroup]="formRegistrarUsuario">
         <!-- action=" " method="post" id="contact_form"-->
 
 
         <!-- Form Name -->
         <legend style="text-align: center">Registrate</legend>
-
+ 
         <div class="form-group">
             <label class="col-md-5 control-label" for="emailaddress">Nombre</label>
             <div class="col-md-5 inputGroupContainer">
+
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="last_name" placeholder="Nombre" class="form-control" type="text" [(ngModel)]="usuario.Nombre"
-                        [ngModelOptions]="{standalone: true}">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    
+                <input formControlName="name" [(ngModel)]="usuario.Nombre" [ngModelOptions]="{standalone: true}" type="email" id="inputEmail"
+                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Correo"
+                    required autofocus>
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback" style="margin-top: -15px">
+                            <div *ngIf="f.name.errors.required">El nombre es requerido</div>
+                    </div>
                 </div>
+
+       
+
             </div>
+
         </div>
+
+    
 
         <!-- <div class="form-group">
             <label class="col-md-5 control-label">Department / Office</label>
