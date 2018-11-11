@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from './usuario';
-import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioServicios } from './servicio.usuario';
 //import * as $ from 'jquery'
-declare var $: any; // Para jQuery
+//declare var $: any; // Para jQuery
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-registrar-usuario',
@@ -12,9 +12,48 @@ declare var $: any; // Para jQuery
 
 })
 
-export class RegistrarUsuarioComponent  implements OnInit{
+export class RegistrarUsuarioComponent implements OnInit {
+    formRegistrarUsuario: FormGroup;
+    submitted = false;
+
     ngOnInit(): void {
-        $(document).ready(function() {
+        this.formRegistrarUsuario = this.formBuilder.group({
+            name: ['', Validators.required]
+        });
+    }
+
+    // convenience getter for easy access to form fields
+    get f() { return this.formRegistrarUsuario.controls; }
+
+    usuario: Usuario = null;
+
+    constructor(private _registrarUsuario: UsuarioServicios, private formBuilder: FormBuilder) {
+
+        this.usuario = <Usuario>{
+            DNI: "",
+            Nombre: "",
+            ApellidoPaterno: "",
+            ApellidoMaterno: "",
+            Correo: "",
+            Password: ""
+        };
+    }
+
+    ingreseUsuario(): void {
+        this.submitted = true;
+
+        if (this.formRegistrarUsuario.invalid) {
+            return;
+        }
+        else {
+         this._registrarUsuario.ingreseUsuario(this.usuario)
+            .subscribe();
+        }
+    }
+
+}
+
+  /*$(document).ready(function() {
             $('#contact_form').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -134,30 +173,6 @@ export class RegistrarUsuarioComponent  implements OnInit{
                         console.log(result);
                     }, 'json');
                 });
-        });
-        
-            }
+        });*/
 
-            
-
-    usuario: Usuario = null;
-
-    constructor(private _registrarUsuario: UsuarioServicios){
-        
-        this.usuario = <Usuario>{
-            DNI: "", 
-            Nombre: "",
-            ApellidoPaterno: "",
-            ApellidoMaterno: "",
-            Correo: "",
-            Password: ""
-        };
-    }
-
-    ingreseUsuario(): void{
-        var registrarUsuario= this._registrarUsuario.ingreseUsuario(this.usuario)
-        .subscribe();
-    }
-  
-}
 

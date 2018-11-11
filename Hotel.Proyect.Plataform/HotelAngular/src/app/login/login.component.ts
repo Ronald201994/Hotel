@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { LoginService } from "./login.service";
 import { Usuario } from "./usuario";
 import { Router } from "@angular/router";
-import * as $ from 'jquery'
+import * as $ from 'jquery';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-login',
@@ -10,57 +11,26 @@ import * as $ from 'jquery'
     styleUrls: ['./login.css']
 })
 
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
+    formLogin: FormGroup;
+    submitted = false;
+
     ngOnInit(): void {
-        $(document).ready(function () {
-            var navListItems = $('div.setup-panel div a'),
-                    allWells = $('.setup-content'),
-                    allNextBtn = $('.nextBtn');
-          
-            allWells.hide();
-          
-            navListItems.click(function (e) {
-                e.preventDefault();
-                var $target = $($(this).attr('href')),
-                        $item = $(this);
-          
-                if (!$item.hasClass('disabled')) {
-                    navListItems.removeClass('btn-primary').addClass('btn-default');
-                    $item.addClass('btn-primary');
-                    allWells.hide();
-                    $target.show();
-                    $target.find('input:eq(0)').focus();
-                }
-            });
-          
-            allNextBtn.click(function(){
-                var curStep = $(this).closest(".setup-content"),
-                    curStepBtn = curStep.attr("id"),
-                    nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-                    curInputs = curStep.find("input[type='text'],input[type='url']"),
-                    isValid = true;
-          
-                $(".form-group").removeClass("has-error");
-                for(var i=0; i<curInputs.length; i++){
-                    if (!curInputs[i].validity.valid){
-                        isValid = false;
-                        $(curInputs[i]).closest(".form-group").addClass("has-error");
-                    }
-                }
-          
-                if (isValid)
-                    nextStepWizard.removeAttr('disabled').trigger('click');
-            });
-          
-            $('div.setup-panel div a.btn-primary').trigger('click');
-          });
+        this.formLogin = this.formBuilder.group({
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(6)]],
+        });
     }
+
+    // convenience getter for easy access to form fields
+    get f() { return this.formLogin.controls; }
+
     usuario: Usuario[];
     error: string;
     navButton: boolean = true;
 
     constructor(private _loginService: LoginService,
-        private _router: Router) {
+        private _router: Router, private formBuilder: FormBuilder) {
         /*this.usuario = <Usuario> {
             userName : "",
             password : ""
@@ -69,16 +39,18 @@ export class LoginComponent implements OnInit{
     }
 
 
-    
+
     ingresar(correo: string, contrasena: string) {
-        if (this.validarLoginVacio(correo, contrasena) == false) {
-            alert(this.error);
+        this.submitted = true;
+
+        if (this.formLogin.invalid) {
+            return;
         }
         else {
             this._loginService.ingreseUsuario(correo, contrasena)
                 .subscribe(
                     data => {
-                    this.usuario = data;
+                        this.usuario = data;
                         //this._loginService.setUserLoggedIn(this.usuario[0]);
                         this.putLocalStorage("idUser", this.usuario[0].ID)
                         this.putLocalStorage("nameUser", this.usuario[0].Nombre);
@@ -86,25 +58,40 @@ export class LoginComponent implements OnInit{
                         this.putLocalStorage("apeMat", this.usuario[0].ApellidoMat);
 
                         console.log(this.usuario);
-                        
+
                     }, error => {
                         console.error(error);
                     },
                     () => this.irHome()
+
                 );
-          }
+        }
+
 
     }
 
-    irHome(){
+    /*onSubmit() {
+        this.submitted = true;
+
+        // stop here if form is invalid
+        if (this.registerForm.invalid) {
+            return;
+        }
+ 
+        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+    }*/
+
+
+
+    irHome() {
         this._router.navigate(['/reservaHabitacion']);
     }
 
-    continuarReserva(){
+    continuarReserva() {
         this._router.navigate(['/reservaHabitacion']);
     }
 
-    
+
 
     private validarLoginVacio(correo: string, contrasena: string): boolean {
         let validacionSucces = false;
@@ -123,7 +110,7 @@ export class LoginComponent implements OnInit{
         return validacionSucces;
     }
 
-    putLocalStorage(nombre: string, value: string): void  {
+    putLocalStorage(nombre: string, value: string): void {
         localStorage.setItem(nombre, value);
     }
 
@@ -165,5 +152,48 @@ export class LoginComponent implements OnInit{
         this.usuario.userName = "";
         this.usuario.password = "";
     }*/
+
+    /*$(document).ready(function () {
+           var navListItems = $('div.setup-panel div a'),
+                   allWells = $('.setup-content'),
+                   allNextBtn = $('.nextBtn');
+         
+           allWells.hide();
+         
+           navListItems.click(function (e) {
+               e.preventDefault();
+               var $target = $($(this).attr('href')),
+                       $item = $(this);
+         
+               if (!$item.hasClass('disabled')) {
+                   navListItems.removeClass('btn-primary').addClass('btn-default');
+                   $item.addClass('btn-primary');
+                   allWells.hide();
+                   $target.show();
+                   $target.find('input:eq(0)').focus();
+               }
+           });
+         
+           allNextBtn.click(function(){
+               var curStep = $(this).closest(".setup-content"),
+                   curStepBtn = curStep.attr("id"),
+                   nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                   curInputs = curStep.find("input[type='text'],input[type='url']"),
+                   isValid = true;
+         
+               $(".form-group").removeClass("has-error");
+               for(var i=0; i<curInputs.length; i++){
+                   if (!curInputs[i].validity.valid){
+                       isValid = false;
+                       $(curInputs[i]).closest(".form-group").addClass("has-error");
+                   }
+               }
+         
+               if (isValid)
+                   nextStepWizard.removeAttr('disabled').trigger('click');
+           });
+         
+           $('div.setup-panel div a.btn-primary').trigger('click');
+         });*/
 
 }

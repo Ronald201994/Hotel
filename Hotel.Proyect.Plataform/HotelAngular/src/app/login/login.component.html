@@ -1,29 +1,41 @@
-
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-<div class="container" style="width: 15%; text-align: center; margin-top: 30px">
-    <form class="form-horizontal">
+<div class="container-fluid" style="max-width: 300px; text-align: center">
+    <form class="form-horizontal" [formGroup]="formLogin">
         <!--<img class="mb-4" src="/src/assets/imagenes/logo.jpg" alt="" width="72" height="72">-->
         <legend style="text-align: center">Por favor, logeate</legend>
 
         <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-            <input [(ngModel)]="correo" [ngModelOptions]="{standalone: true}" type="email" id="inputEmail" class="form-control"
-                placeholder="Correo" required autofocus> </div>
+            <input formControlName="email" [(ngModel)]="correo" [ngModelOptions]="{standalone: true}" type="email" id="inputEmail"
+                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Correo"
+                required autofocus>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback" style="margin-top: -15px">
+                <div *ngIf="f.email.errors.required">El correo es requerido</div>
+                <div *ngIf="f.email.errors.email">El correo debe estar en el formato correcto</div>
+            </div>
+        </div>
 
-        <div class="input-group" style="margin-top: 15px">
+        <div class="input-group" style="margin-top: 18px">
             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-            <input [(ngModel)]="contrasena" [ngModelOptions]="{standalone: true}" type="password" id="inputPassword"
-                class="form-control" placeholder="Contraseña" required>
+            <input formControlName="password" [(ngModel)]="contrasena" [ngModelOptions]="{standalone: true}" type="password"
+                id="inputPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                placeholder="Contraseña" required autofocus>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback" style="margin-top: -15px">
+                <div *ngIf="f.password.errors.required">La contraseña es requerida</div>
+                <div *ngIf="f.password.errors.minlength">La constraseña debe ser mínimo 6 carácteres</div>
+            </div>
         </div>
         <button style="margin-top: 20px" (click)="ingresar(correo, contrasena)" class="btn btn-lg btn-primary" type="submit">Iniciar
             sesión</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
+
     </form>
     <button (click)="continuarReserva()" class="btn btn-lg btn-primary" type="submit">Continurar reserva</button>
+
 </div>
 
 <!--<div class="login-page col-sm-offset-2">
