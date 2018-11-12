@@ -10,6 +10,8 @@ import { ListarHabitacionesComponent } from './habitacion/listarHabitaciones';
 import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.component';
 import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
+//foro
+import { RegistrarCommentsComponent } from './comments/registrarComments.Component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { UsuarioServicios } from './usuario/servicio.usuario';
@@ -18,10 +20,12 @@ import { LoginService } from './login/login.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ComidaComponent } from './comida/comida.component';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { CommentsServicio } from './comments/servicio.comments';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PasarelaComponent } from './pasarelaPago/pasarela.component';
 import { PasarelaServicios } from './pasarelaPago/servicio.pasarela';
-
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -44,6 +48,7 @@ import { MatNativeDateModule } from '@angular/material';
     ReservaHabitacionComponent,
     LoginComponent,
     ComidaComponent,
+    RegistrarCommentsComponent,
     PasarelaComponent
   ],
   imports: [
@@ -71,7 +76,8 @@ import { MatNativeDateModule } from '@angular/material';
       {path: 'detalleHabitacion/:id', component: DetalleHabitacionComponent},
       {path: 'registrarUsuario', component: RegistrarUsuarioComponent},
       {path: 'buscarHabitacion/:precio1/:precio2', component: BuscarHabitacionByPrecioComponent},
-      {path: 'login', component: LoginComponent}
+      {path: 'login', component: LoginComponent},
+      {path: 'registrarComments', component: RegistrarCommentsComponent }
       //{path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
@@ -82,6 +88,7 @@ import { MatNativeDateModule } from '@angular/material';
     ReservaHabitacionServicio,
     LoginService,
     UsuarioServicios,
+    CommentsServicio,
     PasarelaServicios
   ],
   bootstrap: [AppComponent] 

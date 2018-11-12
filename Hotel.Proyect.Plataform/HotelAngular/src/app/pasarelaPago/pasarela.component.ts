@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PasarelaServicios } from './servicio.pasarela';
 import { Pasarela } from './pasarela';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
     selector : '',
@@ -13,6 +15,9 @@ export class PasarelaComponent implements OnInit {
 
     formPasarela : FormGroup;
     submitted = false;
+      pasarela : Pasarela = null;
+    mensaje = [];
+    messageAler: string;
    
     ngOnInit(): void{
         this.formPasarela = this.formBuilder.group({
@@ -29,7 +34,7 @@ export class PasarelaComponent implements OnInit {
 
     pasarela: Pasarela = null;
 
-    constructor(private _pasarela: PasarelaServicios , private formBuilder: FormBuilder){
+    constructor(private _pasarela: PasarelaServicios , private _router: Router, private formBuilder: FormBuilder){
         this.pasarela = <Pasarela>{
             NumeroTarjeta:"",
             TipoTarjeta:"",
@@ -37,22 +42,46 @@ export class PasarelaComponent implements OnInit {
             TitularTarjeta:"",
             MesExpiracionTarjeta:"",
             AnioExpiracionTarjeta:"", 
-            MontoConsumir:""
+            MontoConsumir:"",
+            TransaccionCompleta: ""
         };
     }
 
-    ingresePasarela(): void{
+    
+    message: string = "";
 
+    ingresePasarela(): void{
         this.submitted = true;
 
         if(this.formPasarela.invalid){
             return;
-        }else{
-            this._pasarela.ingresePasarela(this.pasarela)
-        .subscribe();
-        }
+        }else{  
+        this._pasarelaServive.ingresePasarela(this.pasarela)
+        .subscribe(
+            data => {
+                if(!data.TransaccionCompleta){
+                    this.mensaje.push(data);               
+                    if (this.mensaje.length) {
+                        for(let i = 0; i < this.mensaje.length; i++) {
+                            this.message += `Message: ${this.mensaje[i].TransaccionMensaje}`;
+                        }
+                    }
+                    swal("Pago exitoso!", this.messageAler, 'success');
 
-        
-    }
+                    this._router.navigate(['/reservaHabitacion']);
+ 
+                    //message = JSON.stringify(this.mensaje);
+                    /*obj = JSON.parse(message);
+                    console.log(message);
+                    console.log(obj);*/
+
+                }
+                else{
+                    swal(this.message, this.messageAler, 'info');
+                }
+                
+            }
+        );
+
 
 }

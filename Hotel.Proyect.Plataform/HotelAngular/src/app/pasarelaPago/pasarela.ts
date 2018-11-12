@@ -6,4 +6,5 @@ export class Pasarela {
     MesExpiracionTarjeta: string;
     AnioExpiracionTarjeta: string;
     MontoConsumir: string;
+    TransaccionCompleta: string;
 }
