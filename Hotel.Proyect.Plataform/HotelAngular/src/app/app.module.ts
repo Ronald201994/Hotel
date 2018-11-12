@@ -18,6 +18,8 @@ import { LoginService } from './login/login.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ComidaComponent } from './comida/comida.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -48,6 +50,7 @@ import { MatNativeDateModule } from '@angular/material';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NgbModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     MatTabsModule,
     BrowserAnimationsModule,

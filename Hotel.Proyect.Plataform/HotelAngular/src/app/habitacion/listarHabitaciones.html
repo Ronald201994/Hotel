@@ -13,7 +13,7 @@
 
 <div class="container" style="margin-top: 30px">
 
-    
+
     <form class="form-horizontal">
         <legend style="text-align: center">Escoge tu habitación</legend>
 
@@ -21,18 +21,29 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-10 col-md-offset-3">
-                            <form class="form-inline" method="post">
+                        <div class="col-md-12 col-md-offset-4">
+                            <form class="form-inline" method="post" [formGroup]="formBuscarByPrice">
+
                                 <div class="form-group">
                                     <label for="fromdate">&emsp;PRECIO1 : </label>
-                                    <input [(ngModel)]="precio1" [ngModelOptions]="{standalone: true}" class="form-control"
+                                    <input formControlName="precio1" [ngClass]="{ 'is-invalid': submitted && f.precio1.errors }"
+                                        [(ngModel)]="precio1" [ngModelOptions]="{standalone: true}" class="form-control"
                                         placeholder="Precio desde" required="required">
+                                    <div *ngIf="submitted && f.precio1.errors" class="invalid-feedback" style="margin-top: -15px">
+                                        <div *ngIf="f.precio1.errors.required">Precio 1 es requerido</div>
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="todate">&emsp;PRECIO2: </label>
-                                    <input [(ngModel)]="precio2" [ngModelOptions]="{standalone: true}" class="form-control"
+                                    <input formControlName="precio2" [ngClass]="{ 'is-invalid': submitted && f.precio2.errors }"
+                                        [(ngModel)]="precio2" [ngModelOptions]="{standalone: true}" class="form-control"
                                         placeholder="Precio hasta" required="required">
+                                    <div *ngIf="submitted && f.precio2.errors" class="invalid-feedback" style="margin-top: -15px">
+                                        <div *ngIf="f.precio2.errors.required">Precio 2 es requerido</div>
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
                                     &emsp;&emsp;&emsp;<button style="background-color: rgb(124,77,255);color: #fff"
                                         type="submit" id="search" class="btn btn-default" (click)="irMetodoToGetListadoHabitacionByPrice(precio1, precio2)">SEARCH</button>
@@ -48,78 +59,78 @@
 
 <div class="container">
 
-            <div class="table-filter">
-                <div class="row">
-                    <div class="col-sm-3">
-                            <div class="filter-group">
-                                    <label>Tipo Habitacion</label>
-                                    <select class="form-control" style="width: 128px">
-                                        <option>Matrimonial</option>
-                                        <option>Sencilas</option>
-                                        <option>Dobles</option>
-                                        <option>Familiares</option>
-                                        <option>Suite</option>
-                                    </select>
-                            </div>
-                    </div>
-                    <div class="col-sm-9">
-                        <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                        <div class="filter-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="filter-group">
-  
-                        </div>
-                        <div class="filter-group">
-
-                        </div>
-                        <span class="filter-icon"><i class="fa fa-filter"></i></span>
-                    </div>
+    <div class="table-filter">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="filter-group">
+                    <label>Tipo Habitacion</label>
+                    <select class="form-control" style="width: 128px">
+                        <option>Matrimonial</option>
+                        <option>Sencilas</option>
+                        <option>Dobles</option>
+                        <option>Familiares</option>
+                        <option>Suite</option>
+                    </select>
                 </div>
             </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Número</th>
-                        <th>Tipo</th>
-                        <th>Estado</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let habitacion of habitaciones">
-                        <td>{{habitacion.ID}}</td>
-                        <td>{{habitacion.Nombre}}</td>
-                        <td>{{habitacion.Tipo}}</td>
-                        <td><span class="status text-success">&bull;</span>{{habitacion.Estado}}</td>
-                        <td>
-                            <a (click)="verDetalleHabitacion(habitacion.ID)" class="view" title="View Details"
-                                data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a>
-    
-                            <!--<button [hidden]="hidenButon" (click)="verDetalleHabitacion(habitacion.ID)" type="button" class="btn btn-info add-new"
+            <div class="col-sm-9">
+                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                <div class="filter-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="filter-group">
+
+                </div>
+                <div class="filter-group">
+
+                </div>
+                <span class="filter-icon"><i class="fa fa-filter"></i></span>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Número</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let habitacion of habitaciones">
+                <td>{{habitacion.ID}}</td>
+                <td>{{habitacion.Nombre}}</td>
+                <td>{{habitacion.Tipo}}</td>
+                <td><span class="status text-success">&bull;</span>{{habitacion.Estado}}</td>
+                <td>
+                    <a (click)="verDetalleHabitacion(habitacion.ID)" class="view" title="View Details" data-toggle="tooltip"><i
+                            class="material-icons">&#xE5C8;</i></a>
+
+                    <!--<button [hidden]="hidenButon" (click)="verDetalleHabitacion(habitacion.ID)" type="button" class="btn btn-info add-new"
                                         style="background-color: rgb(203, 220, 243); color: black"><i class="fa fa-plus"></i> Ver
                                         Detalle</button>-->
-                        </td>
-                </tbody>
-            </table>
-            <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">6</a></li>
-                    <li class="page-item"><a href="#" class="page-link">7</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                </ul>
-            </div>
-       
+                </td>
+        </tbody>
+    </table>
+    <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <ul class="pagination">
+            <li class="page-item disabled"><a href="#">Previous</a></li>
+            <li class="page-item"><a href="#" class="page-link">1</a></li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><a href="#" class="page-link">3</a></li>
+            <li class="page-item active"><a href="#" class="page-link">4</a></li>
+            <li class="page-item"><a href="#" class="page-link">5</a></li>
+            <li class="page-item"><a href="#" class="page-link">6</a></li>
+            <li class="page-item"><a href="#" class="page-link">7</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
     </div>
+
+</div>
 
 <!--<div class="container" style="margin-top: 20px">
     <div class="table-wrapper">
@@ -149,4 +160,3 @@
 </div>-->
 
 <!---->
-
