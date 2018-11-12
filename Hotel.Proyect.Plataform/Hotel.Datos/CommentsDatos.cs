@@ -35,7 +35,7 @@ namespace Hotel.Datos
                 {
                     Comments comments = new Comments();
                     comments.descripcion = Convert.ToString(dr["Descripcion"]);
-                    comments.usuario = Convert.ToInt32(dr["Usuario"]);
+                    comments.usuario = Convert.ToString(dr["Usuario"]);
                     lista.Add(comments);
                 }
                 dr.Close();

@@ -90,12 +90,12 @@ export class ReservaHabitacionComponent implements OnInit{
         this._reservaHabitacionServicio.registrarReservaHabitacion(this.reservaHabitacion)
         .subscribe();
         swal("Reserva exitosa!", this.messageAler, 'success');
-        localStorage.removeItem("idUser");
+        /*localStorage.removeItem("idUser");
         localStorage.removeItem("nameUser");
         localStorage.removeItem("apePat");
         localStorage.removeItem("apeMat");
         localStorage.removeItem("idHabitacion");
-        localStorage.removeItem("numHabitacion");
+        localStorage.removeItem("numHabitacion");*/
 
      
     }
