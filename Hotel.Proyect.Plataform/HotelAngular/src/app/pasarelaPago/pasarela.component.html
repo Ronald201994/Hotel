@@ -33,6 +33,9 @@ THE SOFTWARE.
 
 <!-- If you're using Stripe for payments -->
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<li *ngFor="let item of mensaje">
+        {{item.TransaccionMensaje}}
+      </li>
 
 <div class="container text-center" style="margin-top: 30px">
 
@@ -40,11 +43,11 @@ THE SOFTWARE.
         <!-- You can make it whatever width you want. I'm making it full width
              on <= small devices and 4/12 page width on >= medium devices -->
         <div class="col-lg-4 col-lg-offset-4">
-            <legend style="text-align: center">Realiza tu pago</legend>
+            <legend style="text-align: center">{{message}}</legend>
 
             <!-- CREDIT CARD FORM STARTS HERE -->
             <div class="panel panel-default credit-card-box">
-                <div class="panel-heading display-table">
+                <div class="panel-heading display-table"> 
                     <div class="row display-tr">
                         <h3 class="panel-title display-td">Detalles pago</h3>
                         <div class="display-td">
@@ -72,7 +75,7 @@ THE SOFTWARE.
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="couponCode">TIPO TARJETA</label>
-                                    <select class="form-control" style="width: 155px; height: 32px;" class="col-lg-4 col-lg-offset-4">
+                                    <select [(ngModel)]="pasarela.TipoTarjeta" [ngModelOptions]="{standalone: true}" class="form-control" style="width: 155px; height: 32px;" class="col-lg-4 col-lg-offset-4">
                                         <option>Visa</option>
                                         <option>Discover</option>                            
                                         <option>Mastercard</option>

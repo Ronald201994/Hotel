@@ -12,10 +12,11 @@
 <div class="container" style="float: right; width: 50px; margin-top: 50px; margin-right: 300px">
     {{nameUser}}
     
- <a href="https://www.facebook.com/Dream-HOTEL-2120643101582165/?modal=admin_todo_tour">
-  <img src="/src/assets/imagenes/icono_fb.png" title="siguenos en facebook"/></a>
+ <a target="_blank" href="https://www.facebook.com/Dream-HOTEL-2120643101582165/?modal=admin_todo_tour" class="fa fa-facebook">
+</a>
 
 </div>
+
 <div class="container">
   <img src="/src/assets/imagenes/logo.jpg" class="logoImagen">
 </div>
@@ -58,7 +59,7 @@
             [routerLink]="">Salir</button>-->
         </li>
         <li class="nav-item">
-            <button *ngIf="salirButton" (click)="salir()" style="color: white" mat-button class="colorButon" [routerLink]="['/pago']">Salir</button>
+            <button *ngIf="salirButton" style="color: white" mat-button class="colorButon" [routerLink]="['/pago']">Salir</button>
         </li>
       </ul>
     </div>
@@ -70,7 +71,7 @@
 </div>
 
 
-<!-- <app-home></app-home> -->
+<!-- <app-home></app-home>  (click)="salir()"  -->
 <mat-menu #menu="matMenu">
   <button [routerLink]="['/comida']" mat-menu-item>Comida</button>
   <button mat-menu-item>Piscina</button>

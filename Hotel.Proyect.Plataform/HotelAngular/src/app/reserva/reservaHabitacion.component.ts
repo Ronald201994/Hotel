@@ -5,8 +5,7 @@ import { ReservaHabitacionServicio } from './servicio.reservaHabitacion';
 import { Usuario } from '../login/usuario';
 import { LoginService } from '../login/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
+import swal from'sweetalert2';
 
 @Component({
     selector: 'app-reserva-habitacion',
@@ -17,6 +16,7 @@ export class ReservaHabitacionComponent implements OnInit{
     model;
     formReservaHabitacion: FormGroup;
     submitted = false;
+    messageAler: string;
 
     id : number;
     IdUsuario: number;
@@ -36,8 +36,6 @@ export class ReservaHabitacionComponent implements OnInit{
 
     ngOnInit(): void{
         this.formReservaHabitacion = this.formBuilder.group({
-            fechaIngreso: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]],
         });
 
    
@@ -91,7 +89,30 @@ export class ReservaHabitacionComponent implements OnInit{
         else {
         this._reservaHabitacionServicio.registrarReservaHabitacion(this.reservaHabitacion)
         .subscribe();
+        swal("Reserva exitosa!", this.messageAler, 'success');
+        localStorage.removeItem("idUser");
+        localStorage.removeItem("nameUser");
+        localStorage.removeItem("apePat");
+        localStorage.removeItem("apeMat");
+        localStorage.removeItem("idHabitacion");
+        localStorage.removeItem("numHabitacion");
+
+     
     }
+    this.refresh();
+    }
+
+    refresh(){
+        this.reservaHabitacion = <ReservaHabitacion>{
+            IdHabitacion: "",
+            IdUsuario: "",
+            NombreUsurario: "",
+            ApePatUsurario: "",
+            ApeMatUsurario: "",
+            NumerHabitacion: "",
+            FechaIngreso: "",
+            FechaSalida: ""               
+        };
     }
 
     irToListarHabitaciones(){
