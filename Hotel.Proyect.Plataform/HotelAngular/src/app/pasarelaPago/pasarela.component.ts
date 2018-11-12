@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PasarelaServicios } from './servicio.pasarela';
 import { Pasarela } from './pasarela';
-import swal from'sweetalert2';
+import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 
