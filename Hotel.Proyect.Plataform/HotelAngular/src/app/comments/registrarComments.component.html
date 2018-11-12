@@ -1,29 +1,51 @@
+<div class="container">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let comentario of comentarios">
+                <td>{{comentario.Usuario}}</td>
+                <td>{{comentario.Descripcion}}</td>
+        </tbody>
+    </table>
+</div>
+
 <div class="card" style="margin: 0 auto; width: 500px; margin-top: 100px">
     <form class="example-form">
         <div class="container-fluid bg-grey">
             <h2></h2>
             <div class="row">
-        
-              <div class="col-sm-12">
-                <div class="row">
 
-                  <div class="col-sm-12 form-group">
-                    <input class="form-control" placeholder="Nombre" type="text" required [(ngModel)]="comments.Usuario" [ngModelOptions]="{standalone: true}">
-                  </div>
+                <div class="col-sm-12">
+                    <div class="row">
 
-                </div>
-                <textarea class="form-control" placeholder="Comentario" rows="5" [(ngModel)]="comments.Descripcion" [ngModelOptions]="{standalone: true}" >
+                        <div class="col-sm-12 form-group">
+                            <input class="form-control" placeholder="Nombre" type="text" required [(ngModel)]="comments.Usuario"
+                                [ngModelOptions]="{standalone: true}">
+                        </div>
+
+                    </div>
+                    <textarea class="form-control" placeholder="Comentario" rows="5" [(ngModel)]="comments.Descripcion"
+                        [ngModelOptions]="{standalone: true}">
 
                 </textarea><br>
-                <div class="row">
-                  <div>
-                        <button mat-button class="colorButon" style="margin-left: 60px; background-color: rgb(203, 220, 243)" (click)="registrarComments()">Publicar</button>
-                  </div>
-                </div> 
-              </div>
+                    <div class="row">
+                        <div>
+                            <button mat-button class="colorButon" style="margin-left: 60px; background-color: rgb(203, 220, 243)"
+                                (click)="registrarComments()">Publicar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>  
+        </div>
     </form>
+</div>
+
+
 
 <!--<div class="titleBox">
     <label>Comentario</label>
@@ -65,18 +87,3 @@
                 </ul>
             </div>
  </div>-->
-
- <table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>Usuario</th>
-            <th>Descripcion</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let habitacion of habitaciones">
-            <td>{{comments.Usuario}}</td>
-            <td>{{comments.Descripcion}}</td>
-    </tbody>
-
-

@@ -12,6 +12,6 @@ namespace Hotel.Modelos
 
         public string descripcion { get; set; }
 
-        public int usuario { get; set; }
+        public string usuario { get; set; }
     }
 }
