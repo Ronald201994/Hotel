@@ -254,11 +254,11 @@ EXECUTE SP_ListarHabitaciones
 GO 
 
 --Buscar Habitacion por ID
-CREATE PROCEDURE SP_BuscarHabitacionByID
+CREATE PROCEDURE [dbo].[SP_BuscarHabitacionByID]
 @ID INT
 AS
 BEGIN
-	SELECT H.nombre Nombre, H.descripcion, EH.nombre Estado, TH.nombre Tipo, H.cantidad, H.precio
+	SELECT H.idHabitacion ID, H.nombre Nombre, H.descripcion, EH.nombre Estado, TH.nombre Tipo, H.cantidad, H.precio
 	FROM Habitacion H INNER JOIN TipoHabitacion TH
 	ON H.idTipo = TH.idTipo INNER JOIN EstadoHabitacion EH
 	ON H.idEstado = EH.idEstado
