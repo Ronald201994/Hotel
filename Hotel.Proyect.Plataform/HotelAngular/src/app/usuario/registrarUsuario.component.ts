@@ -18,7 +18,13 @@ export class RegistrarUsuarioComponent implements OnInit {
 
     ngOnInit(): void {
         this.formRegistrarUsuario = this.formBuilder.group({
-            name: ['', Validators.required]
+            name: ['', Validators.required],
+            apePat: ['', Validators.required],
+            apeMat: ['', Validators.required],
+            dni: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(6)]],
+
         });
     }
 

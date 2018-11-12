@@ -4,6 +4,8 @@ import { ReservaHabitacion } from './reservaHabitacion';
 import { ReservaHabitacionServicio } from './servicio.reservaHabitacion';
 import { Usuario } from '../login/usuario';
 import { LoginService } from '../login/login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -12,6 +14,9 @@ import { LoginService } from '../login/login.service';
     styleUrls: ['./reservaHabitacion.component.css']
 })
 export class ReservaHabitacionComponent implements OnInit{
+    model;
+    formReservaHabitacion: FormGroup;
+    submitted = false;
 
     id : number;
     IdUsuario: number;
@@ -30,8 +35,16 @@ export class ReservaHabitacionComponent implements OnInit{
     numHabitacion: string;
 
     ngOnInit(): void{
+        this.formReservaHabitacion = this.formBuilder.group({
+            fechaIngreso: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(6)]],
+        });
+
+   
     }
 
+    // convenience getter for easy access to form fields
+    get f() { return this.formReservaHabitacion.controls; }
 
     /*console.log(users);
     console.log(name);*/
@@ -40,7 +53,7 @@ export class ReservaHabitacionComponent implements OnInit{
 
     reservaHabitacion: ReservaHabitacion = null;
 
-    constructor(private route: ActivatedRoute, private _reservaHabitacionServicio: ReservaHabitacionServicio, 
+    constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private _reservaHabitacionServicio: ReservaHabitacionServicio, 
                 private _router: Router, private _loginService: LoginService){
         this.id = this.route.snapshot.params.id;
 
@@ -73,9 +86,15 @@ export class ReservaHabitacionComponent implements OnInit{
     }
 
     registrarReservaHabitacion(): void{
-        var registroReservaHabitacion = this._reservaHabitacionServicio.registrarReservaHabitacion(this.reservaHabitacion)
+        this.submitted = true;
+
+        if (this.formReservaHabitacion.invalid) {
+            return;
+        }
+        else {
+        this._reservaHabitacionServicio.registrarReservaHabitacion(this.reservaHabitacion)
         .subscribe();
-        
+    }
     }
 
     irToListarHabitaciones(){

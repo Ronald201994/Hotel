@@ -12,29 +12,23 @@
 
         <!-- Form Name -->
         <legend style="text-align: center">Registrate</legend>
- 
+
         <div class="form-group">
             <label class="col-md-5 control-label" for="emailaddress">Nombre</label>
             <div class="col-md-5 inputGroupContainer">
-
                 <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    
-                <input formControlName="name" [(ngModel)]="usuario.Nombre" [ngModelOptions]="{standalone: true}" type="email" id="inputEmail"
-                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Correo"
-                    required autofocus>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input formControlName="name" [(ngModel)]="usuario.Nombre" [ngModelOptions]="{standalone: true}"
+                        type="email" id="inputEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                        placeholder="Nombre" required autofocus>
                     <div *ngIf="submitted && f.name.errors" class="invalid-feedback" style="margin-top: -15px">
-                            <div *ngIf="f.name.errors.required">El nombre es requerido</div>
+                        <div *ngIf="f.name.errors.required">El nombre es requerido</div>
                     </div>
                 </div>
-
-       
-
             </div>
-
         </div>
 
-    
+
 
         <!-- <div class="form-group">
             <label class="col-md-5 control-label">Department / Office</label>
@@ -57,14 +51,19 @@
             </div>
         </div>-->
 
+  
 
         <div class="form-group">
             <label class="col-md-5 control-label">Apellido Paterno</label>
             <div class="col-md-5 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="user_name" placeholder="Apellido Paterno" class="form-control" type="text" [(ngModel)]="usuario.ApellidoPaterno"
-                        [ngModelOptions]="{standalone: true}">
+                    <input formControlName="apePat" name="user_name" placeholder="Apellido Paterno" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }" type="text" [(ngModel)]="usuario.ApellidoPaterno"
+                        [ngModelOptions]="{standalone: true}" required="">
+                    <div *ngIf="submitted && f.apePat.errors" class="invalid-feedback" style="margin-top: -15px">
+                        <div *ngIf="f.apePat.errors.required">El apellido Paterno es requerido</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,8 +73,12 @@
             <div class="col-md-5 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="user_name" placeholder="Apellido Materno" class="form-control" type="text" [(ngModel)]="usuario.ApellidoMaterno"
+                    <input formControlName="apeMat" name="user_name" placeholder="Apellido Materno" required="" class="form-control"
+                        type="text" [(ngModel)]="usuario.ApellidoMaterno" [ngClass]="{ 'is-invalid': submitted && f.apeMat.errors }"
                         [ngModelOptions]="{standalone: true}">
+                    <div *ngIf="submitted && f.apeMat.errors" class="invalid-feedback" style="margin-top: -15px">
+                        <div *ngIf="f.apeMat.errors.required">El apellido Materno es requerido</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,41 +88,56 @@
             <div class="col-md-5 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="first_name" placeholder="Dni" class="form-control input-md" required="" [(ngModel)]="usuario.DNI"
-                        [ngModelOptions]="{standalone: true}">
+                        <input formControlName="dni" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }" name="first_name"
+                            placeholder="Dni" class="form-control input-md" required="" [(ngModel)]="usuario.DNI"
+                            [ngModelOptions]="{standalone: true}">
+                        <div *ngIf="submitted && f.dni.errors" class="invalid-feedback" style="margin-top: -15px">
+                            <div *ngIf="f.dni.errors.required">El DNI es requerido</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            
 
-        <div class="form-group">
-            <label class="col-md-5 control-label">Correo</label>
-            <div class="col-md-5 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <input name="email" placeholder="Correo" class="form-control" type="text" [(ngModel)]="usuario.Correo"
-                        [ngModelOptions]="{standalone: true}">
+            <div class="form-group">
+                <label class="col-md-5 control-label">Correo</label>
+                <div class="col-md-5 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" name="email"
+                            placeholder="Correo" required="" class="form-control" type="text" [(ngModel)]="usuario.Correo"
+                            [ngModelOptions]="{standalone: true}">
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback" style="margin-top: -15px">
+                            <div *ngIf="f.email.errors.required">El correo es requerido</div>
+                            <div *ngIf="f.email.errors.email">El correo debe estar en el formato correcto</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="col-md-5 control-label">Contraseña</label>
-            <div class="col-md-5 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input name="user_password" placeholder="Contraseña" class="form-control" type="password" [(ngModel)]="usuario.Password"
-                    [ngModelOptions]="{standalone: true}">
+            <div class="form-group">
+                <label class="col-md-5 control-label">Contraseña</label>
+                <div class="col-md-5 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                            name="user_password" placeholder="Contraseña" required="" class="form-control" type="password"
+                            [(ngModel)]="usuario.Password" [ngModelOptions]="{standalone: true}">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback" style="margin-top: -15px">
+                            <div *ngIf="f.password.errors.required">La contraseña es requerida</div>
+                            <div *ngIf="f.password.errors.minlength">La constraseña debe ser mínimo 6 carácteres</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Button -->
-        <div class="form-group">
-            <label class="col-md-5 control-label"></label>
-            <div class="col-md-5"><br>
-                <button (click)="ingreseUsuario()" type="submit" class="btn btn-primary">REGISTRAR
-                    <span class="glyphicon glyphicon-send"></span></button>
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-5 control-label"></label>
+                <div class="col-md-5"><br>
+                    <button (click)="ingreseUsuario()" type="submit" class="btn btn-primary">REGISTRAR
+                        <span class="glyphicon glyphicon-send"></span></button>
+                </div>
             </div>
-        </div>
 
 
     </form>
