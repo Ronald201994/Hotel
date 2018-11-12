@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PasarelaServicios } from './servicio.pasarela';
 import { Pasarela } from './pasarela';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
-
 
 @Component({
     selector : '',
@@ -11,18 +11,30 @@ import { Router } from '@angular/router';
     styleUrls: ['./pago.css']
 })
 
-export class PasarelaComponent { 
-    pasarela : Pasarela = null;
+export class PasarelaComponent implements OnInit { 
+
+    formPasarela : FormGroup;
+    submitted = false;
+      pasarela : Pasarela = null;
     mensaje = [];
     messageAler: string;
+   
+    ngOnInit(): void{
+        this.formPasarela = this.formBuilder.group({
+            tarjeta:['',Validators.required, Validators.minLength(16), Validators.maxLength(16)],
+            titular:['',Validators.required],
+            mes:['',Validators.required],
+            year:['',Validators.required],
+            codSeguridad:['',Validators.required, Validators.minLength(3), Validators.maxLength(3) ],
+            monto:['',Validators.required]
+        });
+    }
 
+    get f() {return this.formPasarela.controls;}
 
-    //responsePago : ResponsePago;
+    pasarela: Pasarela = null;
 
-
-    
-
-    constructor(private _pasarelaServive: PasarelaServicios, private _router: Router){
+    constructor(private _pasarela: PasarelaServicios , private _router: Router, private formBuilder: FormBuilder){
         this.pasarela = <Pasarela>{
             NumeroTarjeta:"",
             TipoTarjeta:"",
@@ -39,7 +51,11 @@ export class PasarelaComponent {
     message: string = "";
 
     ingresePasarela(): void{
-       
+        this.submitted = true;
+
+        if(this.formPasarela.invalid){
+            return;
+        }else{  
         this._pasarelaServive.ingresePasarela(this.pasarela)
         .subscribe(
             data => {
@@ -66,7 +82,6 @@ export class PasarelaComponent {
                 
             }
         );
-     
-    }
+
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+
+    import { Component, OnInit } from '@angular/core';
 import { Usuario } from './usuario';
 import { UsuarioServicios } from './servicio.usuario';
 //import * as $ from 'jquery'
