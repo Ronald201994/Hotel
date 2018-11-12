@@ -1,19 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {HabitacionServicio } from './servicio.habitacion';
 import {Habitacion } from './habitacion';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
     selector: 'app-habitacionPrecio',
     templateUrl: './buscarHabitacionByPrecio.html',
     styleUrls: ['./habitaciones.css']
 })
-export class BuscarHabitacionByPrecioComponent {
+export class BuscarHabitacionByPrecioComponent implements OnInit {
+    formBuscarByPrice: FormGroup;
+    submitted = false;
+
+    ngOnInit(): void {
+        this.formBuscarByPrice = this.formBuilder.group({
+            precio1: ['', Validators.required],
+            precio2: ['', Validators.required]
+        });
+    }
+
+    // convenience getter for easy access to form fields
+    get f() { return this.formBuscarByPrice.controls; } 
     habitaciones : Habitacion[];
     precio1 : number;
     precio2 : number;
     
-    constructor(private _habitacionServicio: HabitacionServicio, private _router : Router, private route: ActivatedRoute ){
+    constructor(private formBuilder: FormBuilder, private _habitacionServicio: HabitacionServicio, private _router : Router, private route: ActivatedRoute ){
         this.precio1 = this.route.snapshot.params.precio1;
         this.precio2 = this.route.snapshot.params.precio2;
 

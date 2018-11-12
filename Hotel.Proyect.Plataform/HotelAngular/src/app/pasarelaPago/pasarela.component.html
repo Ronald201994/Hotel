@@ -96,7 +96,7 @@ THE SOFTWARE.
                                 <div class="form-group">
                                     <label for="cardCVC">EXPIRACIÓN MES</label>
                                     <input [(ngModel)]="pasarela.MesExpiracionTarjeta" [ngModelOptions]="{standalone: true}"
-                                        type="tel" class="form-control" name="cardCVC" placeholder="" autocomplete="cc-csc"
+                                        type="tel" class="form-control" name="cardCVC" placeholder="" 
                                         required />
                                 </div>
                             </div>
@@ -104,18 +104,18 @@ THE SOFTWARE.
                                 <div class="form-group">
                                     <label for="cardCVC">EXPIRACIÓN AÑO</label>
                             
-                                    <input [(ngModel)]="pasarela.AniooExpiracionTarjeta" [ngModelOptions]="{standalone: true}"
-                                        TitularTarjeta type="tel" class="form-control" name="cardCVC" placeholder=""
-                                        autocomplete="cc-csc" required />
+                                    <input [(ngModel)]="pasarela.AnioExpiracionTarjeta" [ngModelOptions]="{standalone: true}"
+                                        type="tel" class="form-control" name="cardCVC" placeholder=""
+                                         required /> 
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label [(ngModel)]="pasarela.NumeroTarjeta" [ngModelOptions]="{standalone: true}"
+                                    <label 
                                         for="couponCode">CÓDIGO DE SEGURIDAD</label>
-                                    <input TitularTarjeta type="text" class="form-control" placeholder="Código seguridad" name="couponCode" />
+                                    <input [(ngModel)]="pasarela.CodigoSeguridadTarjeta" [ngModelOptions]="{standalone: true}" TitularTarjeta type="text" class="form-control" placeholder="Código seguridad" name="couponCode" />
                                 </div>
                             </div>
                         </div>
@@ -123,13 +123,13 @@ THE SOFTWARE.
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="montoConsumir">MONTO A CONSUMIR</label>
-                                    <input TitularTarjeta type="text" class="form-control" placeholder="Monto a consumir" name="couponCode" />
+                                    <input [(ngModel)]="pasarela.MontoConsumir" [ngModelOptions]="{standalone: true}" TitularTarjeta type="text" class="form-control" placeholder="Monto a consumir" name="couponCode" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-lg btn-primary" type="button">Realizar pago</button>
+                                <button (click)="ingresePasarela()" class="btn btn-lg btn-primary" type="button">Realizar pago</button>
                             </div>
                         </div>
                         <div class="row" style="display:none;">

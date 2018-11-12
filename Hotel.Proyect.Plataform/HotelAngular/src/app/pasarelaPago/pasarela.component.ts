@@ -18,7 +18,7 @@ export class PasarelaComponent {
             CodigoSeguridadTarjeta:"",
             TitularTarjeta:"",
             MesExpiracionTarjeta:"",
-            AñoExpiracionTarjeta:"", 
+            AnioExpiracionTarjeta:"", 
             MontoConsumir:""
         };
     }

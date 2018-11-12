@@ -69,10 +69,7 @@ export class ReservaHabitacionComponent implements OnInit{
 
         //this.usuario = _loginService.getUserLoggedIn(); //Usar para localStorage con más lelvel
         _loginService.getUserLoggedIn();
-
-       
         
-
         this.reservaHabitacion = <ReservaHabitacion>{
             IdHabitacion: this.idHabitacionStorage,
             IdUsuario: this.idUser,
