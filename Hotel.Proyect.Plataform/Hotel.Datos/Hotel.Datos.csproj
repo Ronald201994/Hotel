@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentsDatos.cs" />
     <Compile Include="TarjetaDatos.cs" />
-    <Compile Include="ForoDatos.cs" />
     <Compile Include="UsuarioDatos.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="HabitacionDatos.cs" />

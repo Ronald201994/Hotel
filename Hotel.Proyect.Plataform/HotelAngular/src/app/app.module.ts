@@ -10,6 +10,8 @@ import { ListarHabitacionesComponent } from './habitacion/listarHabitaciones';
 import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.component';
 import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
+//foro
+import { RegistrarCommentsComponent } from './comments/registrarComments.Component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { UsuarioServicios } from './usuario/servicio.usuario';
@@ -18,6 +20,8 @@ import { LoginService } from './login/login.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ComidaComponent } from './comida/comida.component';
 import { ReactiveFormsModule } from '@angular/forms';
+//foro
+import { CommentsServicio } from './comments/servicio.comments';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -39,7 +43,8 @@ import { MatNativeDateModule } from '@angular/material';
     RegistrarUsuarioComponent,
     ReservaHabitacionComponent,
     LoginComponent,
-    ComidaComponent
+    ComidaComponent,
+    RegistrarCommentsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,8 @@ import { MatNativeDateModule } from '@angular/material';
       {path: 'detalleHabitacion/:id', component: DetalleHabitacionComponent},
       {path: 'registrarUsuario', component: RegistrarUsuarioComponent},
       {path: 'buscarHabitacion/:precio1/:precio2', component: BuscarHabitacionByPrecioComponent},
-      {path: 'login', component: LoginComponent}
+      {path: 'login', component: LoginComponent},
+      {path: 'registrarComments', component: RegistrarCommentsComponent }
       //{path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
@@ -74,7 +80,8 @@ import { MatNativeDateModule } from '@angular/material';
     HabitacionServicio,
     ReservaHabitacionServicio,
     LoginService,
-    UsuarioServicios
+    UsuarioServicios,
+    CommentsServicio
   ],
   bootstrap: [AppComponent] 
 })

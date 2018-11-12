@@ -121,13 +121,6 @@ CREATE TABLE ReservaHabitacion
 )
 GO
 
-CREATE TABLE Foro 
-(
-idComentario INT PRIMARY KEY not null,
-descripcion VARCHAR(200) not null,
-idUsuario INT REFERENCES Usuario
-)
-go
 
 --ReservaHabitacion
 /*INSERT INTO ReservaHabitacion VALUES('12/12/2018','15/12/2018',2,1)
@@ -138,6 +131,38 @@ INSERT INTO ReservaHabitacion VALUES('12/01/2019','22/01/2019',2,2)*/
 
 SELECT * FROM ReservaHabitacion
 GO
+
+
+CREATE TABLE Comments (
+idComments int identity (1,1) primary key,
+descripcion VARCHAR(500) NOT NULL,
+idUsuario int REFERENCES Usuario
+)
+
+--PROCEDIMIENTO COMENTARIO
+CREATE PROCEDURE SP_RegistrarComments
+(
+	@usuario VARCHAR(50),
+	@desripcion VARCHAR(200)
+)
+AS
+BEGIN
+	 SELECT U.nombre, C.descripcion
+	 FROM Comments AS C inner join Usuario AS U
+	 ON C.idUsuario = U.idUsuario
+END
+GO
+
+
+CREATE PROCEDURE SP_ListarCommentas
+AS
+BEGIN
+	SELECT *
+	FROM Comments
+END
+GO
+
+
 
 /* INICIO-----  METODO DE PAGO -----INICIO*/
 create table tp_TipoTarjeta(
@@ -333,5 +358,28 @@ BEGIN
 END
 
 EXECUTE SP_LoginUsuario 'eren@gmail.com', 'eren123'             
+GO
+
+--Registrar Comentario
+CREATE PROCEDURE SP_RegistrarComments
+(
+	@descripcion varchar(500),
+	@idUsuario int
+)
+AS
+BEGIN
+	 INSERT INTO Comments(descripcion, idUsuario)
+	 VALUES(@descripcion, @idUsuario)
+END
+GO
+
+--Listar Comentario
+CREATE PROCEDURE SP_ListarComments
+AS
+BEGIN
+	SELECT U.nombre AS Usuario, C.descripcion AS Descripcion
+	FROM Comments AS C INNER JOIN Usuario AS U
+	ON U.idUsuario = C.idUsuario
+END
 GO
 
