@@ -33,9 +33,9 @@ THE SOFTWARE.
 
 <!-- If you're using Stripe for payments -->
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<!--<li *ngFor="let item of mensaje">
+<li *ngFor="let item of mensaje">
         {{item.TransaccionMensaje}}
-      </li> -->
+      </li>
 
 <div class="container text-center" style="margin-top: 30px">
 
@@ -45,7 +45,7 @@ THE SOFTWARE.
         <div class="col-lg-4 col-lg-offset-4">
             <legend style="text-align: center">{{message}}</legend>
 
-            <!-- CREDIT CARD FORM STARTS HERE {} -->
+            <!-- CREDIT CARD FORM STARTS HERE -->
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table"> 
                     <div class="row display-tr">
@@ -61,15 +61,11 @@ THE SOFTWARE.
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="cardNumber">NÚMERO DE TARJETA</label>
-                                    <br>
                                     <div class="input-group">
                                         <input [(ngModel)]="pasarela.NumeroTarjeta" [ngModelOptions]="{standalone: true}"
-                                            type="tel" formControlName="tarjeta" class="form-control" [ngClass]="{'is-invalid': submitted && f.tarjeta.errors}" name="Número de tarjeta" placeholder="Valid Card Number"
+                                            type="tel" class="form-control" name="Número de tarjeta" placeholder="Valid Card Number"
                                             autocomplete="cc-number" required autofocus />
-                                        <div *ngIf="submitted && f.tarjeta.errors" class="invalid-feedback" style="margin-top: -15px">
-                                            <div *ngIf="f.tarjeta.errors.required">Ingrese nro de tarjeta</div>
-                                        </div>
-                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>                                        
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -78,13 +74,8 @@ THE SOFTWARE.
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-
-                                    <label for="couponCode">TIPO TARJETA</label>                          
-                                    <select class="form-control" style="width: 155px; height: 32px;" class="col-lg-4 col-lg-offset-4" >
-
                                     <label for="couponCode">TIPO TARJETA</label>
                                     <select [(ngModel)]="pasarela.TipoTarjeta" [ngModelOptions]="{standalone: true}" class="form-control" style="width: 155px; height: 32px;" class="col-lg-4 col-lg-offset-4">
-
                                         <option>Visa</option>
                                         <option>Discover</option>                            
                                         <option>Mastercard</option>
@@ -98,12 +89,8 @@ THE SOFTWARE.
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="couponCode">TITULAR</label>
-                                   
                                     <input [(ngModel)]="pasarela.TitularTarjeta" [ngModelOptions]="{standalone: true}"
-                                        type="text" formControlName="titular" class="form-control" [ngClass]="{'is-invalid': submitted && f.titular.errors}" name="couponCode" placeholder="Titular" />
-                                    <div *ngIf="submitted && f.titular.errors" class="invalid-feedback" style="margin-top: -15px">
-                                        <div *ngIf="f.titular.errors.required">Ingrese titular de la tarjeta</div>
-                                    </div>    
+                                        type="text" class="form-control" name="couponCode" placeholder="Titular" />
                                 </div>
                             </div>
                         </div>
@@ -111,25 +98,18 @@ THE SOFTWARE.
                             <div class="col-xs-6 col-md-6 pull-right">
                                 <div class="form-group">
                                     <label for="cardCVC">EXPIRACIÓN MES</label>
-                            
                                     <input [(ngModel)]="pasarela.MesExpiracionTarjeta" [ngModelOptions]="{standalone: true}"
-                                        type="tel" formControlName="mes" class="form-control" [ngClass]="{'is-invalid': submitted && f.mes.errors}" name="cardCVC" placeholder="" 
+                                        type="tel" class="form-control" name="cardCVC" placeholder="" 
                                         required />
-                                    <div *ngIf="submitted && f.mes.errors" class="invalid-feedback" style="margin-top: -15px">
-                                        <div *ngIf="f.mes.errors.required">Ingrese mes de expiracion</div>
-                                    </div>    
                                 </div>
                             </div>
                             <div class="col-xs-6 col-md-6 pull-right">
                                 <div class="form-group">
                                     <label for="cardCVC">EXPIRACIÓN AÑO</label>
-                              
+                            
                                     <input [(ngModel)]="pasarela.AnioExpiracionTarjeta" [ngModelOptions]="{standalone: true}"
-                                        type="tel" formControlName="year" class="form-control" [ngClass]="{'is-invalid': submitted && f.year.errors}" name="cardCVC" placeholder=""
-                                         required />
-                                    <div *ngIf="submitted && f.year.errors" class="invalid-feedback" style="margin-top: -15px">
-                                        <div *ngIf="f.year.errors.required">Ingrese año de expiracion</div>
-                                    </div>      
+                                        type="tel" class="form-control" name="cardCVC" placeholder=""
+                                         required /> 
                                 </div>
                             </div>
                         </div>
@@ -138,12 +118,7 @@ THE SOFTWARE.
                                 <div class="form-group">
                                     <label 
                                         for="couponCode">CÓDIGO DE SEGURIDAD</label>
-                            
-                                    <input [(ngModel)]="pasarela.CodigoSeguridadTarjeta" [ngModelOptions]="{standalone: true}" TitularTarjeta 
-                                        type="text" formControlName="codSeguridad" class="form-control" [ngClass]="{'is-invalid': submitted && f.codSeguridad.errors}" placeholder="Código seguridad" name="couponCode" />
-                                    <div *ngIf="submitted && f.codSeguridad.errors" class="invalid-feedback" style="margin-top: -15px">
-                                        <div *ngIf="f.codSeguridad.errors.required">Ingrese cvc</div>
-                                    </div>
+                                    <input [(ngModel)]="pasarela.CodigoSeguridadTarjeta" [ngModelOptions]="{standalone: true}" TitularTarjeta type="text" class="form-control" placeholder="Código seguridad" name="couponCode" />
                                 </div>
                             </div>
                         </div>
@@ -151,12 +126,7 @@ THE SOFTWARE.
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="montoConsumir">MONTO A CONSUMIR</label>
-                             
-                                    <input [(ngModel)]="pasarela.MontoConsumir" [ngModelOptions]="{standalone: true}" TitularTarjeta 
-                                        type="text" formControlName="monto" class="form-control" [ngClass]="{'is-invalid': submitted && f.monto.errors}" placeholder="Monto a consumir" name="couponCode" />
-                                    <div *ngIf="submitted && f.monto.errors" class="invalid-feedback" style="margin-top: -15px">
-                                        <div *ngIf="f.monto.errors.required">Ingrese monto</div>
-                                    </div>
+                                    <input [(ngModel)]="pasarela.MontoConsumir" [ngModelOptions]="{standalone: true}" TitularTarjeta type="text" class="form-control" placeholder="Monto a consumir" name="couponCode" />
                                 </div>
                             </div>
                         </div>
@@ -171,7 +141,7 @@ THE SOFTWARE.
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> 
             </div>
             <!-- CREDIT CARD FORM ENDS HERE -->
 
