@@ -59,7 +59,7 @@
             [routerLink]="">Salir</button>-->
         </li>
         <li class="nav-item">
-            <button *ngIf="salirButton" style="color: white" mat-button class="colorButon" [routerLink]="['/pago']">Salir</button>
+            <button (click)="salir()" *ngIf="salirButton" style="color: white" mat-button class="colorButon" [routerLink]="['/home']">Salir</button>
         </li>
       </ul>
     </div>

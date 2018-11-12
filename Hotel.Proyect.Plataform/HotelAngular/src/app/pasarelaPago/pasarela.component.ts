@@ -61,7 +61,7 @@ export class PasarelaComponent {
 
                 }
                 else{
-                    swal(this.message, this.messageAler, 'info');
+                    swal(this.message, this.messageAler, 'info'); 
                 }
                 
             }
