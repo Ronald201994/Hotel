@@ -12,8 +12,10 @@ export class UsuarioServicios {
     constructor(private _http: Http) {
             
     }
+    
 
     usuario: Usuario = null;
+
 
     ingreseUsuario (usuario: Usuario): Observable<Usuario> {
         var body ={
@@ -29,6 +31,8 @@ export class UsuarioServicios {
         return request.pipe(map((response: Response) => <Usuario> response.json()),
         catchError(error => {
             return throwError("Server Error");
+
+
         })
       )
     }
