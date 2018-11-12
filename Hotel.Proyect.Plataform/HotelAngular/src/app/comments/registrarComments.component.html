@@ -1,0 +1,82 @@
+<div class="card" style="margin: 0 auto; width: 500px; margin-top: 100px">
+    <form class="example-form">
+        <div class="container-fluid bg-grey">
+            <h2></h2>
+            <div class="row">
+        
+              <div class="col-sm-12">
+                <div class="row">
+
+                  <div class="col-sm-12 form-group">
+                    <input class="form-control" placeholder="Nombre" type="text" required [(ngModel)]="comments.Usuario" [ngModelOptions]="{standalone: true}">
+                  </div>
+
+                </div>
+                <textarea class="form-control" placeholder="Comentario" rows="5" [(ngModel)]="comments.Descripcion" [ngModelOptions]="{standalone: true}" >
+
+                </textarea><br>
+                <div class="row">
+                  <div>
+                        <button mat-button class="colorButon" style="margin-left: 60px; background-color: rgb(203, 220, 243)" (click)="registrarComments()">Publicar</button>
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>  
+    </form>
+
+<!--<div class="titleBox">
+    <label>Comentario</label>
+        <button type="button" class="close" aria-hidden="true">&times;</button>
+            </div>
+            <div class="actionBox">
+                <ul class="commentList">
+                   
+                    <li>
+                        <div class="commenterImage">
+                          <img src="http://placekitten.com/50/50" />
+                        </div>
+                        <div class="commentText">
+                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+        
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="commenterImage">
+                          <img src="http://placekitten.com/45/45" />
+                        </div>
+                        <div class="commentText">
+                            <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
+        
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="commenterImage">
+                          <img src="http://placekitten.com/40/40" />
+                        </div>
+                        <div class="commentText">
+                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+        
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
+ </div>-->
+
+ <table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let habitacion of habitaciones">
+            <td>{{comments.Usuario}}</td>
+            <td>{{comments.Descripcion}}</td>
+    </tbody>
+
+
