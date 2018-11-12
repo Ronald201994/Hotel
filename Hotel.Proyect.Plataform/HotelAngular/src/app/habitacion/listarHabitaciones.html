@@ -20,11 +20,11 @@
         <div>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12 col-md-offset-4">
-                            <form class="form-inline" method="post" [formGroup]="formBuscarByPrice">
+                    <form  method="post" [formGroup]="formBuscarByPrice">
 
-                                <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-3">
+                                <div>
                                     <label for="fromdate">&emsp;PRECIO1 : </label>
                                     <input formControlName="precio1" [ngClass]="{ 'is-invalid': submitted && f.precio1.errors }"
                                         [(ngModel)]="precio1" [ngModelOptions]="{standalone: true}" class="form-control"
@@ -33,8 +33,10 @@
                                         <div *ngIf="f.precio1.errors.required">Precio 1 es requerido</div>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
+                            </div>
+                            
+                            <div class="col-md-2">
+                                <div>
                                     <label for="todate">&emsp;PRECIO2: </label>
                                     <input formControlName="precio2" [ngClass]="{ 'is-invalid': submitted && f.precio2.errors }"
                                         [(ngModel)]="precio2" [ngModelOptions]="{standalone: true}" class="form-control"
@@ -43,14 +45,15 @@
                                         <div *ngIf="f.precio2.errors.required">Precio 2 es requerido</div>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    &emsp;&emsp;&emsp;<button style="background-color: rgb(124,77,255);color: #fff"
+                            </div>
+                            
+                            <div class="col-md-2">
+                                    <button style="width: 100%; margin-top: 24px; background-color: rgb(124,77,255);color: #fff"
                                         type="submit" id="search" class="btn btn-default" (click)="irMetodoToGetListadoHabitacionByPrice(precio1, precio2)">SEARCH</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+
+                    </form>
                 </div>
             </div>
         </div>
