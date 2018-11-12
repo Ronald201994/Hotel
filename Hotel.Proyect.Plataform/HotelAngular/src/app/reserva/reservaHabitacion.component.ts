@@ -100,4 +100,8 @@ export class ReservaHabitacionComponent implements OnInit{
     irToListarHabitaciones(){
         this._router.navigate(['/listarHabitaciones']);
     }
+
+    irToPagar(){
+        this._router.navigate(['/pago']);
+    }
 }

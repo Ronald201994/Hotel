@@ -19,6 +19,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ComidaComponent } from './comida/comida.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PasarelaComponent } from './pasarelaPago/pasarela.component';
+import { PasarelaServicios } from './pasarelaPago/servicio.pasarela';
 
 
 //Animations
@@ -41,7 +43,8 @@ import { MatNativeDateModule } from '@angular/material';
     RegistrarUsuarioComponent,
     ReservaHabitacionComponent,
     LoginComponent,
-    ComidaComponent
+    ComidaComponent,
+    PasarelaComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ import { MatNativeDateModule } from '@angular/material';
       {path: 'appComponent', component: AppComponent},
       {path: 'home', component: HomeComponent},
       {path: 'comida', component: ComidaComponent},
+      {path: 'pago', component: PasarelaComponent},
       {path: 'listarHabitaciones', component: ListarHabitacionesComponent},
       {path: 'reservaHabitacion', component: ReservaHabitacionComponent},
       {path: 'reservaHabitacion/:id', component: ReservaHabitacionComponent},
@@ -77,7 +81,8 @@ import { MatNativeDateModule } from '@angular/material';
     HabitacionServicio,
     ReservaHabitacionServicio,
     LoginService,
-    UsuarioServicios
+    UsuarioServicios,
+    PasarelaServicios
   ],
   bootstrap: [AppComponent] 
 })
