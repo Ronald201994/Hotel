@@ -74,6 +74,7 @@ namespace Hotel.Datos
                 while (dr.Read())
                 {
                     Habitacion habitacion = new Habitacion();
+                    habitacion.ID = Convert.ToInt32(dr["ID"]);
                     habitacion.Nombre = Convert.ToString(dr["Nombre"]);
                     habitacion.Descripcion = Convert.ToString(dr["Descripcion"]);
                     habitacion.Estado = Convert.ToString(dr["Estado"]);

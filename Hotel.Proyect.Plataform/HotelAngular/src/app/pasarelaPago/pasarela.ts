@@ -4,6 +4,6 @@ export class Pasarela {
     CodigoSeguridadTarjeta: string;
     TitularTarjeta: string;
     MesExpiracionTarjeta: string;
-    AñoExpiracionTarjeta: string;
+    AnioExpiracionTarjeta: string;
     MontoConsumir: string;
 }

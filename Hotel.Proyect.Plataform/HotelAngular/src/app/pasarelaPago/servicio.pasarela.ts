@@ -19,7 +19,7 @@ export class PasarelaServicios {
             codigoSeguridadTarjeta : pasarela.CodigoSeguridadTarjeta,
             titularTarjeta : pasarela.TitularTarjeta,
             mesExpiracionTarjeta : pasarela.MesExpiracionTarjeta,
-            añoExpiracionTarjeta : pasarela.AñoExpiracionTarjeta,
+            añoExpiracionTarjeta : pasarela.AnioExpiracionTarjeta,
             montoConsumir : pasarela.MontoConsumir
         };
 
