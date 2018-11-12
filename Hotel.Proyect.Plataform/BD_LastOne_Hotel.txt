@@ -138,9 +138,12 @@ idComments int identity (1,1) primary key,
 descripcion VARCHAR(500) NOT NULL,
 idUsuario int REFERENCES Usuario
 )
+GO
+
+
 
 --PROCEDIMIENTO COMENTARIO
-CREATE PROCEDURE SP_RegistrarComments
+/*CREATE PROCEDURE SP_RegistrarComments
 (
 	@usuario VARCHAR(50),
 	@desripcion VARCHAR(200)
@@ -160,7 +163,7 @@ BEGIN
 	SELECT *
 	FROM Comments
 END
-GO
+GO*/
 
 
 
@@ -232,9 +235,6 @@ GO
 
 exec sp_GetTarjetaByInfo 1,'1234567812345678', 'Eren Jaegger' , '111', '01', '2021'
 GO
-
-SELECT * FROM 
-
 
 /* FIN-----  METODO DE PAGO -----FIN*/
 
@@ -373,6 +373,9 @@ BEGIN
 END
 GO
 
+SELECT * FROM Comments
+GO
+
 --Listar Comentario
 CREATE PROCEDURE SP_ListarComments
 AS
@@ -381,5 +384,8 @@ BEGIN
 	FROM Comments AS C INNER JOIN Usuario AS U
 	ON U.idUsuario = C.idUsuario
 END
+GO
+
+EXECUTE SP_ListarComments
 GO
 
