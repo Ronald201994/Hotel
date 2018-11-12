@@ -4,7 +4,8 @@ import { Pasarela } from './pasarela';
 
 @Component({
     selector : '',
-    templateUrl: './pasarela.component.html'
+    templateUrl: './pasarela.component.html',
+    styleUrls: ['./pago.css']
 })
 
 export class PasarelaComponent { 
@@ -17,7 +18,7 @@ export class PasarelaComponent {
             CodigoSeguridadTarjeta:"",
             TitularTarjeta:"",
             MesExpiracionTarjeta:"",
-            AñoExpiracionTarjeta:"",
+            AñoExpiracionTarjeta:"", 
             MontoConsumir:""
         };
     }
