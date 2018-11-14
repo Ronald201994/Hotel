@@ -10,8 +10,8 @@ namespace Hotel.Modelos
     {
         public int ID { get; set; }
 
-        public string descripcion { get; set; }
+        public string Descripcion { get; set; }
 
-        public string usuario { get; set; }
+        public string Usuario { get; set; }
     }
 }

@@ -1,48 +1,106 @@
-<div class="container">
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>Usuario</th>
-                <th>Descripcion</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let comentario of comentarios">
-                <td>{{comentario.Usuario}}</td>
-                <td>{{comentario.Descripcion}}</td>
-        </tbody>
-    </table>
-</div>
+<div class="container-fluid" style="max-width: 600px; text-align: center; margin-top: 30px">
+    <legend style="text-align: center">¿Qué le parece el servicio nuestro Hotel?</legend>
 
-<div class="card" style="margin: 0 auto; width: 500px; margin-top: 100px">
-    <form class="example-form">
-        <div class="container-fluid bg-grey">
-            <h2></h2>
-            <div class="row">
+    <!--<div class="detailBox" *ngFor="let comentario of comentarios">
+        <div class="titleBox">
+            <label>Comment Box</label>
+            <button type="button" class="close" aria-hidden="true">&times;</button>
+        </div>
+        <div class="commentBox">
 
-                <div class="col-sm-12">
-                    <div class="row">
 
-                        <div class="col-sm-12 form-group">
-                            <input class="form-control" placeholder="Nombre" type="text" required [(ngModel)]="comments.Usuario"
-                                [ngModelOptions]="{standalone: true}">
-                        </div>
+            <p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <div class="actionBox">
+            <ul class="commentList">
+                <li>
+                    <div class="commenterImage">
+                        <img src="http://lorempixel.com/50/50/people/6" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">{{comentario.Descripcion}}</p> <span class="date sub-text">{{comentario.Usuario}}</span>
 
                     </div>
-                    <textarea class="form-control" placeholder="Comentario" rows="5" [(ngModel)]="comments.Descripcion"
-                        [ngModelOptions]="{standalone: true}">
+                </li>
 
-                </textarea><br>
-                    <div class="row">
-                        <div>
-                            <button mat-button class="colorButon" style="margin-left: 60px; background-color: rgb(203, 220, 243)"
-                                (click)="registrarComments()">Publicar</button>
+                <li>
+                    <div class="commenterImage">
+                        <img src="http://lorempixel.com/50/50/people/7" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">Hello this is a test comment and this comment is particularly very long and it goes
+                            on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="commenterImage">
+                        <img src="http://lorempixel.com/50/50/people/9" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">{{comentario.Descripcion}}</p> <span class="date sub-text">{{comentario.Usuario}}</span>
+
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Your comments" />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>-->
+
+    <div>
+        <form class="example-form">
+            <div class="container-fluid bg-grey">
+                <h2></h2>
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="row">
+
+                            <div class="col-sm-12 form-group">
+                                <input class="form-control" placeholder="Nombre" type="text" required [(ngModel)]="comments.Usuario"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+
+                        </div>
+                        <textarea class="form-control" placeholder="Comentario" rows="5" [(ngModel)]="comments.Descripcion"
+                            [ngModelOptions]="{standalone: true}">
+
+                         </textarea><br>
+                        <div class="row">
+                            <div class="col-lg-4 col-lg-offset-4">
+                                <button mat-button class="btn btn-primary"
+                                    (click)="registrarComments()">Publicar</button>
+                            </div><br><br><br>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
+
+    <div>
+        <table class="table table-striped table-hover" style="text-align: center">
+            <thead>
+                <tr>
+                    <th style="text-align: center">Usuario</th>
+                    <th style="text-align: center">Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let comentario of comentarios">
+                    <td>{{comentario.Usuario}}</td>
+                    <td>{{comentario.Descripcion}}</td>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

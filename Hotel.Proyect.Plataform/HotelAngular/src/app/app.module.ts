@@ -69,6 +69,7 @@ import { MatNativeDateModule } from '@angular/material';
       {path: 'home', component: HomeComponent},
       {path: 'comida', component: ComidaComponent},
       {path: 'pago', component: PasarelaComponent},
+      {path: 'comentarios', component: RegistrarCommentsComponent},
       {path: 'listarHabitaciones', component: ListarHabitacionesComponent},
       {path: 'reservaHabitacion', component: ReservaHabitacionComponent},
       {path: 'reservaHabitacion/:id', component: ReservaHabitacionComponent},

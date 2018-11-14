@@ -5,6 +5,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
+
 <div class="container" style="margin-top: 30px">
 	<form class="form-horizontal" [formGroup]="formReservaHabitacion">
 		<legend style="text-align: center">Reserva tu habitación</legend>
@@ -47,15 +48,15 @@
 					<input id="name" name="name" type="text" placeholder="" disabled="disabled" class="form-control input-md" required=""
 					 [(ngModel)]="reservaHabitacion.NumerHabitacion" [ngModelOptions]="{standalone: true}">
 				</div>
-			</div> 
+			</div>
 		</div>
 
 		<div class="form-group">
 			<label class="col-md-5 control-label" for="name">Fecha ingreso</label>
 			<div class="col-md-5">
 				<mat-form-field>
-					<input [(ngModel)]="reservaHabitacion.FechaIngreso"
-					 [ngModelOptions]="{standalone: true}" required="" matInput [matDatepicker]="picker" placeholder="Escoge una fecha">
+					<input [(ngModel)]="reservaHabitacion.FechaIngreso" [ngModelOptions]="{standalone: true}" required="" matInput
+					 [matDatepicker]="picker" placeholder="Escoge una fecha">
 					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 					<mat-datepicker #picker></mat-datepicker>
 				</mat-form-field>
@@ -82,7 +83,8 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label"></label>
 			<div class="col-md-4">
-				<button (click)="registrarReservaHabitacion()" mat-button class="colorButon" class="btn btn-primary" style="width: 168px" style="margin-left: 60px;">RESERVAR</button>
+				<button (click)="registrarReservaHabitacion()" mat-button class="colorButon" class="btn btn-primary" style="width: 168px"
+				 style="margin-left: 60px;">RESERVAR</button>
 			</div>
 		</div>
 		<!--<div class="form-group" style="margin-right: -100px">
@@ -231,3 +233,346 @@
 	</div>
     </div>
 </div>-->
+
+<!-- MULTI FORMULARIO -->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<div class="container-fluid" style="max-width: 1500px;">
+
+	<div class="stepwizard col-md-offset-3">
+		<div class="stepwizard-row setup-panel">
+			<div class="stepwizard-step">
+				<a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+				<p>Paso 1</p>
+			</div>
+			<div class="stepwizard-step">
+				<a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+				<p>Paso 2</p>
+			</div>
+			<div class="stepwizard-step">
+				<a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+				<p>Paso 3</p>
+			</div>
+		</div>
+	</div>
+	<form class="form-horizontal" [formGroup]="formReservaHabitacion" role="form" action="" method="post">
+		<div class="row setup-content" id="step-1">
+				<div class="container">
+			<div class="form-group" style="margin-right: -100px">
+				<label class="col-md-4 control-label"></label>
+				<div class="col-md-4">
+					<button class="btn btn-primary nextBtn pull-right" style="width: 168px; margin-right: 70px" type="button">Continuar</button>
+				</div>
+			</div>
+		</div>
+
+			<!--<div class="col-xs-6 col-md-offset-3">
+				<div class="col-md-12">
+					<h3>Paso 1</h3>
+					<div class="form-group">
+						<label class="control-label">First Name</label>
+						<input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter First Name" />
+					</div>
+					<div class="form-group">
+						<label class="control-label">Last Name</label>
+						<input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name" />
+					</div>
+					<div class="form-group">
+						<label class="control-label">Address</label>
+						<textarea required="required" class="form-control" placeholder="Enter your address"></textarea>
+					</div>
+					<button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+				</div>
+			</div>-->
+		</div>
+		<div class="row setup-content" id="step-2">
+			<div class="container" style="margin-top: 30px">
+
+				<legend style="text-align: center">Reserva tu habitación</legend>
+
+				<div class="form-group">
+					<label class="col-md-5 control-label">Nombre cliente</label>
+					<div class="col-md-5 inputGroupContainer">
+						<div class="input-group">
+							<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+							<input id="name" name="name" type="text" placeholder="" disabled="disabled" class="form-control input-md"
+							 required="" [(ngModel)]="reservaHabitacion.NombreUsurario" [ngModelOptions]="{standalone: true}">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-5 control-label" for="emailaddress">Apellido Paterno</label>
+					<div class="col-md-5 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							<input id="emailaddress" name="emailaddress" type="text" placeholder="" disabled="disabled" class="form-control input-md"
+							 required="" [(ngModel)]="reservaHabitacion.ApePatUsurario" [ngModelOptions]="{standalone: true}">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-5 control-label" for="phone">Apellido Materno</label>
+					<div class="col-md-5 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							<input id="phone" name="phone" type="text" placeholder="" disabled="disabled" class="form-control input-md"
+							 required="" [(ngModel)]="reservaHabitacion.ApeMatUsurario" [ngModelOptions]="{standalone: true}">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-5 control-label" for="name">N° Habitación</label>
+					<div class="col-md-5 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fas fa-home"></i></span>
+							<input id="name" name="name" type="text" placeholder="" disabled="disabled" class="form-control input-md"
+							 required="" [(ngModel)]="reservaHabitacion.NumerHabitacion" [ngModelOptions]="{standalone: true}">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-5 control-label" for="name">Fecha ingreso</label>
+					<div class="col-md-5">
+						<mat-form-field>
+							<input [(ngModel)]="reservaHabitacion.FechaIngreso" [ngModelOptions]="{standalone: true}" required="" matInput
+							 [matDatepicker]="picker" placeholder="Escoge una fecha">
+							<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+							<mat-datepicker #picker></mat-datepicker>
+						</mat-form-field>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-5 control-label" for="name">Fecha salida</label>
+					<div class="col-md-5">
+						<mat-form-field>
+							<input [(ngModel)]="reservaHabitacion.FechaSalida" [ngModelOptions]="{standalone: true}" required="Fecha salida es requerido"
+							 matInput [matDatepicker]="picker1" placeholder="Escoge una fecha">
+							<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+							<mat-datepicker #picker1></mat-datepicker>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group" style="margin-right: -100px">
+					<label class="col-md-4 control-label"></label>
+					<div class="col-md-4">
+						<button class="btn btn-primary nextBtn pull-right" style="width: 168px; margin-right: 70px" type="button">Continuar</button>
+					</div>
+				</div>
+				<!--<div class="form-group" style="margin-right: -100px">
+									<label class="col-md-4 control-label"></label>
+									<div class="col-md-4">
+										<button (click)="irToListarHabitaciones()" mat-button class="colorButon" class="btn btn-primary" style="width: 168px">VER
+											HABITACIONES</button>
+									</div>
+								</div>-->
+				<div class="form-group" *ngIf="hidden">
+					<label class="col-md-5 control-label" for="name">Cod Habitacion</label>
+					<div class="col-md-5">
+						<input id="name" name="name" type="text" placeholder="" class="form-control input-md" required [(ngModel)]="reservaHabitacion.IdHabitacion"
+						 [ngModelOptions]="{standalone: true}">
+					</div>
+				</div>
+
+				<div class="form-group" *ngIf="hidden">
+					<label class="col-md-5 control-label" for="name">Cod Usuario</label>
+					<div class="col-md-5">
+						<input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="Es required"
+						 [(ngModel)]="reservaHabitacion.idUsuario" [ngModelOptions]="{standalone: true}">
+					</div>
+				</div>
+
+				<!--<div class="form-group">
+								<label class="col-md-4 control-label" for="tourselection">Tour</label>
+								<div class="col-md-4" style="max-width: 100%;">
+									<select id="tourselection" name="tourselection" class="form-control">
+										<option value="1">Charter Fishing Trip</option>
+										<option value="2">Booze Cruise</option>
+										<option value="3">Kayak per person</option>
+										<option value="4">Airboat</option>
+									</select>
+								</div>
+							</div>-->
+				<!--<div class="form-group">
+								<label class="col-md-5 control-label" for="airboatsize">Airboat Size</label>
+								<div class="col-md-5" style="max-width: 100%;">
+									<div class="radio">
+										<label for="airboatsize-0">
+											<input type="radio" name="airboatsize" id="airboatsize-0" value="1" checked="checked">
+											Small
+										</label>
+									</div>
+									<div class="radio">
+										<label for="airboatsize-1">
+											<input type="radio" name="airboatsize" id="airboatsize-1" value="2">
+											Large
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-5 control-label" for="quantity">Number of People</label>
+								<div class="col-md-5" style="max-width: 100%;">
+									<input id="quantity" name="quantity" type="text" placeholder="" class="form-control input-md">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-5 control-label" for="dateselection">Date</label>
+								<div class="col-md-5" style="max-width: 100%;">
+									<input id="dateselection" name="dateselection" type="text" placeholder="" class="form-control input-md">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-5 control-label" for="timeselect">Time</label>
+								<div class="col-md-5" style="max-width: 100%;">
+									<select id="timeselect" name="timeselect" class="form-control">
+										<option value="1">9:45a</option>
+										<option value="2">12p</option>
+										<option value="3">2p</option>
+										<option value="4">4p</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-5 control-label" for="hotel">Hotel Name</label>
+								<div class="col-md-5" style="max-width: 100%;">
+									<input id="hotel" name="hotel" type="text" placeholder="" class="form-control input-md">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-5 control-label" for="pickup">Hotel Pickup</label>
+								<div class="col-md-5" style="max-width: 100%;">
+									<label class="checkbox-inline" for="pickup-0">
+										<input type="checkbox" name="pickup" id="pickup-0" value="1">
+										Yes
+									</label>
+								</div>
+							</div>-->
+
+			</div>
+		</div>
+		<div class="row setup-content" id="step-3">
+			<div class="container text-center" style="margin-top: 30px">
+
+				<div class="row">
+					<!-- You can make it whatever width you want. I'm making it full width
+								 on <= small devices and 4/12 page width on >= medium devices -->
+					<div class="col-lg-4 col-lg-offset-4">
+						<legend style="text-align: center">{{message}}</legend>
+
+						<!-- CREDIT CARD FORM STARTS HERE -->
+						<div class="panel panel-default credit-card-box">
+							<div class="panel-heading display-table">
+								<div class="row display-tr">
+									<h3 class="panel-title display-td">Detalles pago</h3>
+									<div class="display-td">
+										<img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+								<form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="form-group">
+												<label for="cardNumber">NÚMERO DE TARJETA</label>
+												<div class="input-group">
+													<input [(ngModel)]="pasarela.NumeroTarjeta" [ngModelOptions]="{standalone: true}" type="tel" class="form-control"
+													 name="Número de tarjeta" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus />
+													<span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="form-group">
+												<label for="couponCode">TIPO TARJETA</label>
+												<select [(ngModel)]="pasarela.TipoTarjeta" [ngModelOptions]="{standalone: true}" class="form-control" style="width: 155px; height: 32px;"
+												 class="col-lg-4 col-lg-offset-4">
+													<option>Visa</option>
+													<option>Discover</option>
+													<option>Mastercard</option>
+												</select>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="form-group">
+												<label for="couponCode">TITULAR</label>
+												<input [(ngModel)]="pasarela.TitularTarjeta" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+												 name="couponCode" placeholder="Titular" />
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 col-md-6 pull-right">
+											<div class="form-group">
+												<label for="cardCVC">EXPIRACIÓN MES</label>
+												<input [(ngModel)]="pasarela.MesExpiracionTarjeta" [ngModelOptions]="{standalone: true}" type="tel" class="form-control"
+												 name="cardCVC" placeholder="" required />
+											</div>
+										</div>
+										<div class="col-xs-6 col-md-6 pull-right">
+											<div class="form-group">
+												<label for="cardCVC">EXPIRACIÓN AÑO</label>
+
+												<input [(ngModel)]="pasarela.AnioExpiracionTarjeta" [ngModelOptions]="{standalone: true}" type="tel" class="form-control"
+												 name="cardCVC" placeholder="" required />
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="form-group">
+												<label for="couponCode">CÓDIGO DE SEGURIDAD</label>
+												<input [(ngModel)]="pasarela.CodigoSeguridadTarjeta" [ngModelOptions]="{standalone: true}" TitularTarjeta
+												 type="text" class="form-control" placeholder="Código seguridad" name="couponCode" />
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="form-group">
+												<label for="montoConsumir">MONTO A CONSUMIR</label>
+												<input [(ngModel)]="pasarela.MontoConsumir" [ngModelOptions]="{standalone: true}" TitularTarjeta type="text"
+												 class="form-control" placeholder="Monto a consumir" name="couponCode" />
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<button (click)="ingresePasarela()" class="btn btn-primary" type="button">Realizar pago</button>
+										</div>
+									</div>
+									<div class="row" style="display:none;">
+										<div class="col-xs-12">
+											<p class="payment-errors"></p>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- CREDIT CARD FORM ENDS HERE -->
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+
+		</div>
+	</form>
+
+</div>

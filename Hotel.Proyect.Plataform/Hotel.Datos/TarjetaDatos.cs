@@ -13,9 +13,9 @@ namespace Hotel.Datos
     {
         SqlConnection conexion;
         //SqlDataAdapter comando;
-        SqlDataReader dr;
-        SqlCommand cmd;
-        String errores;
+       // SqlDataReader dr;
+        //SqlCommand cmd;
+       // String errores;
         Conexion cn = new Conexion();
 
         public TarjetaDatos()

@@ -34,8 +34,8 @@ namespace Hotel.Datos
                 while (dr.Read())
                 {
                     Comments comments = new Comments();
-                    comments.descripcion = Convert.ToString(dr["Descripcion"]);
-                    comments.usuario = Convert.ToString(dr["Usuario"]);
+                    comments.Descripcion = Convert.ToString(dr["Descripcion"]);
+                    comments.Usuario = Convert.ToString(dr["Usuario"]);
                     lista.Add(comments);
                 }
                 dr.Close();
@@ -69,8 +69,8 @@ namespace Hotel.Datos
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@descripcion", comments.descripcion);
-            cmd.Parameters.AddWithValue("@idUsuario", comments.usuario);
+            cmd.Parameters.AddWithValue("@descripcion", comments.Descripcion);
+            cmd.Parameters.AddWithValue("@idUsuario", comments.Usuario);
             cmd.ExecuteNonQuery();
 
             conexion.Close();

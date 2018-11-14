@@ -45,6 +45,7 @@ namespace Hotel.Negocios
                     else
                     {
                         ValidacionCorrecta = true;
+                        mensaje = "Usted realizò el pago";
                     }
                 }
                 
