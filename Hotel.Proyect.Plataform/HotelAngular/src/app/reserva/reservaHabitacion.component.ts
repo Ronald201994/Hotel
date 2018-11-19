@@ -5,21 +5,29 @@ import { ReservaHabitacionServicio } from './servicio.reservaHabitacion';
 import { Usuario } from '../login/usuario';
 import { LoginService } from '../login/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import swal from'sweetalert2';
+import swal from 'sweetalert2';
 import * as $ from 'jquery';
+import { HabitacionServicio } from '../habitacion/servicio.habitacion';
+import { Habitacion } from '../habitacion/habitacion';
+import { Pasarela } from '../pasarelaPago/pasarela';
+import { PasarelaServicios } from '../pasarelaPago/servicio.pasarela';
 
 @Component({
     selector: 'app-reserva-habitacion',
-    templateUrl: './reservaHabitacion.component.html' ,
+    templateUrl: './reservaHabitacion.component.html',
     styleUrls: ['./reservaHabitacion.component.css']
 })
-export class ReservaHabitacionComponent implements OnInit{
+export class ReservaHabitacionComponent implements OnInit {
+    pasarela: Pasarela = null;
+    mensaje = [];
+    messageAlertPago: string;
+
     model;
     formReservaHabitacion: FormGroup;
     submitted = false;
     messageAler: string;
 
-    id : number;
+    id: number;
     IdUsuario: number;
     fechaIngreso: string;
     fechaSalida: string;
@@ -35,22 +43,22 @@ export class ReservaHabitacionComponent implements OnInit{
     idHabitacionStorage: string;
     numHabitacion: string;
 
-    ngOnInit(): void{
+    ngOnInit(): void {
         this.formReservaHabitacion = this.formBuilder.group({
         });
 
         $(document).ready(function () {
             var navListItems = $('div.setup-panel div a'),
-                    allWells = $('.setup-content'),
-                    allNextBtn = $('.nextBtn');
-          
+                allWells = $('.setup-content'),
+                allNextBtn = $('.nextBtn');
+
             allWells.hide();
-          
+
             navListItems.click(function (e) {
                 e.preventDefault();
                 var $target = $($(this).attr('href')),
-                        $item = $(this);
-          
+                    $item = $(this);
+
                 if (!$item.hasClass('disabled')) {
                     navListItems.removeClass('btn-primary').addClass('btn-default');
                     $item.addClass('btn-primary');
@@ -59,28 +67,28 @@ export class ReservaHabitacionComponent implements OnInit{
                     $target.find('input:eq(0)').focus();
                 }
             });
-          
-            allNextBtn.click(function(){
+
+            allNextBtn.click(function () {
                 var curStep = $(this).closest(".setup-content"),
                     curStepBtn = curStep.attr("id"),
                     nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
                     curInputs = curStep.find("input[type='text'],input[type='url']"),
                     isValid = true;
-          
+
                 $(".form-group").removeClass("has-error");
-                for(var i=0; i<curInputs.length; i++){
-                    if (!curInputs[i].validity.valid){
+                for (var i = 0; i < curInputs.length; i++) {
+                    if (!curInputs[i].validity.valid) {
                         isValid = false;
                         $(curInputs[i]).closest(".form-group").addClass("has-error");
                     }
                 }
-          
+
                 if (isValid)
                     nextStepWizard.removeAttr('disabled').trigger('click');
             });
-          
+
             $('div.setup-panel div a.btn-primary').trigger('click');
-          });
+        });
     }
 
     // convenience getter for easy access to form fields
@@ -91,13 +99,49 @@ export class ReservaHabitacionComponent implements OnInit{
 
     startDate = new Date(1990, 0, 1);
 
+    idHabi: string;
+    idNumHabi: string;
+
+    habitaciones: Habitacion[];
     reservaHabitacion: ReservaHabitacion = null;
 
-    constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private _reservaHabitacionServicio: ReservaHabitacionServicio, 
-                private _router: Router, private _loginService: LoginService){
+    constructor(private _habitacionServicio: HabitacionServicio, private formBuilder: FormBuilder,
+        private route: ActivatedRoute, private _reservaHabitacionServicio: ReservaHabitacionServicio,
+        private _router: Router, private _loginService: LoginService, private _pasarelaServive: PasarelaServicios) {
+
+        this.pasarela = <Pasarela>{
+            NumeroTarjeta: "",
+            TipoTarjeta: "",
+            CodigoSeguridadTarjeta: "",
+            TitularTarjeta: "",
+            MesExpiracionTarjeta: "",
+            AnioExpiracionTarjeta: "",
+            MontoConsumir: "",
+            TransaccionCompleta: ""
+        };
+
         this.id = this.route.snapshot.params.id;
 
-        
+        /*this._habitacionServicio.GetHabitacionByID(this.id)
+            .subscribe(
+                habitacionRespones => {
+                    this.habitaciones = habitacionRespones;
+                    this.idHabi = this.id.toString();
+                    this.numHabitacion = this.habitaciones[0].Nombre;
+
+                    //localStorage.setItem("idHabitacion", this.id.toString());
+                    //localStorage.setItem("numHabitacion", this.habitaciones[0].Nombre);
+                    console.log(this.habitaciones)
+                }, error => {
+                    console.error(error);
+                },
+                () => this.setLocalStoraHabitacion()
+
+            );*/
+
+        //this.id = this.route.snapshot.params.id;
+
+
         this.usuario = JSON.parse(localStorage.getItem("dataUser"));
 
         this.idUser = localStorage.getItem("idUser");
@@ -109,7 +153,7 @@ export class ReservaHabitacionComponent implements OnInit{
 
         //this.usuario = _loginService.getUserLoggedIn(); //Usar para localStorage con más lelvel
         _loginService.getUserLoggedIn();
-        
+
         this.reservaHabitacion = <ReservaHabitacion>{
             IdHabitacion: this.idHabitacionStorage,
             IdUsuario: this.idUser,
@@ -118,33 +162,89 @@ export class ReservaHabitacionComponent implements OnInit{
             ApeMatUsurario: this.apeMat,
             NumerHabitacion: this.numHabitacion,
             FechaIngreso: "",
-            FechaSalida: ""               
+            FechaSalida: ""
         };
     }
 
-    registrarReservaHabitacion(): void{
+    message: string = "";
+    mensajito: string = "";
+
+    ingresePasarela(): void {
+
+        this._pasarelaServive.ingresePasarela(this.pasarela)
+            .subscribe(
+                data => {
+                    if (!data.TransaccionCompleta) {
+                        this.mensaje.push(data);
+                        if (this.mensaje.length) {
+                            for (let i = 0; i < this.mensaje.length; i++) {
+                                this.message += `${this.mensaje[i].TransaccionMensaje}`;
+                                this.mensajito = this.message;
+                            }
+                        }
+
+                        if (this.mensajito == "Tarjeta no existe") {
+                            swal(this.message, this.messageAlertPago, 'error');
+                        }
+
+                        if(this.mensajito == "Linea de credito insuficiente" || this.mensajito == "Tarjeta No Habilitada") {
+                            swal(this.message, this.messageAlertPago, 'info');
+                        }
+                        if(this.mensajito == "Usted realizò el pago"){
+                            swal(this.message, this.messageAlertPago, 'success');
+                        }
+
+                        //swal("Pago exitoso!", this.messageAlertPago, 'success');
+
+                        //this._router.navigate(['/reservaHabitacion']);
+
+                        //message = JSON.stringify(this.mensaje);
+                        /*obj = JSON.parse(message);
+                        console.log(message);
+                        console.log(obj);*/
+
+                    }
+                    else {
+
+                    }
+
+                }
+            );
+
+    }
+
+    regresarListaHabitaciones() {
+        this._router.navigate(['/home']);
+    }
+
+    /*setLocalStoraHabitacion() {
+        localStorage.setItem("idHabitacion", this.idHabi);
+        localStorage.setItem("numHabitacion", this.numHabitacion);
+    }*/
+
+    registrarReservaHabitacion(): void {
         this.submitted = true;
 
         if (this.formReservaHabitacion.invalid) {
             return;
         }
         else {
-        this._reservaHabitacionServicio.registrarReservaHabitacion(this.reservaHabitacion)
-        .subscribe();
-        swal("Reserva exitosa!", this.messageAler, 'success');
-        /*localStorage.removeItem("idUser");
-        localStorage.removeItem("nameUser");
-        localStorage.removeItem("apePat");
-        localStorage.removeItem("apeMat");
-        localStorage.removeItem("idHabitacion");
-        localStorage.removeItem("numHabitacion");*/
+            this._reservaHabitacionServicio.registrarReservaHabitacion(this.reservaHabitacion)
+                .subscribe();
+            swal("Reserva exitosa!", this.messageAler, 'success');
+            /*localStorage.removeItem("idUser");
+            localStorage.removeItem("nameUser");
+            localStorage.removeItem("apePat");
+            localStorage.removeItem("apeMat");
+            localStorage.removeItem("idHabitacion");
+            localStorage.removeItem("numHabitacion");*/
 
-     
-    }
-    this.refresh();
+
+        }
+        this.refresh();
     }
 
-    refresh(){
+    refresh() {
         this.reservaHabitacion = <ReservaHabitacion>{
             IdHabitacion: "",
             IdUsuario: "",
@@ -153,15 +253,15 @@ export class ReservaHabitacionComponent implements OnInit{
             ApeMatUsurario: "",
             NumerHabitacion: "",
             FechaIngreso: "",
-            FechaSalida: ""               
+            FechaSalida: ""
         };
     }
 
-    irToListarHabitaciones(){
+    irToListarHabitaciones() {
         this._router.navigate(['/listarHabitaciones']);
     }
 
-    irToPagar(){
+    irToPagar() {
         this._router.navigate(['/pago']);
     }
 }
