@@ -22,7 +22,7 @@ export class RegistrarCommentsComponent{
     
     ngOnInit(): void {
         this.formComment = this.formBuilder.group({
-            des: ['', Validators.required],
+            desc: ['', Validators.required],
         });
     }
 
@@ -62,7 +62,7 @@ export class RegistrarCommentsComponent{
 
         this.submitted = true;
 
-        if (this.formComment.invalid) {
+        if (this.comments.Descripcion == "") {
             return;
         }
         else {

@@ -82,13 +82,11 @@
       
                         <div class="form-group">
                         <div class="input-group">
-                        <textarea formControlName="des" type="des" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.desc.errors }" placeholder="Comentario" rows="5" [(ngModel)]="comments.Descripcion"
+                        <textarea  class="form-control"  placeholder="Comentario" rows="5" [(ngModel)]="comments.Descripcion"
                             [ngModelOptions]="{standalone: true}">
 
                          </textarea><br>
-                         <div *ngIf="submitted && f.desc.errors" class="invalid-feedback" style="margin-top: -15px">
-                                <div *ngIf="f.desc.errors.required">El comentario es requerido</div>
-                            </div>
+   
                         </div>
                     </div>
 
