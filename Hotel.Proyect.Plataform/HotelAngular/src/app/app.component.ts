@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from './login/login.service';
 import { Usuario } from './login/usuario';
 import { Router } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent {
   usuario : Usuario;
   salirButton: boolean = true;
 
-  constructor(private _loginService : LoginService , private _router : Router){
+  constructor(private _loginService : LoginService , private _router : Router, private _usu: Usuario){
     this.nameUser = localStorage.getItem("nameUser");
   }
   /*esAdministrador(): boolean{
@@ -41,7 +42,7 @@ export class AppComponent {
     localStorage.removeItem("apeMat");
     localStorage.removeItem("idHabitacion");
     localStorage.removeItem("numHabitacion");
-    
+    this.nameUser = "";
     this.salirButton = false;
     this._router.navigate(['home/'])
   }

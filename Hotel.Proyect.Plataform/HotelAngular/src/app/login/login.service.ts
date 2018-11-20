@@ -7,8 +7,9 @@ import { map, catchError } from 'rxjs/operators'
 @Injectable()
 export class LoginService {
     private isUserLoggedIn;
+    public userLog;
     public usserLogged: Usuario;
-    usuario : Usuario[];
+    public usuario : Usuario[];
 
     private _gertLoginUsuarioURL : string = 'http://localhost:55349/api/usuario/Login?'
     idUs: string;
