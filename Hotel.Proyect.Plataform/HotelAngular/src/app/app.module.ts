@@ -36,6 +36,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md'
 //Http
 import { HttpModule } from '@angular/http'; 
 import { MatNativeDateModule } from '@angular/material';
+import { Usuario } from './login/usuario';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { MatNativeDateModule } from '@angular/material';
     LoginService,
     UsuarioServicios,
     CommentsServicio,
-    PasarelaServicios
+    PasarelaServicios,
+    Usuario
   ],
   bootstrap: [AppComponent] 
 })

@@ -4,6 +4,7 @@ import { Usuario } from "./usuario";
 import { Router } from "@angular/router";
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import swal from "sweetalert2";
 
 @Component({
     selector: 'app-login',
@@ -14,6 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
     formLogin: FormGroup;
     submitted = false;
+    userLogged = "";
 
     ngOnInit(): void {
         this.formLogin = this.formBuilder.group({
@@ -81,7 +83,7 @@ export class LoginComponent implements OnInit {
         //localStorage.removeItem("idUser");
     }
 
-
+    messageAlert: string = "";
 
     ingresar(correo: string, contrasena: string) {
         this.submitted = true;
@@ -99,8 +101,11 @@ export class LoginComponent implements OnInit {
                         this.putLocalStorage("nameUser", this.usuario[0].Nombre);
                         this.putLocalStorage("apePat", this.usuario[0].ApellidoPat);
                         this.putLocalStorage("apeMat", this.usuario[0].ApellidoMat);
-
+                        //this._loginService.userLog = localStorage.getItem("nameUser");
+                        this.userLogged = localStorage.getItem("nameUser");
                         console.log(this.usuario);
+
+                        swal('Logueado exitosamente', this.messageAlert, 'success');
 
                     }, error => {
                         console.error(error);
@@ -109,6 +114,7 @@ export class LoginComponent implements OnInit {
 
                 );
         }
+        
 
 
     }

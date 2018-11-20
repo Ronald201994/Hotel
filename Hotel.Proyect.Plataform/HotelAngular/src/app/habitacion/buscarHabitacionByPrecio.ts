@@ -47,6 +47,10 @@ export class BuscarHabitacionByPrecioComponent implements OnInit {
         this._router.navigate(['/listarHabitaciones']); 
     } 
 
+    cancelar(){
+        this._router.navigate(['/home']);
+    }
+
     /*buscarHabitacionesByPrecio(){
         this._habitacionServicio.GetHabitacionByPrecio(this.precio1, this.precio2)
         .subscribe(

@@ -34,4 +34,8 @@ export class DetalleHabitacionComponent {
             this._router.navigate(['reservaHabitacion/'+this.id]);
         }
     }
+
+    cancelar(){
+        this._router.navigate(['/home']);
+    }
 }
