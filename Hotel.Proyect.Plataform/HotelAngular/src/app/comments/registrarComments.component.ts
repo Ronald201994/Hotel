@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Comments } from './comments';
 import { Comentarios } from './comentarios';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommentsServicio } from './servicio.comments';
+import swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+
 
 
 @Component({
@@ -12,12 +16,29 @@ import { CommentsServicio } from './servicio.comments';
 
 })
 
-export class RegistrarCommentsComponent {
+export class RegistrarCommentsComponent{
+    formComment: FormGroup;
+    submitted = false;
+    
+    ngOnInit(): void {
+        this.formComment = this.formBuilder.group({
+            des: ['', Validators.required],
+        });
+    }
+
     comentarios: Comentarios[];
 
+ 
     comments: Comments = null;
+    idUser: string;
+    nameUser: string;
 
-    constructor(private _servicioComments: CommentsServicio, private _router: Router) {
+
+
+    constructor(private formBuilder: FormBuilder, private _servicioComments: CommentsServicio, private _router: Router) {
+        this.idUser = localStorage.getItem("idUser");
+        this.nameUser = localStorage.getItem("nameUser");
+       
         this._servicioComments.GetComments()
             .subscribe(
                 data => {
@@ -29,22 +50,40 @@ export class RegistrarCommentsComponent {
 
         this.comments = <Comments>{
             Descripcion: "",
-            Usuario: "",
+            Usuario: this.idUser,
+            Nombre: this.nameUser
         };
     }
 
+    messageAlert: string ="";
+    //coment = this.comments.Descripcion;
 
     registrarComments(): void {
+
+        this.submitted = true;
+
+        if (this.formComment.invalid) {
+            return;
+        }
+        else {
         this._servicioComments.registroComments(this.comments)
             .subscribe(
                 data => {
                     this.comments = data;
+                    console.log(this.comments);
+
+                    swal('Comentario agregado', this.messageAlert, 'success');
+
+                    this.refreshComments();
+
+
                 }, error => {
                     console.error(error);
                 });
 
+            }
 
-        this.refreshComments();
+        
     }
 
     regresarListaComments(): void {

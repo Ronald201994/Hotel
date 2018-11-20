@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
     selector: 'listar-comments',
     templateUrl: './listarComments.html'
 })
-export class ListarForoComponent {
-    comments : Comments[];
+export class ListarForoComponent{
+    /*comments : Comments[];
 
     constructor(private _commentsServicios: CommentsServicio, private _router: Router){
         this._commentsServicios.GetComments()
@@ -19,6 +19,6 @@ export class ListarForoComponent {
 
     getComments(ID: string){
         this._router.navigate(['registrarComments/'+ID]);
-    }
+    }*/
 
 }

@@ -1,10 +1,12 @@
 
-    import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Usuario } from './usuario';
 import { UsuarioServicios } from './servicio.usuario';
 //import * as $ from 'jquery'
 //declare var $: any; // Para jQuery
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import swal from "sweetalert2";
 
 @Component({
     selector: 'app-registrar-usuario',
@@ -34,7 +36,7 @@ export class RegistrarUsuarioComponent implements OnInit {
 
     usuario: Usuario = null;
 
-    constructor(private _registrarUsuario: UsuarioServicios, private formBuilder: FormBuilder) {
+    constructor(private _router: Router, private _registrarUsuario: UsuarioServicios, private formBuilder: FormBuilder) {
 
         this.usuario = <Usuario>{
             DNI: "",
@@ -45,6 +47,8 @@ export class RegistrarUsuarioComponent implements OnInit {
             Password: ""
         };
     }
+ 
+    messageAlert: string = "";
 
     ingreseUsuario(): void {
         this.submitted = true;
@@ -54,8 +58,31 @@ export class RegistrarUsuarioComponent implements OnInit {
         }
         else {
          this._registrarUsuario.ingreseUsuario(this.usuario)
-            .subscribe();
+            .subscribe(
+                data =>{
+                    swal('Usuario registrado', this.messageAlert, 'success');
+                   this.irHome();
+                }
+            );
+
         }
+
+        
+    }
+
+    /*limpiarForm(){
+        this.usuario = <Usuario>{
+            DNI: "",
+            Nombre: "",
+            ApellidoPaterno: "",
+            ApellidoMaterno: "",
+            Correo: "",
+            Password: ""
+        };
+    }*/
+
+    irHome() {
+        this._router.navigate(['/home']);
     }
 
 }

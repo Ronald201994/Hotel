@@ -56,28 +56,45 @@
     </div>-->
 
     <div>
-        <form class="example-form">
+        <form class="example-form" [formGroup]="formComment">
             <div class="container-fluid bg-grey">
                 <h2></h2>
                 <div class="row">
 
                     <div class="col-sm-12">
+                        <div class="form-group" *ngIf="hidden">
+                            <label class="col-md-5 control-label" for="name">Cod Usuario</label>
+                            <div class="col-md-5">
+                                <input id="name" name="name" type="text" placeholder="" class="form-control input-md"
+                                    required="Es required" [(ngModel)]="comments.Usuario" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
                         <div class="row">
 
                             <div class="col-sm-12 form-group">
-                                <input class="form-control" placeholder="Nombre" type="text" required [(ngModel)]="comments.Usuario"
-                                    [ngModelOptions]="{standalone: true}">
+                                <input class="form-control" disabled="disabled" placeholder="Nombre" type="text"
+                                    required [(ngModel)]="comments.Nombre" [ngModelOptions]="{standalone: true}">
+
                             </div>
 
                         </div>
-                        <textarea class="form-control" placeholder="Comentario" rows="5" [(ngModel)]="comments.Descripcion"
+
+      
+                        <div class="form-group">
+                        <div class="input-group">
+                        <textarea formControlName="des" type="des" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.desc.errors }" placeholder="Comentario" rows="5" [(ngModel)]="comments.Descripcion"
                             [ngModelOptions]="{standalone: true}">
 
                          </textarea><br>
+                         <div *ngIf="submitted && f.desc.errors" class="invalid-feedback" style="margin-top: -15px">
+                                <div *ngIf="f.desc.errors.required">El comentario es requerido</div>
+                            </div>
+                        </div>
+                    </div>
+
                         <div class="row">
                             <div class="col-lg-4 col-lg-offset-4">
-                                <button mat-button class="btn btn-primary"
-                                    (click)="registrarComments()">Publicar</button>
+                                <button mat-button class="btn btn-primary" (click)="registrarComments()">Publicar</button>
                             </div><br><br><br>
                         </div>
                     </div>
