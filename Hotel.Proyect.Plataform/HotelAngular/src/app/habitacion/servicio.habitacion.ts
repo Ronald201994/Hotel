@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators'
 
 @Injectable()
 export class HabitacionServicio {
-    private _getHabitacionesByPrecioURL : string = 'http://localhost:55349/api/habitacion/GetHabitacionByPrecio?';
+    private _getHabitacionesByFechaURL : string = 'http://localhost:55349/api/habitacion/BuscarHabitacionByFecha?';
     private _getHabitacionesURL : string = 'http://localhost:55349/api/Habitacion/ListarHabitaciones';
     private _getHabitacionesByIdURL : string = 'http://localhost:55349/api/habitacion/GetHabitacionById?';
 
@@ -15,10 +15,11 @@ export class HabitacionServicio {
     
     habitacion : Habitacion[];
 
-    GetHabitacionByPrecio(precio1 : number, precio2 : number) : Observable<Habitacion[]> { 
-        return this._http.get(this._getHabitacionesByPrecioURL+'precio1='+precio1+'&precio2='+precio2)
+    GetHabitacionByFecha(fecha1: string, fecha2: string) : Observable<Habitacion[]> { 
+        //return this._http.get(this._getHabitacionesByFechaURL+'fecha1='+fecha1+'&fecha2='+fecha2)
+        return this._http.get('http://localhost:55349/api/habitacion/BuscarHabitacionByFecha?fecha1='+fecha1+'&fecha2='+fecha2)
         .pipe(map((response: Response) => <Habitacion[]> response.json()),
-            catchError(error => {
+            catchError(error => { 
                 return throwError("Server error");
             })
         ) 

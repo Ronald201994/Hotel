@@ -205,11 +205,16 @@ table.table .avatar {
     font-size: 13px;
 }   
 
-/* Validations */
+/* Validations 
 .ng-valid[required], .ng-valid.required  {
-    border-left: 5px solid #42A948; /* green */
-  }
+    border-left: 5px solid #42A948; 
   
-  .ng-invalid:not(form)  {
-    border-left: 5px solid #a94442; /* red */
-  }
+  .ng-invalid:not(form)  { 
+    border-left: 5px solid #a94442; 
+  }*/
+
+  .mat-form-field {
+    display: unset;
+    position: relative;
+    text-align: left;
+}

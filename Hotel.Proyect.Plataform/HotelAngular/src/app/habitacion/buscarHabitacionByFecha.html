@@ -20,38 +20,36 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form  method="post" [formGroup]="formBuscarByPrice">
-
-                        <div class="row">
-                            <div class="col-md-2 col-md-offset-3">
-                                <div>
-                                    <label for="fromdate">&emsp;PRECIO 1: </label>
-                                    <input formControlName="precio1" [ngClass]="{ 'is-invalid': submitted && f.precio1.errors }"
-                                        [(ngModel)]="precio1" [ngModelOptions]="{standalone: true}" class="form-control"
-                                        placeholder="Precio desde" required="required">
-                                    <div *ngIf="submitted && f.precio1.errors" class="invalid-feedback" style="margin-top: -48px">
-                                        <div *ngIf="f.precio1.errors.required">Precio 1 es requerido</div>
+                            <div class="row">
+                                    <div class="col-md-1 col-md-offset-2">
+                                        <label for="fromdate" style="padding-top: 15px;">Fecha 1: </label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <mat-form-field>
+                                            <input [(ngModel)]="fecha1" [ngModelOptions]="{standalone: true}" required="" matInput
+                                                [matDatepicker]="picker" placeholder="Escoge una fecha">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    
+                                    <div class="col-md-1">
+                                        <label for="fromdate" style="padding-top: 15px;">Fecha 2: </label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <mat-form-field>
+                                            <input [(ngModel)]="fecha2" [ngModelOptions]="{standalone: true}" required="Fecha salida es requerido"
+                                                matInput [matDatepicker]="picker1" placeholder="Escoge una fecha">
+                                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker1></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    
+                                    <div class="col-md-2" style="padding-top: 10px;">
+                                        <button style="width: 100%;"
+                                            type="submit" id="search" class="btn btn-primary" (click)="irMetodoToGetListadoHabitacionByPrice(fecha1, fecha2)">SEARCH</button>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="col-md-2">
-                                <div>
-                                    <label for="todate">&emsp;PRECIO 2: </label>
-                                    <input formControlName="precio2" [ngClass]="{ 'is-invalid': submitted && f.precio2.errors }"
-                                        [(ngModel)]="precio2" [ngModelOptions]="{standalone: true}" class="form-control"
-                                        placeholder="Precio hasta" required="required">
-                                    <div *ngIf="submitted && f.precio2.errors" class="invalid-feedback" style="margin-top: -48px">
-                                        <div *ngIf="f.precio2.errors.required">Precio 2 es requerido</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-2">
-                                    <button style="width: 100%; margin-top: 24px;"
-                                        type="submit" id="search" class="btn btn-primary" (click)="irMetodoToGetListadoHabitacionByPrice(precio1, precio2)">SEARCH</button>
-                            </div>
-                        </div>
-
                     </form>
                 </div>
             </div>

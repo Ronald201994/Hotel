@@ -22,9 +22,9 @@ namespace Hotel.Negocios
             return datosHabitacion.BuscarHabitacionByID(id); //por id
         }
 
-        public List<Habitacion> BuscarHabitacionByPrecio(double precio1, double precio2)
+        public List<Habitacion> BuscarHabitacionByFecha(DateTime fecha1, DateTime fecha2)
         {
-            return datosHabitacion.BuscarHabitacionByPrecio(precio1, precio2); // por precios
+            return datosHabitacion.BuscarHabitacionByFecha(fecha1, fecha2); // por precios
         }
 
         public string ReservarHabitacion(ReservaHabitacion reservaHabitacion)

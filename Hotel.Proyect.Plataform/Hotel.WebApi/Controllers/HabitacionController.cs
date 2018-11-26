@@ -28,9 +28,9 @@ namespace Hotel.WebApi.Controllers
         }
 
         [HttpGet]
-        public List<Habitacion> GetHabitacionByPrecio(double precio1, double precio2)
+        public List<Habitacion> BuscarHabitacionByFecha(DateTime fecha1, DateTime fecha2)
         {
-            var lista = negociosHabitacion.BuscarHabitacionByPrecio(precio1, precio2);
+            var lista = negociosHabitacion.BuscarHabitacionByFecha(fecha1, fecha2);
             return lista;
         }
 

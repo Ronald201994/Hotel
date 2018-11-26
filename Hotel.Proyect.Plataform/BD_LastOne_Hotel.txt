@@ -51,7 +51,7 @@ GO
 CREATE TABLE Habitacion 
 (
 	idHabitacion INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	nombre CHAR(3) NOT NULL,
+	nombre CHAR(3) UNIQUE NOT NULL,
 	descripcion VARCHAR(500) NOT NULL,
 	idEstado INT REFERENCES TipoHabitacion,
 	idTipo INT  REFERENCES EstadoHabitacion,
@@ -61,11 +61,13 @@ CREATE TABLE Habitacion
 GO
 
 --Habitacion
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('401','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,2,'60.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('402','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',2,2,1,'40.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('403','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,3,'35.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('404','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',2,2,2,'77.00')
-INSERT INTO Habitacion (nombre,descripcion,idEstado,idTipo,cantidad,precio) VALUES ('405','Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,3,'24.00')
+INSERT INTO Habitacion VALUES ('401', 'Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,2,'60.00')
+INSERT INTO Habitacion VALUES ('402', 'Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',2,2,1,'40.00')
+INSERT INTO Habitacion VALUES ('403', 'Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,3,'35.00')
+INSERT INTO Habitacion VALUES ('404', 'Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',2,2,2,'77.00')
+INSERT INTO Habitacion VALUES ('405', 'Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,3,'24.00')
+INSERT INTO Habitacion VALUES ('406', 'Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,2,'60.00')
+
 
 SELECT * FROM Habitacion
 GO
@@ -89,7 +91,7 @@ SELECT * FROM TipoUsuario
 create table Usuario
 (
  idUsuario INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
- dni CHAR(8) NOT NULL,
+ dni CHAR(8) UNIQUE NOT NULL,
  nombre VARCHAR(40) NOT NULL,
  apellidoPaterno VARCHAR(40) NOT NULL,
  apellidoMaterno VARCHAR(40) NOT NULL,
@@ -139,8 +141,6 @@ descripcion VARCHAR(500) NOT NULL,
 idUsuario int REFERENCES Usuario
 )
 GO
-
-
 
 --PROCEDIMIENTO COMENTARIO
 /*CREATE PROCEDURE SP_RegistrarComments
@@ -270,13 +270,17 @@ EXECUTE SP_BuscarHabitacionByID 1
 GO 
 
 --Buscar Habitaciones por precio
-CREATE PROCEDURE [dbo].[SP_BuscarHabitacionByPrecio]
+CREATE PROCEDURE [dbo].[SP_BuscarHabitacionByFecha]
 (
-	@Precio1 DECIMAL,
-	@precio2 DECIMAL
+	@fecha1 DATE,
+	@fecha2 DATE
 )
 AS
 BEGIN
+	IF EXISTS(SELECT * FROM Habitacion H INNER JOIN ReservaHabitacion RH ON H.idHabitacion = RH.idHabitacion WHERE RH.fechaSalida BETWEEN @fecha1 AND @fecha2)
+	PRINT 'No se encuentran habitaciones disponibles'
+	ELSE
+	BEGIN
 	SELECT H.nombre Nombre,
 		   H.descripcion Descripcion,
 		   EH.nombre Estado,
@@ -287,12 +291,22 @@ BEGIN
 	FROM Habitacion H INNER JOIN TipoHabitacion TH
 	ON H.idTipo = th.idTipo INNER JOIN EstadoHabitacion EH
 	ON H.idEstado = EH.idEstado
-	WHERE precio BETWEEN @Precio1 AND @precio2
+	WHERE EH.nombre = 'Libre'
+	END
 END
 GO
 
-EXECUTE SP_BuscarHabitacionByPrecio 40, 60
+SELECT * FROM Habitacion
 GO
+
+SELECT * FROM ReservaHabitacion
+GO
+
+EXECUTE [SP_BuscarHabitacionByFecha] '02/02/2018', '11/12/2018'
+GO
+
+/*EXECUTE SP_BuscarHabitacionByPrecio 40, 60
+GO*/
 
 --Reserva Habitacion
 CREATE PROC [dbo].[SP_ReservaHabitacion]

@@ -102,16 +102,16 @@ namespace Hotel.Datos
         }
 
 
-        public List<Habitacion> BuscarHabitacionByPrecio(double precio1, double precio2)
+        public List<Habitacion> BuscarHabitacionByFecha(DateTime fecha1, DateTime fecha2)
         {
             List<Habitacion> lista = new List<Habitacion>();
             try
             {
                 conexion = cn.Conectar();
-                cmd = new SqlCommand("SP_BuscarHabitacionByPrecio", conexion);
+                cmd = new SqlCommand("SP_BuscarHabitacionByFecha", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Precio1", precio1);
-                cmd.Parameters.AddWithValue("@Precio2", precio2);
+                cmd.Parameters.AddWithValue("@fecha1", fecha1);
+                cmd.Parameters.AddWithValue("@fecha2", fecha2);
 
                 dr = null;
                 conexion.Open();

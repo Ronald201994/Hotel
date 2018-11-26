@@ -6,11 +6,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
-    selector: 'app-habitacionPrecio',
-    templateUrl: './buscarHabitacionByPrecio.html',
+    selector: 'app-habitacion-Fecha',
+    templateUrl: './buscarHabitacionByFecha.html',
     styleUrls: ['./habitaciones.css']
 })
-export class BuscarHabitacionByPrecioComponent implements OnInit {
+export class BuscarHabitacionByFechaComponent implements OnInit {
     formBuscarByPrice: FormGroup;
     submitted = false;
 
@@ -24,14 +24,14 @@ export class BuscarHabitacionByPrecioComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.formBuscarByPrice.controls; } 
     habitaciones : Habitacion[];
-    precio1 : number;
-    precio2 : number;
+    fecha1 : string;
+    fecha2 : string;
     
     constructor(private formBuilder: FormBuilder, private _habitacionServicio: HabitacionServicio, private _router : Router, private route: ActivatedRoute ){
-        this.precio1 = this.route.snapshot.params.precio1;
-        this.precio2 = this.route.snapshot.params.precio2;
+        this.fecha1 = this.route.snapshot.params.fecha1;
+        this.fecha2 = this.route.snapshot.params.fecha2;
 
-        this._habitacionServicio.GetHabitacionByPrecio(this.precio1, this.precio2)
+        this._habitacionServicio.GetHabitacionByFecha(this.fecha1, this.fecha2)
         .subscribe(
             habitacionRespones => this.habitaciones = habitacionRespones
         );
