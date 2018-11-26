@@ -3,10 +3,10 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { BuscarHabitacionByPrecioComponent } from './habitacion/buscarHabitacionByPrecio';
+import { BuscarHabitacionByFechaComponent } from './habitacion/buscarHabitacionByFecha';
 import { HabitacionServicio } from './habitacion/servicio.habitacion';
 import { ReservaHabitacionServicio } from './reserva/servicio.reservaHabitacion';
-import { ListarHabitacionesComponent } from './habitacion/listarHabitaciones';
+import { BuscarHabitacionesByDateComponent } from './habitacion/buscarHabitacionesByDate';
 import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.component';
 import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
@@ -42,8 +42,8 @@ import { Usuario } from './login/usuario';
   declarations: [
     AppComponent, 
     HomeComponent,
-    BuscarHabitacionByPrecioComponent,
-    ListarHabitacionesComponent,
+    BuscarHabitacionByFechaComponent,
+    BuscarHabitacionesByDateComponent,
     DetalleHabitacionComponent,
     RegistrarUsuarioComponent,
     ReservaHabitacionComponent,
@@ -71,26 +71,26 @@ import { Usuario } from './login/usuario';
       {path: 'comida', component: ComidaComponent},
       {path: 'pago', component: PasarelaComponent},
       {path: 'comentarios', component: RegistrarCommentsComponent},
-      {path: 'listarHabitaciones', component: ListarHabitacionesComponent},
+      {path: 'buscarHabitacion', component: BuscarHabitacionesByDateComponent},
       {path: 'reservaHabitacion', component: ReservaHabitacionComponent},
       {path: 'reservaHabitacion/:id', component: ReservaHabitacionComponent},
       {path: 'reservaHabitacion/:id/:nombre', component: ReservaHabitacionComponent},
       {path: 'detalleHabitacion/:id', component: DetalleHabitacionComponent},
       {path: 'registrarUsuario', component: RegistrarUsuarioComponent},
-      {path: 'buscarHabitacion/:precio1/:precio2', component: BuscarHabitacionByPrecioComponent},
-      {path: 'login', component: LoginComponent},
+      {path: 'buscarHabitacion/:fecha1/:fecha2', component: BuscarHabitacionesByDateComponent},
+      {path: 'login', component: LoginComponent}, 
       {path: 'registrarComments', component: RegistrarCommentsComponent }
       //{path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
-  schemas: [NO_ERRORS_SCHEMA],
-  
+  schemas: [NO_ERRORS_SCHEMA], 
+   
   providers: [
     HabitacionServicio,
     ReservaHabitacionServicio,
     LoginService,
     UsuarioServicios,
-    CommentsServicio,
+    CommentsServicio, 
     PasarelaServicios,
     Usuario
   ],

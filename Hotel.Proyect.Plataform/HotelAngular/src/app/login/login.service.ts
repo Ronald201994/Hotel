@@ -8,7 +8,7 @@ import { map, catchError } from 'rxjs/operators'
 export class LoginService {
     private isUserLoggedIn;
     public userLog;
-    public usserLogged: Usuario;
+    public usserLogged: string;
     public usuario : Usuario[];
 
     private _gertLoginUsuarioURL : string = 'http://localhost:55349/api/usuario/Login?'
@@ -30,15 +30,16 @@ export class LoginService {
         )       
     }
 
-    setUserLoggedIn(user: Usuario) {
+    setUserLoggedIn(nombre: string) {
         this.isUserLoggedIn = true;
-        this.usserLogged = user;
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.usserLogged = nombre;
+        localStorage.setItem('currentUser', JSON.stringify(nombre));
       
     }
 
-    getUserLoggedIn() {
-        return JSON.parse(localStorage.getItem('currentUser'));
+    getUserLoggedIn(): string{
+        let currentUser = <string>JSON.parse(localStorage.getItem('currentUser'));
+        return currentUser;
     }
 
     

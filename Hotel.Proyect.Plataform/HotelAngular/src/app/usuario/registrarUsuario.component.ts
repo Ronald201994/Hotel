@@ -61,7 +61,7 @@ export class RegistrarUsuarioComponent implements OnInit {
             .subscribe(
                 data =>{
                     swal('Usuario registrado', this.messageAlert, 'success');
-                   this.irHome();
+                   this.irToIniciarSession();
                 }
             );
 
@@ -80,6 +80,10 @@ export class RegistrarUsuarioComponent implements OnInit {
             Password: ""
         };
     }*/
+
+    irToIniciarSession(){
+        this._router.navigate(['/login']);
+    }
 
     irHome() {
         this._router.navigate(['/home']);
