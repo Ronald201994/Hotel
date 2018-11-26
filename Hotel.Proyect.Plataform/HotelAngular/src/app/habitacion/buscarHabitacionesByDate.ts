@@ -61,7 +61,6 @@ export class BuscarHabitacionesByDateComponent implements OnInit {
                 console.error(error);
             }
         );
-
         //this._router.navigate(['buscarHabitacion/'+this.fecha1+'/'+this.fecha2]);
 
     }

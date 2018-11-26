@@ -169,6 +169,14 @@ export class ReservaHabitacionComponent implements OnInit {
     message: string = "";
     mensajito: string = "";
 
+    irToRegistrar(){
+        this._router.navigate(['/registrarUsuario']);
+    }
+
+    irToIniciarSession(){
+        this._router.navigate(['/login']);
+    }
+
     ingresePasarela(): void {
 
         this._pasarelaServive.ingresePasarela(this.pasarela)

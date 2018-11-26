@@ -27,7 +27,7 @@ INSERT INTO EstadoHabitacion (nombre) VALUES('Libre')
 
 SELECT * FROM EstadoHabitacion
 GO
-
+--
 
 --TIPO HABITACION
 CREATE TABLE TipoHabitacion

@@ -20,8 +20,13 @@ export class AppComponent {
   salirButton: boolean = true;
 
   constructor(private _loginService : LoginService , private _router : Router, private _usu: Usuario){
-    this.nameUser = localStorage.getItem("nameUser");
+    //this.nameUser = localStorage.getItem("nameUser");
+    this.login(); 
   }
+  login(){
+  this.nameUser = this._loginService.getUserLoggedIn();
+  }
+
   /*esAdministrador(): boolean{
     this.usuario = this._usuarioService.getUsuario();
     var esAdmin = false;

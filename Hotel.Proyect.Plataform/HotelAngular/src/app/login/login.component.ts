@@ -101,6 +101,9 @@ export class LoginComponent implements OnInit {
                         this.putLocalStorage("nameUser", this.usuario[0].Nombre);
                         this.putLocalStorage("apePat", this.usuario[0].ApellidoPat);
                         this.putLocalStorage("apeMat", this.usuario[0].ApellidoMat);
+
+                        this._loginService.setUserLoggedIn(this.usuario[0].Nombre);
+
                         //this._loginService.userLog = localStorage.getItem("nameUser");
                         this.userLogged = localStorage.getItem("nameUser");
                         console.log(this.usuario);
