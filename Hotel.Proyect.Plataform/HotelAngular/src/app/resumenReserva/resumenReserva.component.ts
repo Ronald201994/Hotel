@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Router } from '@angular/router';
+import swal from "sweetalert2";
 
 @Component({
     selector: 'resumen-reserva',
@@ -23,9 +25,10 @@ export class ResumenReservaComponent implements OnInit{
         this.tipo= localStorage.getItem("tipo");
     }
 
-    constructor() {
+    constructor(private _router : Router) {
 
     }
+    messageAlert: string = "";
 
     public captureScreen() {
         var data = document.getElementById('contentToConvert');
@@ -42,6 +45,12 @@ export class ResumenReservaComponent implements OnInit{
             pdf.addImage(contentDataURL, 'JPG', -50, position, imgWidth, imgHeight)
             pdf.save('reporteReserva.pdf'); // Generated PDF     
         });
+        swal('Gracias por tu reserva', this.messageAlert, 'success');
+        this.irHome();
+    }
+
+    irHome(){
+        this._router.navigate(['/home']);
     }
 
     @ViewChild('content') content: ElementRef;
