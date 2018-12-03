@@ -1,0 +1,81 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container" style="float: right; width: 50px; margin-top: 50px; margin-right: 300px">
+    {{nameUser}}
+
+    <a target="_blank" href="https://www.facebook.com/Dream-HOTEL-2120643101582165/?modal=admin_todo_tour" class="fa fa-facebook">
+    </a>
+
+</div>
+
+<div class="container" style="text-align: center">
+    <img src="/src/assets/imagenes/logo.jpg" class="logoImagen">
+    <a style="color: rgb(66, 106, 180); font-family: Comic Sans MS; margin-top: -10px">Jr. Lima Nº 785-792 - San
+        Isidro, Lima, Perú</a>
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container">
+        <!-- <a class="navbar-brand" href="#">RESERVA</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <button style="color: white" mat-button class="nav-link" [routerLink]="['/home']">Home</button>
+                </li>
+                <!--<li class="nav-item">
+          <button style="color: white" mat-button class="colorButon" [routerLink]="['/reservaHabitacion']">Reserva</button>
+        </li>-->
+
+                <li class="nav-item">
+                    <button style="color: white" mat-button class="colorButon" [routerLink]="['/comida']">Comidas</button>
+                </li>
+                <li class="nav-item">
+                    <button style="color: white" mat-button class="colorButon" [routerLink]="['/buscarHabitacion']">Reservar</button>
+                </li>
+                <li class="nav-item">
+                    <button style="color: white" mat-button class="colorButon" [routerLink]="['/galeria']">Habitaciones</button>
+                </li>
+
+                <li class="nav-item">
+                    <button style="color: white" mat-button class="colorButon" [matMenuTriggerFor]="menu">Reportes</button>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav mr-auto" style="float: right">
+                <li class="nav-item">
+                    <button style="color: white" mat-button class="colorButon" [routerLink]="['/registrarUsuario']">Registrarse</button>
+                </li>
+                <li class="nav-item">
+                    <button style="color: white" mat-button class="colorButon" [routerLink]="['/login']">Login</button>
+                    <!--<button style="color: white" mat-button class="colorButon" (click)="salir()" *ngIf="existeUsuario()"
+            [routerLink]="">Salir</button>-->
+                </li>
+                <li class="nav-item">
+                    <button (click)="salir()" *ngIf="salirButton" style="color: white" mat-button class="colorButon"
+                        [routerLink]="['/home']">Salir</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>Reporte 1</button>
+    <button mat-menu-item>Reporte 1</button>
+</mat-menu>
+

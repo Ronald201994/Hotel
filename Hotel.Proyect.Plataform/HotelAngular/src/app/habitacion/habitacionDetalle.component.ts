@@ -19,6 +19,8 @@ export class DetalleHabitacionComponent {
         .subscribe(
             habitacionRespones => {this.habitaciones = habitacionRespones; 
                                    localStorage.setItem("idHabitacion", this.id.toString());
+                                   localStorage.setItem("tipo", this.habitaciones[0].Tipo);
+                                   localStorage.setItem("precio", this.habitaciones[0].Precio.toString());
                                    localStorage.setItem("numHabitacion", this.habitaciones[0].Nombre)}
         );
     }
