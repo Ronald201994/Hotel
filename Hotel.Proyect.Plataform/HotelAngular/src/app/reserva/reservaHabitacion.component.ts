@@ -210,7 +210,7 @@ export class ReservaHabitacionComponent implements OnInit {
                 }
             );
 
-            this._router.navigate(['/reporteReserva'])
+            this._router.navigate(['/resumenReserva'])
 
     }
 

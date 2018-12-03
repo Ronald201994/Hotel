@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {HabitacionServicio } from './servicio.habitacion';
-import {Habitacion } from './habitacion';
+
 import { Router, ActivatedRoute } from '@angular/router';
+import { Habitacion } from './habitacion';
 
 @Component({
     selector: 'app-detalleHabitacion',

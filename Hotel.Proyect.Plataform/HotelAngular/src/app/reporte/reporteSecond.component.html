@@ -1,0 +1,30 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container-fluid" style="max-width: 500px; margin-top: 30px; text-align: center" >
+
+    <legend style="text-align: center">Reporte de Reservas por Mes</legend>
+ 
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th style="text-align: center">Reservas</th>
+                <th style="text-align: center">Mes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reservaMes of reservasMes">
+                <td>{{reservaMes.Cantidad}}</td>
+                <td>{{reservaMes.Mes}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

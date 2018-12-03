@@ -10,10 +10,10 @@ import { BuscarHabitacionesByDateComponent } from './habitacion/buscarHabitacion
 import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.component';
 import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
-import { ReporteReservaComponent } from './reporte/reporteReserva.component';
+import { ResumenReservaComponent } from './resumenReserva/resumenReserva.component';
 import { NavBarComponent } from './navBar/navBar.component';
-
-
+import { ReporteOneComponent } from './reporte/reporteOne.component';
+import { ReporteSecondComponent } from './reporte/reporteSecond.component';
 
 //foro
 import { RegistrarCommentsComponent } from './comments/registrarComments.Component';
@@ -27,10 +27,12 @@ import { ComidaComponent } from './comida/comida.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommentsServicio } from './comments/servicio.comments';
+import { ReporteServicio } from './reporte/servicioReporte';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PasarelaComponent } from './pasarelaPago/pasarela.component';
 import { PasarelaServicios } from './pasarelaPago/servicio.pasarela';
+
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -58,8 +60,10 @@ import { HabitacionGaleriaComponent } from './habitacionGaleria/habitacionGaleri
     RegistrarCommentsComponent,
     PasarelaComponent,
     HabitacionGaleriaComponent,
-    ReporteReservaComponent,
-    NavBarComponent
+    ResumenReservaComponent,
+    NavBarComponent,
+    ReporteOneComponent,
+    ReporteSecondComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +95,9 @@ import { HabitacionGaleriaComponent } from './habitacionGaleria/habitacionGaleri
       {path: 'buscarHabitacion/:fecha1/:fecha2', component: BuscarHabitacionesByDateComponent},
       {path: 'login', component: LoginComponent}, 
       {path: 'registrarComments', component: RegistrarCommentsComponent },
-      {path: 'reporteReserva', component: ReporteReservaComponent }
+      {path: 'resumenReserva', component: ResumenReservaComponent },
+      {path: 'reporte1', component: ReporteOneComponent },
+      {path: 'reporte2', component: ReporteSecondComponent } 
       //{path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
@@ -104,7 +110,8 @@ import { HabitacionGaleriaComponent } from './habitacionGaleria/habitacionGaleri
     UsuarioServicios,
     CommentsServicio, 
     PasarelaServicios,
-    Usuario
+    Usuario,
+    ReporteServicio
   ],
   bootstrap: [AppComponent] 
 })

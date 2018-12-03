@@ -3,10 +3,10 @@ import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 
 @Component({
-    selector: 'reporte-reserva',
-    templateUrl: './reporteReserva.component.html'
+    selector: 'resumen-reserva',
+    templateUrl: './resumenReserva.component.html'
 })
-export class ReporteReservaComponent implements OnInit{
+export class ResumenReservaComponent implements OnInit{
     nameUser: string = "";
     apePat: string = "";
     apeMat: string = "";
@@ -18,7 +18,7 @@ export class ReporteReservaComponent implements OnInit{
         this.nameUser = localStorage.getItem("nameUser");
         this.apePat = localStorage.getItem("apePat");
         this.apeMat = localStorage.getItem("apeMat");
-        this.numHabitacion = localStorage.getItem("numHabitacion");
+        this.numHabitacion = localStorage.getItem("numHabitacion"); 
         this.precio = localStorage.getItem("precio");
         this.tipo= localStorage.getItem("tipo");
     }

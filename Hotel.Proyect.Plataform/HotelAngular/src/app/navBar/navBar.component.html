@@ -52,7 +52,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <button style="color: white" mat-button class="colorButon" [matMenuTriggerFor]="menu">Reportes</button>
+                    <button *ngIf="esAdmi" style="color: white" mat-button class="colorButon" [matMenuTriggerFor]="menu">Reportes</button>
                 </li>
             </ul>
 
@@ -75,7 +75,7 @@
 </nav>
 
 <mat-menu #menu="matMenu">
-    <button mat-menu-item>Reporte 1</button>
-    <button mat-menu-item>Reporte 1</button>
+    <button mat-menu-item [routerLink]="['/reporte1']">Reservas por Tipo</button>
+    <button mat-menu-item [routerLink]="['/reporte2']">Reservas por Mes</button>
 </mat-menu>
 
