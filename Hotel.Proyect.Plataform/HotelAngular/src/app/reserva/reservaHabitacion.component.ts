@@ -182,6 +182,7 @@ export class ReservaHabitacionComponent implements OnInit {
         this._pasarelaServive.ingresePasarela(this.pasarela)
             .subscribe(
                 data => {
+                    console.log(data);
                     if (!data.TransaccionCompleta) {
                         this.mensaje.push(data);
                         if (this.mensaje.length) {
@@ -190,21 +191,33 @@ export class ReservaHabitacionComponent implements OnInit {
                                 this.mensajito = this.message;
                             }
                         }
-
-                        if (this.mensajito == "Tarjeta no existe") {
-                            swal(this.message, this.messageAlertPago, 'error');
-                        }
-
-                        if (this.mensajito == "Linea de credito insuficiente" || this.mensajito == "Tarjeta No Habilitada") {
-                            swal(this.message, this.messageAlertPago, 'info');
-                        }
                         if (this.mensajito == "Usted realizò el pago") {
                             swal(this.message, this.messageAlertPago, 'success');
                         }
 
+
+
+                        if (this.mensajito == "Linea de credito insuficiente" || this.mensajito == "Tarjeta No Habilitada") {
+                            swal(this.message, this.messageAlertPago, 'info');
+                        }
+                        if (this.mensajito == "Tarjeta no existe") {
+                            swal(this.message, this.messageAlertPago, 'error');
+                        }
+
+
                     }
                     else {
+                        this.mensaje.push(data);
+                        if (this.mensaje.length) {
+                            for (let i = 0; i < this.mensaje.length; i++) {
+                                this.message += `${this.mensaje[i].TransaccionMensaje}`;
+                                this.mensajito = this.message;
+                            }
+                        }
 
+                        if (this.mensajito == "Usted realizò el pago") {
+                            swal(this.message, this.messageAlertPago, 'success');
+                        }
                     }
 
                 }
