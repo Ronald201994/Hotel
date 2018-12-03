@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommentsDatos.cs" />
+    <Compile Include="ReporteDatos.cs" />
     <Compile Include="TarjetaDatos.cs" />
     <Compile Include="UsuarioDatos.cs" />
     <Compile Include="Conexion.cs" />

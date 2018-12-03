@@ -45,7 +45,9 @@
     <Compile Include="Habitacion.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteHabitacionMasUsada.cs" />
     <Compile Include="ReservaHabitacion.cs" />
+    <Compile Include="ReservasMes.cs" />
     <Compile Include="TarjetaInfo.cs" />
     <Compile Include="TipoHabitacion.cs" />
     <Compile Include="TipoPago.cs" />

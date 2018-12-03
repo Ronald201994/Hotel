@@ -42,6 +42,24 @@ export class LoginService {
         return currentUser;
     }
 
+    esAdmin: boolean = false;
+
+    /*validarAdministrador(id: string): boolean{
+        if(id == "2"){
+            return this.esAdmin = true
+        }
+        else
+            return this.esAdmin
+    }*/
+
+    validarAdministrador(id: string){
+        if(id == "2"){
+            localStorage.setItem('isAdmin', 'true');
+        }
+        else
+        localStorage.setItem('isAdmin', 'false');
+    }
+
     
     /*usuario : Usuario = null;
     login(usuario : Usuario) : Usuario{

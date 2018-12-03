@@ -25,16 +25,16 @@ export class LoginComponent implements OnInit {
 
         $(document).ready(function () {
             var navListItems = $('div.setup-panel div a'),
-                    allWells = $('.setup-content'),
-                    allNextBtn = $('.nextBtn');
-          
+                allWells = $('.setup-content'),
+                allNextBtn = $('.nextBtn');
+
             allWells.hide();
-          
+
             navListItems.click(function (e) {
                 e.preventDefault();
                 var $target = $($(this).attr('href')),
-                        $item = $(this);
-          
+                    $item = $(this);
+
                 if (!$item.hasClass('disabled')) {
                     navListItems.removeClass('btn-primary').addClass('btn-default');
                     $item.addClass('btn-primary');
@@ -43,28 +43,28 @@ export class LoginComponent implements OnInit {
                     $target.find('input:eq(0)').focus();
                 }
             });
-          
-            allNextBtn.click(function(){
+
+            allNextBtn.click(function () {
                 var curStep = $(this).closest(".setup-content"),
                     curStepBtn = curStep.attr("id"),
                     nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
                     curInputs = curStep.find("input[type='text'],input[type='url']"),
                     isValid = true;
-          
+
                 $(".form-group").removeClass("has-error");
-                for(var i=0; i<curInputs.length; i++){
-                    if (!curInputs[i].validity.valid){
+                for (var i = 0; i < curInputs.length; i++) {
+                    if (!curInputs[i].validity.valid) {
                         isValid = false;
                         $(curInputs[i]).closest(".form-group").addClass("has-error");
                     }
                 }
-          
+
                 if (isValid)
                     nextStepWizard.removeAttr('disabled').trigger('click');
             });
-          
+
             $('div.setup-panel div a.btn-primary').trigger('click');
-          });
+        });
     }
 
     // convenience getter for easy access to form fields
@@ -102,6 +102,8 @@ export class LoginComponent implements OnInit {
                         this.putLocalStorage("apePat", this.usuario[0].ApellidoPat);
                         this.putLocalStorage("apeMat", this.usuario[0].ApellidoMat);
 
+                        this._loginService.validarAdministrador(this.usuario[0].ID);
+
                         this._loginService.setUserLoggedIn(this.usuario[0].Nombre);
 
                         //this._loginService.userLog = localStorage.getItem("nameUser");
@@ -117,9 +119,6 @@ export class LoginComponent implements OnInit {
 
                 );
         }
-        
-
-
     }
 
     /*onSubmit() {

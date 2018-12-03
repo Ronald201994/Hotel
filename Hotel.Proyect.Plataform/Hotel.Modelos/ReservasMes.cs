@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Hotel.Modelos
 {
-    public class ReporteHabitacionMasUsada
+   public class ReservasMes
     {
         public int Cantidad { get; set; }
-        public string Tipo { get; set; }
-    
+        public string Mes { get; set; }
     }
 }
