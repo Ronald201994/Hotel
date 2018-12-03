@@ -195,14 +195,15 @@ export class ReservaHabitacionComponent implements OnInit {
                             swal(this.message, this.messageAlertPago, 'success');
                         }
 
-
-
                         if (this.mensajito == "Linea de credito insuficiente" || this.mensajito == "Tarjeta No Habilitada") {
                             swal(this.message, this.messageAlertPago, 'info');
                         }
                         if (this.mensajito == "Tarjeta no existe") {
                             swal(this.message, this.messageAlertPago, 'error');
                         }
+
+                        this.mensaje = [];
+                        this.message="";
 
 
                     }
@@ -218,13 +219,27 @@ export class ReservaHabitacionComponent implements OnInit {
                         if (this.mensajito == "Usted realizò el pago") {
                             swal(this.message, this.messageAlertPago, 'success');
                         }
+
+
+                        this.mensaje = [];
+                        this.message="";
+
+                        this._router.navigate(['/resumenReserva'])
                     }
 
                 }
             );
 
-            this._router.navigate(['/resumenReserva'])
+            
 
+    }
+
+    messageAlert: string="";
+
+    irHome(){
+        swal('No se realizó su reserva', this.messageAlert, 'info');
+
+        this._router.navigate(['/home']);
     }
 
     regresarListaHabitaciones() {
