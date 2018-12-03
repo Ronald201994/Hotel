@@ -16,10 +16,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 })
 
-export class RegistrarCommentsComponent{
+export class RegistrarCommentsComponent {
     formComment: FormGroup;
     submitted = false;
-    
+
     ngOnInit(): void {
         this.formComment = this.formBuilder.group({
             desc: ['', Validators.required],
@@ -28,7 +28,7 @@ export class RegistrarCommentsComponent{
 
     comentarios: Comentarios[];
 
- 
+
     comments: Comments = null;
     idUser: string;
     nameUser: string;
@@ -38,7 +38,7 @@ export class RegistrarCommentsComponent{
     constructor(private formBuilder: FormBuilder, private _servicioComments: CommentsServicio, private _router: Router) {
         this.idUser = localStorage.getItem("idUser");
         this.nameUser = localStorage.getItem("nameUser");
-       
+
         this._servicioComments.GetComments()
             .subscribe(
                 data => {
@@ -55,7 +55,7 @@ export class RegistrarCommentsComponent{
         };
     }
 
-    messageAlert: string ="";
+    messageAlert: string = "";
     //coment = this.comments.Descripcion;
 
     registrarComments(): void {
@@ -66,24 +66,24 @@ export class RegistrarCommentsComponent{
             return;
         }
         else {
-        this._servicioComments.registroComments(this.comments)
-            .subscribe(
-                data => {
-                    this.comments = data;
-                    console.log(this.comments);
+            this._servicioComments.registroComments(this.comments)
+                .subscribe(
+                    data => {
+                        this.comments = data;
+                        console.log(this.comments);
 
-                    swal('Comentario agregado', this.messageAlert, 'success');
+                        swal('Comentario agregado', this.messageAlert, 'success');
 
-                    this.refreshComments();
+                        this.refreshComments();
 
 
-                }, error => {
-                    console.error(error);
-                });
+                    }, error => {
+                        console.error(error);
+                    });
 
-            }
+        }
 
-        
+
     }
 
     regresarListaComments(): void {
@@ -100,7 +100,7 @@ export class RegistrarCommentsComponent{
                     console.error(error);
                 });
 
-                this._router.navigate(['/comentarios']);
+        this._router.navigate(['/comentarios']);
 
     }
 

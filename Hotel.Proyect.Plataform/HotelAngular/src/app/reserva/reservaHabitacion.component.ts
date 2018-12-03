@@ -169,11 +169,11 @@ export class ReservaHabitacionComponent implements OnInit {
     message: string = "";
     mensajito: string = "";
 
-    irToRegistrar(){
+    irToRegistrar() {
         this._router.navigate(['/registrarUsuario']);
     }
 
-    irToIniciarSession(){
+    irToIniciarSession() {
         this._router.navigate(['/login']);
     }
 
@@ -195,21 +195,12 @@ export class ReservaHabitacionComponent implements OnInit {
                             swal(this.message, this.messageAlertPago, 'error');
                         }
 
-                        if(this.mensajito == "Linea de credito insuficiente" || this.mensajito == "Tarjeta No Habilitada") {
+                        if (this.mensajito == "Linea de credito insuficiente" || this.mensajito == "Tarjeta No Habilitada") {
                             swal(this.message, this.messageAlertPago, 'info');
                         }
-                        if(this.mensajito == "Usted realizò el pago"){
+                        if (this.mensajito == "Usted realizò el pago") {
                             swal(this.message, this.messageAlertPago, 'success');
                         }
-
-                        //swal("Pago exitoso!", this.messageAlertPago, 'success');
-
-                        //this._router.navigate(['/reservaHabitacion']);
-
-                        //message = JSON.stringify(this.mensaje);
-                        /*obj = JSON.parse(message);
-                        console.log(message);
-                        console.log(obj);*/
 
                     }
                     else {
@@ -218,6 +209,8 @@ export class ReservaHabitacionComponent implements OnInit {
 
                 }
             );
+
+            this._router.navigate(['/reporteReserva'])
 
     }
 

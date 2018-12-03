@@ -10,6 +10,11 @@ import { BuscarHabitacionesByDateComponent } from './habitacion/buscarHabitacion
 import { DetalleHabitacionComponent } from './habitacion/habitacionDetalle.component';
 import { RegistrarUsuarioComponent } from './usuario/registrarUsuario.component';
 import { ReservaHabitacionComponent } from './reserva/reservaHabitacion.component';
+import { ReporteReservaComponent } from './reporte/reporteReserva.component';
+import { NavBarComponent } from './navBar/navBar.component';
+
+
+
 //foro
 import { RegistrarCommentsComponent } from './comments/registrarComments.Component';
 import { FormsModule } from '@angular/forms';
@@ -37,6 +42,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md'
 import { HttpModule } from '@angular/http'; 
 import { MatNativeDateModule } from '@angular/material';
 import { Usuario } from './login/usuario';
+import { HabitacionGaleriaComponent } from './habitacionGaleria/habitacionGaleria.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +56,10 @@ import { Usuario } from './login/usuario';
     LoginComponent,
     ComidaComponent,
     RegistrarCommentsComponent,
-    PasarelaComponent
+    PasarelaComponent,
+    HabitacionGaleriaComponent,
+    ReporteReservaComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -67,10 +76,12 @@ import { Usuario } from './login/usuario';
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'appComponent', component: AppComponent},
+      {path: 'menu', component: NavBarComponent},
       {path: 'home', component: HomeComponent},
       {path: 'comida', component: ComidaComponent},
       {path: 'pago', component: PasarelaComponent},
       {path: 'comentarios', component: RegistrarCommentsComponent},
+      {path: 'galeria', component: HabitacionGaleriaComponent},
       {path: 'buscarHabitacion', component: BuscarHabitacionesByDateComponent},
       {path: 'reservaHabitacion', component: ReservaHabitacionComponent},
       {path: 'reservaHabitacion/:id', component: ReservaHabitacionComponent},
@@ -79,7 +90,8 @@ import { Usuario } from './login/usuario';
       {path: 'registrarUsuario', component: RegistrarUsuarioComponent},
       {path: 'buscarHabitacion/:fecha1/:fecha2', component: BuscarHabitacionesByDateComponent},
       {path: 'login', component: LoginComponent}, 
-      {path: 'registrarComments', component: RegistrarCommentsComponent }
+      {path: 'registrarComments', component: RegistrarCommentsComponent },
+      {path: 'reporteReserva', component: ReporteReservaComponent }
       //{path: 'buscarHabitacion', component: BuscarHabitacionByPrecioComponent}
     ])
   ],
