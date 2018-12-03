@@ -24,10 +24,11 @@ GO
 --habitacion
 INSERT INTO EstadoHabitacion (nombre) VALUES('Ocupado')
 INSERT INTO EstadoHabitacion (nombre) VALUES('Libre')
+GO
 
 SELECT * FROM EstadoHabitacion
 GO
---
+
 
 --TIPO HABITACION
 CREATE TABLE TipoHabitacion
@@ -43,6 +44,7 @@ INSERT INTO TipoHabitacion(nombre) VALUES('Sencillas')
 INSERT INTO TipoHabitacion(nombre) VALUES('Dobles')
 INSERT INTO TipoHabitacion(nombre) VALUES('Familiares')
 INSERT INTO TipoHabitacion(nombre) VALUES('Suite')
+GO
 
 SELECT * FROM TipoHabitacion
 GO
@@ -67,7 +69,7 @@ INSERT INTO Habitacion VALUES ('403', 'Estas elegantes habitaciones ase encuentr
 INSERT INTO Habitacion VALUES ('404', 'Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',2,2,2,'77.00')
 INSERT INTO Habitacion VALUES ('405', 'Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,3,'24.00')
 INSERT INTO Habitacion VALUES ('406', 'Estas elegantes habitaciones ase encuentran en planta superior del edificio, podran disfrutar de la vista panoramica del mar Limeño.',1,1,2,'60.00')
-
+GO
 
 SELECT * FROM Habitacion
 GO
@@ -83,8 +85,10 @@ go
 --TipoUsuario
 INSERT INTO TipoUsuario(idtipoUsuario,descripcion)VALUES(1,'Administrador')
 INSERT INTO TipoUsuario(idtipoUsuario,descripcion)VALUES(2,'Cliente')
+GO
 
 SELECT * FROM TipoUsuario
+GO
 
 
 --USUARIO
@@ -104,6 +108,7 @@ go
 
 --Usuario
 INSERT INTO Usuario VALUES(75896356,'Veronica','Narvaez','Tapia','vero@outlook.com','vero123', 1)
+GO
 /*INSERT INTO Usuario VALUES(85962536,'Miriam','Salazar','Miranda','miriamSM@gmail.com','miri1234')
 INSERT INTO Usuario VALUES(85962536,'Daniel','Enrique','Manrique','dani@hotmail.com','dani12EM')
 INSERT INTO Usuario VALUES(85962536,'Liz','Casazola','Aguilar','lizca@gmail.com','li*ca*')
@@ -201,9 +206,11 @@ GO
 
 --Tarjeta Valida
 insert into tb_Tarjeta values(1,'1234567812345678','Eren Jaegger','111','01','2021', 1, 100, 50)
+GO
 
 --Tarjeta no habilitada
 insert into tb_Tarjeta values(1,'1111222233334444','Armin Arlet','222','02','2022', 0, 100, 50)
+GO
 
 --Tarjeta saldo insuficiente
 insert into tb_Tarjeta values(1,'9999888877776666','Mickasa Ackerman','333','03','2023',1 ,100 , 99)
@@ -330,6 +337,8 @@ GO
 
 EXECUTE SP_ReservaHabitacion '12/12/2018', '12/12/2018', 1, 1
 GO
+EXECUTE SP_ReservaHabitacion '12/12/2018', '12/12/2018', 5, 1
+GO
 
 SELECT * FROM ReservaHabitacion
 GO
@@ -367,12 +376,15 @@ CREATE PROCEDURE SP_LoginUsuario
 AS
 BEGIN
 	SELECT U.idUsuario ID, U.nombre Nombre, U.apellidoPaterno ApellidoPat, U.apellidoMaterno ApellidoMat 
-	FROM Usuario U
+	FROM Usuario U 
 	WHERE U.correo=@correo AND U.contraseña =@contraseña
 END
+GO
 
 EXECUTE SP_LoginUsuario 'eren@gmail.com', 'eren123'             
 GO
+
+
 
 --Registrar Comentario
 CREATE PROCEDURE SP_RegistrarComments
@@ -402,4 +414,57 @@ GO
 
 EXECUTE SP_ListarComments
 GO
+
+SELECT * FROM ReservaHabitacion
+GO
+
+SELECT * FROM Habitacion
+GO
+
+--Reporte de tipo de habitaciones más usadas
+CREATE PROCEDURE SP_ReporteHabitacionesMasUsadas
+AS 
+BEGIN 
+	SELECT COUNT(*) Cantidad, TH.nombre Tipo
+	FROM Habitacion H INNER JOIN TipoHabitacion TH
+	ON H.idTipo = TH.idTipo INNER JOIN ReservaHabitacion RH 
+	ON H.idHabitacion = RH.idHabitacion
+	GROUP BY TH.nombre
+END
+GO
+
+EXECUTE SP_ReporteHabitacionesMasUsadas
+GO
+
+
+--With out
+/*CREATE PROCEDURE SP_ReporteTiHabitacionMasUsada
+@mensajeReporte VARCHAR(200) OUTPUT,
+@Cantidad INT
+AS 
+BEGIN 
+	SELECT TOP 1 @mensajeReporte = TH.nombre, @Cantidad = COUNT(*) 
+	FROM Habitacion H INNER JOIN TipoHabitacion TH
+	ON H.idTipo = TH.idTipo INNER JOIN ReservaHabitacion RH 
+	ON H.idHabitacion = RH.idHabitacion
+	GROUP BY TH.nombre
+END
+GO*/
+
+
+--Reporte de en qué mes los clientes realizan mayor número de reservas
+CREATE PROCEDURE SP_ReporteReservasMes
+AS
+BEGIN
+	SELECT COUNT(*) Reservas, DATENAME(MONTH, RH.fechaIngreso) Mes
+	FROM ReservaHabitacion RH
+	GROUP BY  DATENAME(MONTH, RH.fechaIngreso)
+END
+GO
+
+EXECUTE SP_ReporteReservasMes
+GO
+
+
+
 
