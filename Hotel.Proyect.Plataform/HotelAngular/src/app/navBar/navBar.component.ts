@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../login/usuario';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navBar',
@@ -9,7 +10,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./navBar.component.css']
 })
 export class NavBarComponent implements OnInit{
+  subscription: Subscription;
+  subscriptionPermiso : Subscription;
+
+  constructor(private _loginService: LoginService, private _router: Router, private _usu: Usuario) {
+    //this.nameUser = localStorage.getItem("nameUser");
+    this.subscription = this._loginService.getMessage().subscribe(message => 
+      { 
+        this.nameUser = message.text; 
+      });
+
+      this.subscriptionPermiso = this._loginService.getPermiso().subscribe(message => 
+        { 
+          if(message.text == 'true'){
+            this.esAdmi = true;
+          }
+          else{
+            this.esAdmi = false;
+          }
+        });
+
+    this.login();
+  }
+  
   ngOnInit(): void {
+
+    
     if(localStorage.getItem('isAdmin') == 'true'){
       this.esAdmi = true;
     }
@@ -23,11 +49,7 @@ export class NavBarComponent implements OnInit{
   salirButton: boolean = true;
   esAdmi: boolean;
 
-  constructor(private _loginService: LoginService, private _router: Router, private _usu: Usuario) {
-    //this.nameUser = localStorage.getItem("nameUser");
-
-    this.login();
-  }
+  
   login() {
     this.nameUser = this._loginService.getUserLoggedIn();
   }

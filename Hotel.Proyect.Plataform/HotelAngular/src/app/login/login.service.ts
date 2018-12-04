@@ -1,7 +1,7 @@
 import { Usuario } from "./usuario";
 import { Injectable } from "@angular/core";
 import { Http, Response } from '@angular/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable,  Subject, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators'
 
 @Injectable()
@@ -10,6 +10,8 @@ export class LoginService {
     public userLog;
     public usserLogged: string;
     public usuario : Usuario[];
+    private subject = new Subject<any>();
+    private subjectPermisos = new Subject<any>();
 
     private _gertLoginUsuarioURL : string = 'http://localhost:55349/api/usuario/Login?'
     idUs: string;
@@ -34,12 +36,20 @@ export class LoginService {
         this.isUserLoggedIn = true;
         this.usserLogged = nombre;
         localStorage.setItem('currentUser', JSON.stringify(nombre));
-      
+        this.subject.next({ text: nombre });      
     }
 
     getUserLoggedIn(): string{
         let currentUser = <string>JSON.parse(localStorage.getItem('currentUser'));
         return currentUser;
+    }
+
+    getMessage(): Observable<any> {
+        return this.subject.asObservable();
+    }
+
+    getPermiso(): Observable<any> {
+        return this.subjectPermisos.asObservable();
     }
 
     esAdmin: boolean = false;
@@ -55,9 +65,13 @@ export class LoginService {
     validarAdministrador(id: string){
         if(id == "2"){
             localStorage.setItem('isAdmin', 'true');
+            this.subjectPermisos.next({ text: 'true' });      
         }
-        else
-        localStorage.setItem('isAdmin', 'false');
+        else{
+            localStorage.setItem('isAdmin', 'false');
+            this.subjectPermisos.next({ text: 'false' });              
+        }
+        
     }
 
     
