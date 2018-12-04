@@ -109,7 +109,7 @@ export class LoginComponent implements OnInit {
                         //this._loginService.userLog = localStorage.getItem("nameUser");
                         this.userLogged = localStorage.getItem("nameUser");
                         console.log(this.usuario);
-
+                        
                         swal('Logueado exitosamente', this.messageAlert, 'success');
 
                     }, error => {
